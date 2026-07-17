@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#1F2D4D">
 <title>Oliver Wright — Home Theater Project Hub | Adroit Communications</title>
@@ -19,11 +19,12 @@
   html{-webkit-text-size-adjust:100%;overflow-x:hidden;}
   body{margin:0;background:var(--bg);color:var(--ink);overflow-x:hidden;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.5;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:920px;margin:0 auto;padding:0 16px 60px;}
+    line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:60px;}
+  a, button{-webkit-tap-highlight-color:rgba(14,124,123,.15);}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 16px 40px;}
   header.masthead{background:linear-gradient(135deg,var(--navy) 0%,#16223b 100%);color:#fff;
     padding:22px 16px 20px;margin-bottom:0;}
-  header.masthead .inner{max-width:920px;margin:0 auto;}
+  header.masthead .inner{max-width:1040px;margin:0 auto;}
   .brand{font-weight:800;letter-spacing:3px;font-size:11.5px;color:#8fd3d2;text-transform:uppercase;}
   header.masthead h1{margin:8px 0 6px;font-size:21px;line-height:1.3;font-weight:700;}
   header.masthead .sub{color:#cdd6e6;font-size:13px;}
@@ -32,14 +33,11 @@
   .callout{margin:18px 0;background:var(--amber-wash);border:1px solid #edd3a3;border-left:4px solid var(--amber);
     border-radius:10px;padding:13px 15px;font-size:13.5px;color:#5a4419;word-wrap:break-word;overflow-wrap:break-word;}
   .callout b{color:#8a5c0f;}
+  .callout ul{margin:6px 0 0;padding-left:18px;}
+  .callout li{margin:3px 0;}
   section{margin:26px 0;}
   h2{font-size:12px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--teal-dark);
     border-bottom:2px solid var(--teal);padding-bottom:8px;margin:0 0 14px;}
-  .itemizer-link{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;
-    text-decoration:none;font-weight:700;font-size:13.5px;border-radius:10px;padding:12px 16px;
-    margin-bottom:14px;min-height:44px;}
-  .itemizer-link:hover{background:var(--teal-dark);}
-  .itemizer-link small{display:block;font-weight:500;opacity:.9;font-size:11.5px;}
   h3{font-size:15px;color:var(--navy);margin:0 0 6px;}
   .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 16px;margin-bottom:12px;
     box-shadow:0 1px 2px rgba(31,45,77,.05);}
@@ -55,16 +53,6 @@
   .tag.gc{background:var(--amber-wash);color:#8a5c0f;}
   ul.scope{margin:0;padding-left:20px;}
   ul.scope li{margin:9px 0;font-size:14.5px;line-height:1.55;}
-  .table-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px;}
-  table{width:100%;min-width:520px;border-collapse:collapse;font-size:13.5px;}
-  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap;}
-  th{background:var(--navy-wash);color:var(--navy);font-size:10.5px;text-transform:uppercase;letter-spacing:.4px;}
-  td:first-child,th:first-child{white-space:normal;min-width:150px;}
-  tr.total td{font-weight:800;color:var(--navy);border-top:2px solid var(--teal);font-size:15px;}
-  .option-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;
-    border-radius:6px;padding:2px 7px;margin-left:6px;white-space:normal;}
-  .option-badge.pref{background:var(--teal-wash);color:var(--teal-dark);}
-  .scroll-hint{font-size:11px;color:var(--grey);margin:6px 2px 0;display:none;}
   .timeline{border-left:2px solid var(--line);margin-left:8px;padding-left:18px;}
   .tl-item{position:relative;margin-bottom:16px;}
   .tl-item::before{content:"";position:absolute;left:-23px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--teal);}
@@ -96,11 +84,185 @@
   footer{text-align:center;color:var(--grey);font-size:11.5px;padding:22px 16px 8px;line-height:1.6;}
   footer a{color:var(--teal-dark);}
   footer code, .updated code, .callout code{word-break:break-all;}
-  a, button{-webkit-tap-highlight-color:rgba(14,124,123,.15);}
   @media (max-width:640px){
     header.masthead h1{font-size:19px;}
     .card{padding:14px;}
-    .scroll-hint{display:block;}
+  }
+
+  /* ── Live estimate tool (merged from the former itemizer.html) ─────────────────────────── */
+  .tool-banner{background:repeating-linear-gradient(135deg,#7a1f1f 0 14px,#8f2626 14px 28px);
+    color:#fff;text-align:center;font-weight:800;letter-spacing:.6px;font-size:13.5px;
+    padding:11px 14px;position:sticky;top:0;z-index:30;text-transform:uppercase;
+    box-shadow:0 2px 6px rgba(0,0,0,.18);border-radius:10px 10px 0 0;}
+  .tool-banner .sub{display:block;font-weight:600;letter-spacing:.3px;text-transform:none;
+    font-size:12px;opacity:.92;margin-top:2px;}
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;padding:12px 14px;background:#fff;
+    border-bottom:1px solid var(--line);position:sticky;top:42px;z-index:20;}
+  button{font-family:inherit;font-size:15px;font-weight:700;border:0;border-radius:10px;
+    min-height:44px;padding:0 16px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;}
+  .btn-primary{background:var(--teal);color:#fff;}
+  .btn-amber{background:var(--amber);color:#fff;}
+  .btn-ghost{background:var(--navy-wash);color:var(--navy);}
+  .btn-danger-ghost{background:#fff;color:var(--red);border:1px solid #e6c3c3;}
+  .btn-history{background:#fff;color:var(--navy);border:1px solid var(--line);}
+  button:active{transform:translateY(1px);}
+  .note{font-size:12.5px;color:var(--grey);padding:8px 16px 0;line-height:1.5;}
+  .note b{color:var(--navy);}
+  #groups{padding:6px 0 0;}
+  .group{margin:14px 0 4px;}
+  .group-head{display:flex;justify-content:space-between;align-items:baseline;
+    padding:6px 6px 6px 4px;border-bottom:2px solid var(--teal);margin-bottom:8px;}
+  .group-head .gname{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--teal-dark);}
+  .group-head .gsum{font-size:14px;font-weight:800;color:var(--navy);}
+  .item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;
+    display:grid;gap:10px 12px;box-shadow:0 1px 2px rgba(31,45,77,.05);
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-areas:"cat cat cat" "desc desc desc" "link link linkbtn" "qty unit rate" "total total active" "notes notes notes";}
+  .fld{display:flex;flex-direction:column;gap:3px;min-width:0;}
+  .fld label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--grey);}
+  .fld input, .fld textarea{font-family:inherit;font-size:16px;color:var(--ink);
+    border:1px solid var(--line);border-radius:8px;padding:9px 10px;min-height:44px;width:100%;background:#fff;}
+  .fld input:focus, .fld textarea:focus{outline:2px solid var(--teal);border-color:var(--teal);}
+  .fld textarea{min-height:60px;resize:vertical;line-height:1.4;}
+  .a-cat{grid-area:cat;} .a-desc{grid-area:desc;} .a-qty{grid-area:qty;}
+  .a-unit{grid-area:unit;} .a-rate{grid-area:rate;} .a-total{grid-area:total;} .a-active{grid-area:active;}
+  .a-total .val{font-size:18px;font-weight:800;color:var(--navy);padding:8px 0;}
+  .a-total .val.neg{color:var(--red);}
+  .a-active{align-self:end;}
+  .a-link{grid-area:link;} .a-linkbtn{grid-area:linkbtn;align-self:end;} .a-notes{grid-area:notes;}
+  .link-open{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;width:100%;
+    background:var(--teal-wash);color:var(--teal-dark);border-radius:8px;font-weight:700;font-size:13px;
+    text-decoration:none;border:1px solid transparent;}
+  .link-open:hover{background:var(--teal);color:#fff;}
+  .link-open.disabled{background:#EDEEF0;color:#a3a9b0;pointer-events:none;}
+  .fld.notes-fld textarea{min-height:52px;background:#FFFDF5;border-color:#edd3a3;}
+  .fld.notes-fld label{color:#8a5c0f;}
+  .toggle-wrap{display:flex;align-items:center;gap:8px;min-height:44px;background:var(--teal-wash);
+    border-radius:8px;padding:0 10px;justify-content:center;}
+  .toggle-wrap input{width:20px;height:20px;min-height:0;padding:0;accent-color:var(--teal);}
+  .toggle-wrap span{font-size:12.5px;font-weight:700;color:var(--teal-dark);}
+  .rate-neg input{color:var(--red);}
+  .item.inactive{background:#EDEEF0;box-shadow:none;opacity:.72;}
+  .item.inactive .fld input, .item.inactive .fld textarea{
+    text-decoration:line-through;text-decoration-color:var(--red);color:#8a8f96;background:#E7E8EA;}
+  .item.inactive .a-total .val{text-decoration:line-through;text-decoration-color:var(--red);color:#8a8f96;}
+  .item.inactive .toggle-wrap{background:#E2C9C9;}
+  .item.inactive .toggle-wrap span{color:var(--red);}
+  .option-flag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;
+    border-radius:20px;padding:2px 9px;margin-left:8px;vertical-align:middle;}
+  .option-flag.opt1{background:var(--teal-wash);color:var(--teal-dark);}
+  .option-flag.opt2{background:var(--amber-wash);color:#8a5c0f;}
+  .summary{margin:18px 0 8px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+  .summary .s-title{background:var(--teal-wash);color:var(--teal-dark);font-weight:800;font-size:12px;
+    letter-spacing:1px;text-transform:uppercase;padding:10px 16px;}
+  .summary .s-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);gap:10px 14px;}
+  .summary .s-row .lbl{color:var(--navy);font-weight:600;flex:1 1 160px;min-width:0;}
+  .summary .s-row .amt{font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;}
+  .summary .s-row.auto{background:#FAFBFC;}
+  .summary .s-row .lbl small{display:block;color:var(--grey);font-weight:500;font-size:12px;}
+  .pct-input{width:84px;min-height:40px;font-size:16px;text-align:right;border:1px solid var(--line);
+    border-radius:8px;padding:6px 8px;font-family:inherit;}
+  .summary .s-total{background:var(--navy);color:#fff;padding:16px;}
+  .summary .s-total .lbl{font-size:13px;letter-spacing:1px;text-transform:uppercase;opacity:.85;}
+  .summary .s-total .amt{font-size:26px;font-weight:800;color:#fff;}
+  .warn-row{font-size:12px;color:var(--red);padding:4px 16px 10px;font-weight:700;}
+  .recon{font-size:12px;color:var(--grey);padding:6px 0 14px;}
+  .recon b{color:var(--teal-dark);}
+  .glossary{margin:26px 0 8px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px 0 8px;}
+  .glossary h2{font-size:14px;letter-spacing:1px;text-transform:uppercase;color:var(--teal-dark);
+    background:var(--teal-wash);margin:0;padding:12px 16px;border-radius:14px 14px 0 0;border-bottom:0;}
+  .glossary .gloss-intro{font-size:12.5px;color:var(--grey);padding:12px 16px 0;}
+  dl.gterms{margin:6px 16px 10px;}
+  dl.gterms dt{font-weight:800;color:var(--navy);font-size:13.5px;margin-top:12px;}
+  dl.gterms dd{margin:3px 0 0;font-size:13px;color:var(--ink);line-height:1.5;}
+  .saved-indicator{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--teal-dark);
+    font-weight:700;padding:0 8px;}
+  .saved-indicator .dot2{width:7px;height:7px;border-radius:50%;background:var(--teal);flex:0 0 auto;}
+  .sync-indicator{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--grey);font-weight:700;padding:0 8px;}
+  .sync-indicator .dot3{width:7px;height:7px;border-radius:50%;background:var(--grey);flex:0 0 auto;}
+  .sync-indicator.ok .dot3{background:var(--teal);}
+  .sync-indicator.ok{color:var(--teal-dark);}
+  .sync-indicator.err .dot3{background:var(--red);}
+  .sync-indicator.err{color:var(--red);}
+  .modal-overlay{position:fixed;inset:0;background:rgba(15,20,35,.55);z-index:100;display:none;
+    align-items:flex-start;justify-content:center;padding:20px 12px;overflow-y:auto;}
+  .modal-overlay.open{display:flex;}
+  .modal-card{background:#fff;border-radius:14px;max-width:640px;width:100%;margin-top:20px;
+    box-shadow:0 12px 40px rgba(0,0,0,.25);overflow:hidden;}
+  .modal-head{background:var(--navy);color:#fff;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;}
+  .modal-head h3{margin:0;font-size:14px;letter-spacing:.5px;text-transform:uppercase;}
+  .modal-close{background:rgba(255,255,255,.15);color:#fff;border-radius:8px;min-height:34px;padding:0 12px;font-size:13px;}
+  .modal-body{padding:14px 18px;max-height:60vh;overflow-y:auto;}
+  .modal-actions{padding:12px 18px;border-top:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap;}
+  .hist-empty{color:var(--grey);font-size:13.5px;padding:20px 4px;text-align:center;}
+  .hist-row{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;
+    display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+  .hist-row .hist-meta{font-size:13px;color:var(--navy);font-weight:600;}
+  .hist-row .hist-sub{font-size:11.5px;color:var(--grey);margin-top:2px;}
+  .hist-row .hist-actions{display:flex;gap:6px;}
+  .hist-row .hist-actions button{min-height:36px;padding:0 12px;font-size:12.5px;}
+  .hist-row.current{border-color:var(--teal);background:var(--teal-wash);}
+  .durable-note{background:var(--navy-wash);border-radius:10px;padding:10px 12px;font-size:12px;color:var(--navy);
+    margin-bottom:12px;line-height:1.5;}
+  .durable-note a{color:var(--teal-dark);font-weight:700;}
+  /* Client PDF view */
+  #client-pdf-view{display:none;}
+  body.client-view > *:not(#client-pdf-view){display:none !important;}
+  body.client-view #client-pdf-view{display:block !important;}
+  .cpv-wrap{max-width:800px;margin:0 auto;background:#fff;}
+  .cpv-back{padding:12px 16px;background:var(--navy-wash);}
+  .cpv-back button{background:var(--navy);color:#fff;}
+  .cpv-head{background:linear-gradient(135deg,var(--navy) 0%,#16223b 100%);color:#fff;padding:34px 40px 26px;}
+  .cpv-head .cpv-brand{font-weight:800;letter-spacing:4px;font-size:13px;color:#8fd3d2;text-transform:uppercase;}
+  .cpv-head h1{margin:10px 0 4px;font-size:24px;font-weight:700;}
+  .cpv-head .cpv-tag{color:#cdd6e6;font-size:13.5px;}
+  .cpv-amberline{height:5px;background:var(--amber);}
+  .cpv-body{padding:34px 40px;}
+  .cpv-prepared{font-size:13px;color:var(--grey);margin-bottom:22px;letter-spacing:.3px;}
+  .cpv-prepared b{color:var(--navy);}
+  .cpv-intro{font-size:14.5px;line-height:1.7;color:var(--ink);margin-bottom:26px;}
+  .cpv-scope h2, .cpv-pricing h2{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
+    color:var(--teal-dark);border-bottom:2px solid var(--teal);padding-bottom:8px;margin:0 0 14px;}
+  .cpv-scope ul{margin:0 0 26px;padding-left:20px;}
+  .cpv-scope li{font-size:14px;line-height:1.7;margin:8px 0;color:var(--ink);}
+  .cpv-options{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px;}
+  .cpv-opt{border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .cpv-opt-head{background:var(--teal-wash);color:var(--teal-dark);font-weight:800;font-size:12.5px;
+    letter-spacing:.4px;text-transform:uppercase;padding:10px 14px;}
+  .cpv-opt table{width:100%;border-collapse:collapse;font-size:13px;}
+  .cpv-opt td{padding:9px 14px;border-bottom:1px solid var(--line);}
+  .cpv-opt tr.cpv-total td{font-weight:800;color:var(--navy);border-top:2px solid var(--teal);font-size:15px;background:#FAFBFC;}
+  .cpv-terms{font-size:13.5px;color:var(--ink);line-height:1.7;margin:22px 0;padding:16px 18px;
+    background:var(--amber-wash);border-radius:10px;border-left:4px solid var(--amber);}
+  .cpv-sig{margin-top:36px;border-top:1px solid var(--line);padding-top:22px;font-size:13.5px;}
+  .cpv-sig .sig-line{display:inline-block;border-bottom:1px solid var(--ink);width:280px;margin:0 10px 6px 0;}
+  .cpv-foot{padding:20px 40px 30px;border-top:1px solid var(--line);font-size:11px;color:var(--grey);line-height:1.7;}
+  .cpv-foot .cpv-stamp{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10px;
+    color:#9aa2ab;letter-spacing:.3px;margin-top:8px;}
+  @media (max-width:640px){ .cpv-options{grid-template-columns:1fr;} .cpv-head,.cpv-body{padding:24px 20px;} }
+  @media (max-width:420px){ .summary .s-row{padding:12px 14px;} }
+  @media (min-width:900px){
+    .item{grid-template-columns:200px minmax(220px,1fr) 70px 90px 110px 118px 96px;
+      grid-template-areas:"cat desc qty unit rate total active" "link link link linkbtn notes notes notes";
+      align-items:end;}
+    .item .fld textarea{min-height:44px;}
+    .item .notes-fld textarea{min-height:44px;}
+  }
+  @media print{
+    body{background:#fff;padding:0;}
+    header.masthead,.amberline,.updated,.callout,section > h2,.contacts,ul.scope,.client-grid,
+    .timeline,.open-items,footer,.toolbar,.a-active,.note,.a-link,.a-linkbtn,.a-notes,.modal-overlay,
+    .saved-indicator,.sync-indicator{display:none !important;}
+    .tool-banner{position:static;border-radius:0;}
+    .item{break-inside:avoid;border:1px solid #bbb;box-shadow:none;
+      grid-template-columns:150px 1fr 60px 80px 100px 100px;
+      grid-template-areas:"cat desc qty unit rate total";}
+    .fld input,.fld textarea{border:0;padding:2px 0;min-height:0;font-size:12px;}
+    .summary{break-inside:avoid;}
+    .pct-input{border:0;}
+    .glossary{break-inside:avoid;}
+    body.client-view .cpv-back{display:none !important;}
+    .cpv-opt{break-inside:avoid;}
   }
 </style>
 </head>
@@ -119,10 +281,10 @@
 <div class="wrap">
 
   <div class="callout">
-    <b>Working page for Tunde &amp; Claudio.</b> This is a shared, editable hub for the Wright project —
-    contacts, scope, current estimate, and open items in one place instead of scattered across email/SMS/transcripts.
-    Edit this file directly on GitHub (pencil icon on <code>index.html</code>) or ask Claude Code to update it;
-    changes go live automatically within a minute of pushing to <code>main</code>.
+    <b>Working page for Tunde &amp; Claudio.</b> Everything for this project — contacts, scope, client
+    requirements, the live editable estimate, timeline, and open items — lives on this one page. Edit directly on
+    GitHub (pencil icon on <code>index.html</code>) or ask Claude Code to update it; changes go live within a
+    minute of pushing to <code>main</code>.
   </div>
 
   <section>
@@ -225,28 +387,137 @@
   </section>
 
   <section>
-    <h2>Current Estimate — ADR-EST-2026-WRIGHT (Draft)</h2>
-    <a class="itemizer-link" href="itemizer.html">✎ Open the editable itemizer<small>adjust qty/rate/margin/split live, toggle Option 1 vs Option 2 — internal, not for the client</small></a>
-    <div class="card">
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>Item</th><th>Option 1 — Ceiling-Mount<span class="option-badge pref">Oliver's pref</span></th><th>Option 2 — Recessed Lift</th></tr></thead>
-          <tbody>
-            <tr><td>Projection Screen</td><td>$5,851.00</td><td>$5,851.00</td></tr>
-            <tr><td>Projector &amp; Mounting</td><td>$4,449.00</td><td>$8,174.00</td></tr>
-            <tr><td>Sonos Integration &amp; AV Cabinet</td><td>$1,050.00</td><td>$1,050.00</td></tr>
-            <tr><td>Mobilization &amp; Site Protection</td><td>$475.00</td><td>$475.00</td></tr>
-            <tr><td>System Assurance &amp; Warranty Package</td><td>$591.25</td><td>$777.50</td></tr>
-            <tr class="total"><td>TOTAL</td><td>$12,416.25</td><td>$16,327.50</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="scroll-hint">← swipe to see both options →</div>
+    <h2>Current Estimate — ADR-EST-2026-WRIGHT (Live, Editable)</h2>
+
+    <div class="tool-banner">INTERNAL — WORKING ESTIMATE · NOT CLIENT-FACING
+      <span class="sub">Exposes internal cost levers (margin %, raw cost, profit split). Use "Generate Client PDF" below to produce anything client-safe.</span>
     </div>
+
+    <div class="toolbar">
+      <button class="btn-primary" id="btn-add">+ Add line item</button>
+      <button class="btn-history" id="btn-history">🕘 Version History</button>
+      <button class="btn-amber" id="btn-client-pdf">🖨 Generate Client PDF</button>
+      <button class="btn-ghost" id="btn-export">⭳ Export JSON</button>
+      <button class="btn-ghost" id="btn-print">⎙ Print working copy</button>
+      <button class="btn-danger-ghost" id="btn-reset">↺ Reset to original</button>
+      <span class="saved-indicator" id="saved-indicator"><span class="dot2"></span><span id="saved-text">Saved</span></span>
+      <span class="sync-indicator" id="sync-indicator"><span class="dot3"></span><span id="sync-text">Sync: connecting…</span></span>
+    </div>
+    <div class="note"><b>Working tool:</b> edits save instantly to this browser, and — when the shared sync backend
+      is reachable — to a small server too, so Tunde's and Claudio's edits show up for each other automatically
+      (checked every few seconds; see the <b>Sync</b> indicator above). If sync is offline, edits still save locally
+      and will push up the next time it's reachable. Use <b>Export JSON</b> to save or share a version, and
+      <b>Reset to original</b> to restore the baseline itemization. <b>Line total</b> is computed (qty × unit rate)
+      and not directly editable. Toggling a row's <b>Active</b> switch off removes it from every total/subtotal
+      below (strikethrough, grayed) without deleting it — flip it back on any time. <b>System Assurance &amp;
+      Warranty Package</b> below is computed automatically (editable %, default 5%) from whichever rows are active
+      — it is not a line item, so it recalculates correctly no matter which projector option you have toggled on.
+      Each row has a <b>Product URL</b> (click <b>↗ Open</b> to jump straight to specs/pricing) and a <b>Notes</b>
+      field for sourcing status, vendor calls, or concerns.
+      <br><br><b>Version history:</b> a checkpoint auto-captures a few seconds after you stop editing. Open
+      <b>🕘 Version History</b> to browse past checkpoints or revert to any of them — reverting itself is undoable.
+      For the durable, permanent history — every version actually pushed to GitHub — see the link inside that panel.
+      <br><br><b>🖨 Generate Client PDF</b> builds a polished, client-safe document from whatever is currently in the
+      tool — both pricing options side by side, no margin/split/internal notes exposed — and stamps the footer with
+      a version fingerprint tying the printout back to the exact numbers that produced it.</div>
+
     <div class="callout">
-      <b>Pricing basis note:</b> equipment costs are current public retail list pricing (pulled 7/17) as a placeholder —
-      Adroit's actual ADI Global Distribution dealer cost hasn't been pulled yet and will likely bring these down.
-      Projector make/model is not yet finalized. Treat as a planning range until dealer pricing + projector selection are confirmed.
+      <b>Section B is two mutually exclusive projector options</b> — toggle ON only the option you're quoting and OFF
+      the other, so the total reflects one coherent scope:
+      <ul>
+        <li><b>Option 1 (Ceiling-Mount)</b> — Oliver's stated preference (2026-07-15): no structural/framing changes. Active by default below.</li>
+        <li><b>Option 2 (Recessed Lift)</b> — the original vision; engineering review found the lowest-profile lift barely fits the existing ceiling framing. Inactive by default below.</li>
+      </ul>
+    </div>
+
+    <div id="groups"></div>
+
+    <div class="summary">
+      <div class="s-title">Automated Summary — recomputes live from active rows</div>
+      <div class="s-row"><span class="lbl">Raw subtotal <small>Σ active line items (screen/projector/Sonos/mobilization), before margin</small></span><span class="amt" id="s-subtotal">—</span></div>
+      <div class="s-row"><span class="lbl">System Assurance &amp; Warranty Package <small>editable %, internal margin — never itemized to the client</small></span>
+        <span style="display:flex;align-items:center;gap:8px;"><input class="pct-input" id="s-mgn-pct" type="number" inputmode="decimal" step="any" min="0"> %</span></div>
+      <div class="s-row auto"><span class="lbl">Margin amount</span><span class="amt" id="s-mgn-amt">—</span></div>
+      <div class="s-row s-total"><span class="lbl">Total (client-facing price) <small style="color:#cdd6e6;">Raw subtotal + margin, active rows only</small></span><span class="amt" id="s-total">—</span></div>
+    </div>
+
+    <div class="summary">
+      <div class="s-title">Payment Terms — automated from total</div>
+      <div class="s-row"><span class="lbl">Deposit <small>editable %, due to commence</small></span>
+        <span style="display:flex;align-items:center;gap:8px;"><input class="pct-input" id="s-dep-pct" type="number" inputmode="decimal" step="any" min="0"> %</span></div>
+      <div class="s-row auto"><span class="lbl">Deposit amount</span><span class="amt" id="s-dep-amt">—</span></div>
+      <div class="s-row auto"><span class="lbl">Balance <small>due on completion</small></span><span class="amt" id="s-bal-amt">—</span></div>
+    </div>
+
+    <div class="summary">
+      <div class="s-title">Internal Distribution — 2026 split, automated from total</div>
+      <div class="s-row"><span class="lbl">Tunde <small>editable %</small></span>
+        <span style="display:flex;align-items:center;gap:14px;">
+          <input class="pct-input" id="s-tunde-pct" type="number" inputmode="decimal" step="any" min="0"> %
+          <span class="amt" id="s-tunde-amt">—</span></span></div>
+      <div class="s-row"><span class="lbl">Claudio <small>editable %</small></span>
+        <span style="display:flex;align-items:center;gap:14px;">
+          <input class="pct-input" id="s-claudio-pct" type="number" inputmode="decimal" step="any" min="0"> %
+          <span class="amt" id="s-claudio-amt">—</span></span></div>
+      <div class="s-row"><span class="lbl">Business <small>editable %</small></span>
+        <span style="display:flex;align-items:center;gap:14px;">
+          <input class="pct-input" id="s-business-pct" type="number" inputmode="decimal" step="any" min="0"> %
+          <span class="amt" id="s-business-amt">—</span></span></div>
+      <div class="s-row auto"><span class="lbl">Total distribution</span><span class="amt" id="s-dist-total">—</span></div>
+      <div class="warn-row" id="s-dist-warn" style="display:none;"></div>
+    </div>
+
+    <div class="recon">Baseline reconciliation (Option 1 active, Option 2 inactive — as loaded): raw subtotal <b>$11,825.00</b> ·
+      + 5% margin <b>$591.25</b> · total <b>$12,416.25</b>. Switching to Option 2 (toggle its rows on, Option 1's off) moves
+      raw subtotal to <b>$15,550.00</b>, margin to <b>$777.50</b>, total to <b>$16,327.50</b>. All figures use placeholder
+      public-retail pricing for the screen/lift — pending real ADI dealer cost.</div>
+
+    <div class="glossary">
+      <h2>Glossary — Terms, Jargon &amp; Acronyms</h2>
+      <div class="gloss-intro">Reference for every term used in the estimate tool above, in the order they matter most to reading the numbers.</div>
+      <dl class="gterms">
+        <dt>System Assurance &amp; Warranty Package</dt>
+        <dd>An internal margin line (default 5% of the active raw subtotal), computed automatically and folded into the client-facing price. It is real margin, not a pass-through cost, and is never itemized or named as a fee to the client.</dd>
+
+        <dt>Raw subtotal</dt>
+        <dd>The sum of every <em>active</em> line item's qty × unit rate before the margin is applied — Adroit's standard cost for the job as currently toggled.</dd>
+
+        <dt>Line item / Line total</dt>
+        <dd>One row of billable work (equipment or labor). Line total = quantity × unit rate, computed automatically and not directly editable.</dd>
+
+        <dt>Ceiling-recessed motorized screen</dt>
+        <dd>A projection screen that retracts up into a pocket built into the ceiling when not in use, appearing flush/invisible — the locked-scope Section A item.</dd>
+
+        <dt>Short-throw projector</dt>
+        <dd>A projector designed to sit close to the screen (a few feet, not the back of the room) and still fill it — required here so the unit can be ceiling-mounted or lift-concealed near the screen wall rather than at the back of the room.</dd>
+
+        <dt>Projector lift (e.g. AeroLift-class)</dt>
+        <dd>A motorized mechanism that lowers a projector out of a ceiling recess for use and raises it back up out of sight afterward — Option 2's approach; requires more ceiling depth/tolerance than a fixed ceiling mount.</dd>
+
+        <dt>eARC (Enhanced Audio Return Channel)</dt>
+        <dd>An HDMI feature carrying high-quality audio back from the display/projector to a soundbar over a single cable — how the existing Sonos Arc Ultra will connect, avoiding separate audio wiring.</dd>
+
+        <dt>ADI Global Distribution</dt>
+        <dd>Adroit's AV/security equipment dealer — the source for actual (non-retail-list) screen and lift pricing; not yet quoted for this job.</dd>
+
+        <dt>Mobilization</dt>
+        <dd>Time and cost to get the crew, tools, and materials staged and the work area protected before productive install work begins — priced once per project, not per task.</dd>
+
+        <dt>Turnkey scope</dt>
+        <dd>A pricing structure where Adroit supplies both labor and materials (screen, projector, mounting/lift hardware, conduit, AV cabinet). The client's existing Sonos system is the exception — integrated, not replaced or supplied.</dd>
+
+        <dt>Fixed price</dt>
+        <dd>A single agreed total price for the defined scope of work, as opposed to time-and-materials billing.</dd>
+
+        <dt>Change order</dt>
+        <dd>A documented addition or modification to the original scope (and its price) after work has started.</dd>
+
+        <dt>Deposit / Balance</dt>
+        <dd>The upfront percentage of the total price collected to begin work (deposit), with the remainder (balance) due upon completion.</dd>
+
+        <dt>Internal Distribution</dt>
+        <dd>How the final project total is split internally between the people/entities involved in delivering and running the job (here: Tunde, Claudio, and the Business) — never shown to the client.</dd>
+      </dl>
     </div>
   </section>
 
@@ -258,7 +529,7 @@
       <div class="tl-item"><div class="tl-date">Jul 13</div><div class="tl-body">Touch-base "Design Update" letter sent (v2) thanking Oliver for the site visit, outlining the design direction.</div></div>
       <div class="tl-item"><div class="tl-date">Jul 14</div><div class="tl-body">Dealer call with Draper screen/lift specialist — confirms 120" recessed screen is feasible; lowest-profile lift (AeroLift-class) is a tight fit; ordering runs through ADI Global Distribution.</div></div>
       <div class="tl-item"><div class="tl-date">Jul 15</div><div class="tl-body">Adroit sends engineering-review update flagging the lift's tight tolerance. Jordan asks for material + labor cost estimate, screen prioritized. Oliver replies with a compromise: ceiling-mount the projector instead of recessing, to avoid structural changes.</div></div>
-      <div class="tl-item"><div class="tl-date">Jul 17</div><div class="tl-body">Draft two-option estimate built (this page). Oliver's existing Sonos gear confirmed via SMS to Claudio: Arc Ultra, Sub 4, Era 300 pair.</div></div>
+      <div class="tl-item"><div class="tl-date">Jul 17</div><div class="tl-body">Two-option estimate built. Oliver's existing Sonos gear confirmed via SMS to Claudio: Arc Ultra, Sub 4, Era 300 pair. This page consolidated into one live, shared planning tool.</div></div>
     </div>
   </section>
 
@@ -277,9 +548,685 @@
 </div>
 
 <footer>
-  Internal working page for Adroit Communications — not for client distribution.
-  Source estimate: <code>data/project_records/ADR-2026-WRIGHT/</code> in the Adroit brain.
+  Adroit Communications LLC · Living project hub &amp; internal itemization tool · ADR-2026-WRIGHT ·
+  not for client distribution. Source estimate: <code>data/project_records/ADR-2026-WRIGHT/</code> in the Adroit brain.
 </footer>
 
+<div id="client-pdf-view"></div>
+
+<div class="modal-overlay" id="history-overlay">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3>Version History</h3>
+      <button class="modal-close" id="history-close">✕ Close</button>
+    </div>
+    <div class="modal-body">
+      <div class="durable-note">
+        <b>Two layers of history:</b> everything below is <b>auto-saved</b> (to the shared server when reachable,
+        and always to this browser) every few seconds as you edit, plus a checkpoint you can save on demand — good
+        for quick undo. For the <b>durable, permanent</b> history — every version actually pushed live — see the
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commits/main/index.html" target="_blank" rel="noopener">GitHub commit history</a> for this page.
+      </div>
+      <div id="history-list"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-primary" id="btn-save-version">📌 Save a named checkpoint now</button>
+    </div>
+  </div>
+</div>
+
+<script type="application/json" id="baseline-data">
+{"meta":{"project_id":"ADR-2026-WRIGHT","title":"Oliver Wright Residence — Home Theater Design & Integration — Granular Internal Itemization","usage":"INTERNAL — working estimate, not client-facing. Contains internal margin; NEVER expose to client.","client":"Oliver Wright + Allison Everett","poc":"Jordan Ghrist (Link Construction)","address":"Georgetown, Washington DC — exact street TBD","date":"2026-07-17"},
+"line_items":[
+{"id":"A1","category":"A - Projection Screen (locked scope)","description":"Draper Access V-class ceiling-recessed motorized screen, ~110-120\" HDTV [16:9], matte white — PLACEHOLDER: Draper list ~$5,051 (model 140110, 119\"); replace with real ADI dealer cost","url":"https://www.adiglobaldistribution.us/Product/DF-140110","qty":1,"unit":"unit","unit_rate":5051.00,"active":true,"notes":"ADI page = spec sheet, not dealer login pricing. Log into ADI for actual cost. Confirm exact ceiling opening size before ordering."},
+{"id":"A2","category":"A - Projection Screen (locked scope)","description":"Screen install — recess coordination with Link Construction, mount, wire to low-voltage control, commission","url":"","qty":1,"unit":"project","unit_rate":650.00,"active":true,"notes":""},
+{"id":"A3","category":"A - Projection Screen (locked scope)","description":"Low-voltage control integration — wall control / app tie-in","url":"","qty":1,"unit":"project","unit_rate":150.00,"active":true,"notes":""},
+
+{"id":"B1-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"4K laser short-throw projector, ambient-light-capable — PLACEHOLDER model/brand TBD (~$3,499-class unit)","url":"","qty":1,"unit":"unit","unit_rate":3499.00,"active":true,"notes":"No model selected yet. Adroit doesn't stock projectors (confirmed 7/14 dealer call) — need AV supplier rec for a true SHORT-THROW (not ultra-short-throw/UST console unit) that can ceiling-mount and stay bright enough for Oliver's no-blackout-curtain requirement."},
+{"id":"B2-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"White ceiling mount bracket, paint-matched finish per client's 'super clean, nothing bulky' requirement","url":"","qty":1,"unit":"unit","unit_rate":175.00,"active":true,"notes":""},
+{"id":"B3-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"Mount, align to screen, calibrate — no structural/framing changes required","url":"","qty":1,"unit":"project","unit_rate":450.00,"active":true,"notes":""},
+{"id":"B4-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"HDMI/Cat6 conduit run — AV closet to ceiling projector location","url":"","qty":1,"unit":"project","unit_rate":325.00,"active":true,"notes":""},
+
+{"id":"B1-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"4K laser short-throw projector — same unit as Option 1","url":"","qty":1,"unit":"unit","unit_rate":3499.00,"active":false,"notes":"Same model-TBD as Option 1 — see B1-OPT1 notes."},
+{"id":"B2-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"Draper AeroLift 35-class ceiling-recessed projector lift (35 lb cap., ~24.5\" max extension) — PLACEHOLDER retail $2,419-$4,138 range, used midpoint; replace with real ADI dealer cost. Lowest-profile lift on the market, near-zero tolerance against existing ceiling framing","url":"https://www.adiglobaldistribution.us/Product/DF-300319","qty":1,"unit":"unit","unit_rate":3500.00,"active":false,"notes":"Near-zero tolerance vs the ~9¼\" ceiling joist depth per engineering review. See 7/14 team call for the 'drop the ceiling / build a pocket' fallback idea (not costed)."},
+{"id":"B3-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"Framing coordination with Link Construction (tight tolerance), lift mount, precision alignment, commissioning","url":"","qty":1,"unit":"project","unit_rate":850.00,"active":false,"notes":""},
+{"id":"B4-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"HDMI/Cat6 conduit run — AV closet to recessed lift location","url":"","qty":1,"unit":"project","unit_rate":325.00,"active":false,"notes":""},
+{"id":"B5-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"OPTIONAL mitigation (floated internally 7/14, not yet costed/discussed with Jordan or client): reframe/drop a section of ceiling to gain lift depth tolerance — set qty to 1 and price if pursued","url":"","qty":0,"unit":"project","unit_rate":0.00,"active":false,"notes":""},
+
+{"id":"C1","category":"C - Sonos Integration & Unified Control","description":"Integrate existing Sonos (Arc Ultra soundbar, Sub 4, Era 300 surround pair) into single control experience via single eARC HDMI run to the Arc Ultra — Sub 4 and Era 300s are wireless, no separate remotes, no wall speakers (client rejected)","url":"https://www.sonos.com/en-us/shop/arc-ultra","qty":1,"unit":"project","unit_rate":450.00,"active":true,"notes":"Client-furnished, not purchased by Adroit — link is for spec reference (eARC/HDMI requirements) only."},
+{"id":"C2","category":"C - Sonos Integration & Unified Control","description":"AV closet/cabinet build-out — HDMI switching, equipment housing (credenza siting per site visit)","url":"","qty":1,"unit":"project","unit_rate":600.00,"active":true,"notes":""},
+
+{"id":"D1","category":"D - Mobilization & Site Protection","description":"Full construction dust protection — doorways, windows, walls, furniture draping (explicit client requirement)","url":"","qty":1,"unit":"project","unit_rate":275.00,"active":true,"notes":""},
+{"id":"D2","category":"D - Mobilization & Site Protection","description":"Mobilization & site setup","url":"","qty":1,"unit":"project","unit_rate":200.00,"active":true,"notes":""}
+],
+"summary":{"margin_pct":5,"deposit_pct":30,"distribution":{"tunde_pct":35,"claudio_pct":35,"business_pct":30}}}
+</script>
+<script>
+(function(){
+  "use strict";
+  var STORAGE_KEY = "adroit-itemizer:ADR-2026-WRIGHT:v1";
+  var SYNC_URL = "https://adroit-wright-sync.netlify.app/.netlify/functions/wright-state";
+  var CAT_ORDER = ["A - Projection Screen (locked scope)","B - Projector — Option 1: Ceiling-Mount",
+                   "B - Projector — Option 2: Recessed Lift","C - Sonos Integration & Unified Control",
+                   "D - Mobilization & Site Protection"];
+  var BASELINE = JSON.parse(document.getElementById("baseline-data").textContent);
+
+  function deep(o){ return JSON.parse(JSON.stringify(o)); }
+  function num(v){ var n = parseFloat(v); return isNaN(n) ? 0 : n; }
+  function money(n){
+    var neg = n < 0;
+    var s = Math.abs(n).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+    return (neg ? "-$" : "$") + s;
+  }
+  function lineTotal(it){ return num(it.qty) * num(it.unit_rate); }
+
+  function freshState(){
+    return {
+      meta: deep(BASELINE.meta),
+      items: deep(BASELINE.line_items),
+      margin_pct: (BASELINE.summary && BASELINE.summary.margin_pct != null) ? BASELINE.summary.margin_pct : 5,
+      deposit_pct: (BASELINE.summary && BASELINE.summary.deposit_pct != null) ? BASELINE.summary.deposit_pct : 30,
+      tunde_pct: (BASELINE.summary && BASELINE.summary.distribution && BASELINE.summary.distribution.tunde_pct != null) ? BASELINE.summary.distribution.tunde_pct : 35,
+      claudio_pct: (BASELINE.summary && BASELINE.summary.distribution && BASELINE.summary.distribution.claudio_pct != null) ? BASELINE.summary.distribution.claudio_pct : 35,
+      business_pct: (BASELINE.summary && BASELINE.summary.distribution && BASELINE.summary.distribution.business_pct != null) ? BASELINE.summary.distribution.business_pct : 30,
+      updated_at: null, updated_by: null
+    };
+  }
+  function loadState(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(raw){
+        var s = JSON.parse(raw);
+        if(s && Array.isArray(s.items)) return s;
+      }
+    }catch(e){}
+    return freshState();
+  }
+  function persist(fromRemote){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+    markSaved();
+    scheduleAutoSnapshot();
+    if(!fromRemote) schedulePush();
+  }
+
+  // ── Server-side sync (Netlify Function + Blobs) — last-write-wins, polled every few seconds ──
+  var lastPushed = "";
+  var pushTimer = null, pollTimer = null, syncing = false;
+  function setSyncStatus(cls, text){
+    var el = document.getElementById("sync-indicator");
+    var t = document.getElementById("sync-text");
+    if(!el || !t) return;
+    el.className = "sync-indicator" + (cls ? " " + cls : "");
+    t.textContent = text;
+  }
+  function schedulePush(){
+    if(pushTimer) clearTimeout(pushTimer);
+    pushTimer = setTimeout(pushState, 1200);
+  }
+  function pushState(){
+    var payload = JSON.stringify(state);
+    if(payload === lastPushed) return;
+    fetch(SYNC_URL, { method:"POST", headers:{"Content-Type":"application/json"}, body: payload })
+      .then(function(r){ if(!r.ok) throw new Error("push failed: " + r.status); lastPushed = payload; setSyncStatus("ok","Synced just now"); })
+      .catch(function(){ setSyncStatus("err","Sync offline — saved locally only"); });
+  }
+  function pullState(initial){
+    if(syncing) return;
+    syncing = true;
+    fetch(SYNC_URL, { method:"GET", cache:"no-store" })
+      .then(function(r){ if(!r.ok) throw new Error("pull failed: " + r.status); return r.json(); })
+      .then(function(remote){
+        syncing = false;
+        if(!remote){ setSyncStatus("ok", initial ? "Synced (no shared version yet)" : "Synced"); if(initial) pushState(); return; }
+        var remoteStr = JSON.stringify(remote);
+        var localStr = JSON.stringify(state);
+        if(remoteStr === localStr){ setSyncStatus("ok","Synced"); lastPushed = localStr; return; }
+        var remoteTime = remote.updated_at ? new Date(remote.updated_at).getTime() : 0;
+        var localTime = state.updated_at ? new Date(state.updated_at).getTime() : 0;
+        if(remoteTime > localTime){
+          snapshotHistory("Incoming update" + (remote.updated_by ? " from " + remote.updated_by : ""), "sync");
+          state = remote;
+          persist(true); render();
+          setSyncStatus("ok","Updated from " + (remote.updated_by || "the other device") + " just now");
+        } else {
+          setSyncStatus("ok","Synced");
+        }
+      })
+      .catch(function(){ syncing = false; setSyncStatus("err","Sync offline — saved locally only"); });
+  }
+  function startSync(){
+    setSyncStatus("", "Sync: connecting…");
+    var who = null;
+    try{ who = localStorage.getItem("adroit-itemizer:who"); }catch(e){}
+    if(!who){
+      who = (prompt("Quick one-time setup: who's editing on this browser? (Tunde / Claudio)", "") || "").trim();
+      try{ localStorage.setItem("adroit-itemizer:who", who); }catch(e){}
+    }
+    state.updated_by = who || state.updated_by || "Unknown";
+    pullState(true);
+    pollTimer = setInterval(function(){ pullState(false); }, 6000);
+    window.addEventListener("beforeunload", pushState);
+  }
+
+  // ── Version history (auto-snapshots + on-demand named checkpoints; browser-local) ───────────
+  var HISTORY_KEY = "adroit-itemizer:ADR-2026-WRIGHT:history:v1";
+  var MAX_HISTORY = 50;
+  var autoSnapTimer = null;
+
+  function loadHistory(){
+    try{
+      var raw = localStorage.getItem(HISTORY_KEY);
+      var h = raw ? JSON.parse(raw) : [];
+      return Array.isArray(h) ? h : [];
+    }catch(e){ return []; }
+  }
+  function saveHistory(h){
+    try{
+      if(h.length > MAX_HISTORY) h = h.slice(h.length - MAX_HISTORY);
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(h));
+    }catch(e){}
+  }
+  function snapshotHistory(label, kind){
+    var h = loadHistory();
+    h.push({ ts: new Date().toISOString(), label: label || "", kind: kind || "auto", state: deep(state) });
+    saveHistory(h);
+  }
+  function scheduleAutoSnapshot(){
+    if(autoSnapTimer) clearTimeout(autoSnapTimer);
+    autoSnapTimer = setTimeout(function(){ snapshotHistory("", "auto"); }, 4000);
+  }
+  function fmtHistTime(iso){
+    try{
+      var d = new Date(iso);
+      return d.toLocaleString("en-US", {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"});
+    }catch(e){ return iso; }
+  }
+  function renderHistoryPanel(){
+    var listEl = document.getElementById("history-list");
+    var h = loadHistory().slice().reverse(); // newest first
+    if(!h.length){
+      listEl.innerHTML = '<div class="hist-empty">No saved versions yet — one is auto-captured a few seconds after your first edit.</div>';
+      return;
+    }
+    listEl.innerHTML = "";
+    h.forEach(function(snap, i){
+      var row = document.createElement("div");
+      row.className = "hist-row" + (i === 0 ? " current" : "");
+      var meta = document.createElement("div");
+      var m1 = document.createElement("div"); m1.className = "hist-meta";
+      var kindLabel = snap.kind === "revert" ? "Reverted" : (snap.kind === "sync" ? "Synced update" : "Auto-save");
+      m1.textContent = (snap.label ? snap.label : kindLabel) + (i===0 ? " (most recent)" : "");
+      var m2 = document.createElement("div"); m2.className = "hist-sub";
+      var snapTotal = computeSubtotalForState(snap.state);
+      m2.textContent = fmtHistTime(snap.ts) + " · raw subtotal " + money(snapTotal);
+      meta.appendChild(m1); meta.appendChild(m2);
+      var actions = document.createElement("div"); actions.className = "hist-actions";
+      var revertBtn = document.createElement("button");
+      revertBtn.className = "btn-ghost"; revertBtn.textContent = "Revert to this";
+      revertBtn.addEventListener("click", function(){
+        if(confirm("Revert the itemizer to this saved version (" + fmtHistTime(snap.ts) + ")? Your current state will itself be saved to history first, so this is undoable.")){
+          revertToSnapshot(snap);
+        }
+      });
+      actions.appendChild(revertBtn);
+      row.appendChild(meta); row.appendChild(actions);
+      listEl.appendChild(row);
+    });
+  }
+  function computeSubtotalForState(s){
+    var sub = 0;
+    (s.items || []).forEach(function(it){ if(it.active !== false) sub += lineTotal(it); });
+    return sub;
+  }
+  function revertToSnapshot(snap){
+    snapshotHistory("Before revert to " + fmtHistTime(snap.ts), "checkpoint");
+    state = deep(snap.state);
+    persist(); render();
+    snapshotHistory("Reverted to " + fmtHistTime(snap.ts), "revert");
+    renderHistoryPanel();
+    closeHistoryPanel();
+  }
+  function openHistoryPanel(){
+    renderHistoryPanel();
+    document.getElementById("history-overlay").classList.add("open");
+  }
+  function closeHistoryPanel(){
+    document.getElementById("history-overlay").classList.remove("open");
+  }
+  var savedTextEl, savedTimer;
+  function markSaved(){
+    if(!savedTextEl) savedTextEl = document.getElementById("saved-text");
+    if(!savedTextEl) return;
+    savedTextEl.textContent = "Saved just now";
+    if(savedTimer) clearTimeout(savedTimer);
+    savedTimer = setTimeout(function(){ if(savedTextEl) savedTextEl.textContent = "Saved"; }, 3000);
+  }
+
+  // ── Simple deterministic fingerprint of the current state (for the client-PDF version stamp) ─
+  function hashState(obj){
+    var str = JSON.stringify(obj);
+    var h = 5381;
+    for(var i=0; i<str.length; i++){ h = ((h << 5) + h + str.charCodeAt(i)) | 0; }
+    var hex = (h >>> 0).toString(16).toUpperCase();
+    while(hex.length < 8) hex = "0" + hex;
+    return hex;
+  }
+  function versionStamp(){
+    var d = new Date();
+    var pad = function(n){ return (n<10?"0":"")+n; };
+    var ts = d.getFullYear()+""+pad(d.getMonth()+1)+pad(d.getDate())+"-"+pad(d.getHours())+pad(d.getMinutes())+pad(d.getSeconds());
+    return "WRIGHT-" + ts + "-" + hashState(state);
+  }
+
+  var state = loadState();
+  var nextId = 1;
+
+  function fillMeta(){ /* meta strip removed on the merged page; kept as a no-op for compatibility */ }
+
+  function orderedCategories(){
+    var seen = [];
+    state.items.forEach(function(it){
+      var c = (it.category || "Uncategorized");
+      if(seen.indexOf(c) === -1) seen.push(c);
+    });
+    var ordered = CAT_ORDER.filter(function(c){ return seen.indexOf(c) !== -1; });
+    seen.forEach(function(c){ if(ordered.indexOf(c) === -1) ordered.push(c); });
+    return ordered;
+  }
+
+  var groupsEl = document.getElementById("groups");
+
+  function makeField(cls, area, labelText, inputEl){
+    var f = document.createElement("div");
+    f.className = "fld " + cls + " a-" + area;
+    var l = document.createElement("label"); l.textContent = labelText;
+    f.appendChild(l); f.appendChild(inputEl);
+    return f;
+  }
+  function inp(type, val){
+    var e = document.createElement("input");
+    e.type = type;
+    if(type === "number"){ e.step = "any"; e.setAttribute("inputmode","decimal"); }
+    e.value = (val == null ? "" : val);
+    return e;
+  }
+
+  function touch(){ state.updated_at = new Date().toISOString(); }
+
+  function makeRow(it, idx){
+    var card = document.createElement("div");
+    card.className = "item" + (it.active === false ? " inactive" : "");
+    card.setAttribute("data-idx", idx);
+
+    var cat = inp("text", it.category);
+    cat.setAttribute("list","cat-list");
+    cat.addEventListener("change", function(){ it.category = cat.value.trim() || "Uncategorized"; touch(); persist(); render(); });
+    card.appendChild(makeField("","cat","Category",cat));
+
+    var desc = document.createElement("textarea");
+    desc.value = it.description || "";
+    desc.addEventListener("input", function(){ it.description = desc.value; touch(); persist(); });
+    card.appendChild(makeField("","desc","Description",desc));
+
+    var linkInp = inp("url", it.url);
+    linkInp.placeholder = "https://…product / specs & pricing page";
+    var linkField = makeField("","link","Product URL",linkInp);
+    card.appendChild(linkField);
+
+    var linkBtn = document.createElement("a");
+    linkBtn.className = "link-open" + (it.url ? "" : " disabled");
+    linkBtn.textContent = "↗ Open";
+    linkBtn.target = "_blank"; linkBtn.rel = "noopener";
+    linkBtn.href = it.url || "#";
+    var linkBtnWrap = document.createElement("div");
+    linkBtnWrap.className = "fld a-linkbtn";
+    var lbl2 = document.createElement("label"); lbl2.textContent = " ";
+    linkBtnWrap.appendChild(lbl2); linkBtnWrap.appendChild(linkBtn);
+    card.appendChild(linkBtnWrap);
+    linkInp.addEventListener("input", function(){
+      it.url = linkInp.value.trim();
+      linkBtn.href = it.url || "#";
+      linkBtn.classList.toggle("disabled", !it.url);
+      touch(); persist();
+    });
+
+    var qty = inp("number", it.qty);
+    qty.addEventListener("input", function(){ it.qty = qty.value; refreshRow(card, it); recompute(); touch(); persist(); });
+    card.appendChild(makeField("","qty","Qty",qty));
+
+    var unit = inp("text", it.unit);
+    unit.addEventListener("input", function(){ it.unit = unit.value; touch(); persist(); });
+    card.appendChild(makeField("","unit","Unit",unit));
+
+    var rate = inp("number", it.unit_rate);
+    var rateField = makeField("","rate","Unit rate ($)",rate);
+    rate.addEventListener("input", function(){
+      it.unit_rate = rate.value;
+      rateField.classList.toggle("rate-neg", num(it.unit_rate) < 0);
+      refreshRow(card, it); recompute(); touch(); persist();
+    });
+    if(num(it.unit_rate) < 0) rateField.classList.add("rate-neg");
+    card.appendChild(rateField);
+
+    var totWrap = document.createElement("div");
+    totWrap.className = "fld a-total";
+    var tl = document.createElement("label"); tl.textContent = "Line total";
+    var tv = document.createElement("div"); tv.className = "val"; tv.setAttribute("data-lt","1");
+    totWrap.appendChild(tl); totWrap.appendChild(tv);
+    card.appendChild(totWrap);
+
+    var actWrap = document.createElement("div"); actWrap.className = "fld a-active";
+    var al = document.createElement("label"); al.textContent = "Active";
+    var toggleWrap = document.createElement("div"); toggleWrap.className = "toggle-wrap";
+    var cb = document.createElement("input"); cb.type = "checkbox"; cb.checked = (it.active !== false);
+    var cbLbl = document.createElement("span"); cbLbl.textContent = (it.active !== false) ? "Active" : "Deactivated";
+    cb.addEventListener("change", function(){
+      it.active = cb.checked;
+      cbLbl.textContent = it.active ? "Active" : "Deactivated";
+      card.classList.toggle("inactive", !it.active);
+      recompute(); touch(); persist();
+    });
+    toggleWrap.appendChild(cb); toggleWrap.appendChild(cbLbl);
+    actWrap.appendChild(al); actWrap.appendChild(toggleWrap);
+    card.appendChild(actWrap);
+
+    var notes = document.createElement("textarea");
+    notes.placeholder = "Notes from Tunde / Claudio — sourcing status, vendor calls, concerns…";
+    notes.value = it.notes || "";
+    notes.addEventListener("input", function(){ it.notes = notes.value; touch(); persist(); });
+    var notesField = makeField("notes-fld","notes","Notes (Tunde / Claudio)",notes);
+    card.appendChild(notesField);
+
+    refreshRow(card, it);
+    return card;
+  }
+
+  function refreshRow(card, it){
+    var lt = lineTotal(it);
+    var tv = card.querySelector('[data-lt]');
+    if(tv){ tv.textContent = money(lt); tv.classList.toggle("neg", lt < 0); }
+  }
+
+  function render(){
+    fillMeta();
+    groupsEl.innerHTML = "";
+    var cats = orderedCategories();
+    cats.forEach(function(cat){
+      var g = document.createElement("div"); g.className = "group";
+      var head = document.createElement("div"); head.className = "group-head";
+      var gn = document.createElement("span"); gn.className = "gname"; gn.textContent = cat;
+      if(cat.indexOf("Option 1") !== -1){ var f1=document.createElement("span"); f1.className="option-flag opt1"; f1.textContent="Oliver's pref"; gn.appendChild(f1); }
+      if(cat.indexOf("Option 2") !== -1){ var f2=document.createElement("span"); f2.className="option-flag opt2"; f2.textContent="Original vision"; gn.appendChild(f2); }
+      var gs = document.createElement("span"); gs.className = "gsum"; gs.setAttribute("data-groupsum", cat);
+      head.appendChild(gn); head.appendChild(gs); g.appendChild(head);
+      var addBtn = document.createElement("button");
+      addBtn.type = "button"; addBtn.className = "btn-ghost"; addBtn.style.marginBottom = "8px";
+      addBtn.textContent = "+ Add item to " + cat;
+      addBtn.addEventListener("click", function(){
+        state.items.push({ id:"NEW-"+(nextId++), category:cat, description:"", url:"", qty:1, unit:"", unit_rate:0, active:true, notes:"" });
+        touch(); persist(); render();
+      });
+      state.items.forEach(function(it, i){
+        if((it.category || "Uncategorized") === cat) g.appendChild(makeRow(it, i));
+      });
+      g.appendChild(addBtn);
+      groupsEl.appendChild(g);
+    });
+    document.getElementById("s-mgn-pct").value = state.margin_pct;
+    document.getElementById("s-dep-pct").value = state.deposit_pct;
+    document.getElementById("s-tunde-pct").value = state.tunde_pct;
+    document.getElementById("s-claudio-pct").value = state.claudio_pct;
+    document.getElementById("s-business-pct").value = state.business_pct;
+    recompute();
+  }
+
+  function recompute(){
+    var subtotal = 0;
+    var byCat = {};
+    state.items.forEach(function(it){
+      var active = (it.active !== false);
+      var lt = active ? lineTotal(it) : 0;
+      if(active) subtotal += lt;
+      var c = (it.category || "Uncategorized");
+      byCat[c] = (byCat[c] || 0) + lt;
+    });
+    var sums = groupsEl.querySelectorAll('[data-groupsum]');
+    sums.forEach(function(el){
+      var c = el.getAttribute("data-groupsum");
+      el.textContent = money(byCat[c] || 0);
+    });
+    document.getElementById("s-subtotal").textContent = money(subtotal);
+
+    var mgnPct = num(document.getElementById("s-mgn-pct").value);
+    var mgnAmt = subtotal * mgnPct / 100;
+    document.getElementById("s-mgn-amt").textContent = money(mgnAmt);
+
+    var total = subtotal + mgnAmt;
+    document.getElementById("s-total").textContent = money(total);
+
+    var depPct = num(document.getElementById("s-dep-pct").value);
+    var dep = total * depPct / 100;
+    document.getElementById("s-dep-amt").textContent = money(dep);
+    document.getElementById("s-bal-amt").textContent = money(total - dep);
+
+    var tPct = num(document.getElementById("s-tunde-pct").value);
+    var cPct = num(document.getElementById("s-claudio-pct").value);
+    var bPct = num(document.getElementById("s-business-pct").value);
+    var tAmt = total * tPct / 100, cAmt = total * cPct / 100, bAmt = total * bPct / 100;
+    document.getElementById("s-tunde-amt").textContent = money(tAmt);
+    document.getElementById("s-claudio-amt").textContent = money(cAmt);
+    document.getElementById("s-business-amt").textContent = money(bAmt);
+    document.getElementById("s-dist-total").textContent = money(tAmt+cAmt+bAmt);
+    var warn = document.getElementById("s-dist-warn");
+    var sumPct = tPct+cPct+bPct;
+    if(Math.abs(sumPct-100) > 0.01){
+      warn.style.display = "block";
+      warn.textContent = "⚠ Distribution percentages sum to " + sumPct.toFixed(2) + "%, not 100%.";
+    } else {
+      warn.style.display = "none";
+    }
+  }
+
+  document.getElementById("s-mgn-pct").addEventListener("input", function(){
+    state.margin_pct = num(this.value); recompute(); touch(); persist();
+  });
+  document.getElementById("s-dep-pct").addEventListener("input", function(){
+    state.deposit_pct = num(this.value); recompute(); touch(); persist();
+  });
+  document.getElementById("s-tunde-pct").addEventListener("input", function(){
+    state.tunde_pct = num(this.value); recompute(); touch(); persist();
+  });
+  document.getElementById("s-claudio-pct").addEventListener("input", function(){
+    state.claudio_pct = num(this.value); recompute(); touch(); persist();
+  });
+  document.getElementById("s-business-pct").addEventListener("input", function(){
+    state.business_pct = num(this.value); recompute(); touch(); persist();
+  });
+  document.getElementById("btn-add").addEventListener("click", function(){
+    state.items.push({ id:"NEW-"+(nextId++), category:"A - Projection Screen (locked scope)", description:"", url:"", qty:1, unit:"", unit_rate:0, active:true, notes:"" });
+    touch(); persist(); render();
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+  document.getElementById("btn-reset").addEventListener("click", function(){
+    if(confirm("Reset to the original baseline itemization? This discards your current edits in this browser.")){
+      state = freshState(); touch(); persist(); render();
+    }
+  });
+  document.getElementById("btn-print").addEventListener("click", function(){ window.print(); });
+  document.getElementById("btn-history").addEventListener("click", openHistoryPanel);
+  document.getElementById("history-close").addEventListener("click", closeHistoryPanel);
+  document.getElementById("history-overlay").addEventListener("click", function(e){
+    if(e.target === this) closeHistoryPanel();
+  });
+  document.getElementById("btn-save-version").addEventListener("click", function(){
+    var label = prompt("Label for this checkpoint (optional) — e.g. \"Sent scope-only estimate to Jordan\":", "");
+    if(label === null) return; // cancelled
+    snapshotHistory(label, "checkpoint");
+    renderHistoryPanel();
+  });
+  document.getElementById("btn-client-pdf").addEventListener("click", openClientPdf);
+
+  // ── Client-facing PDF: side-by-side option comparison, computed live from current qty/rate ──
+  function computeOptionTotals(){
+    var commonCats = ["A - Projection Screen (locked scope)","C - Sonos Integration & Unified Control","D - Mobilization & Site Protection"];
+    var common = 0;
+    var commonByCat = {}, opt1Items = 0, opt2Items = 0;
+    state.items.forEach(function(it){
+      if(it.active === false) return;
+      var cat = it.category || "";
+      var lt = lineTotal(it);
+      if(commonCats.indexOf(cat) !== -1){ common += lt; commonByCat[cat] = (commonByCat[cat]||0) + lt; }
+      else if(cat.indexOf("Option 1") !== -1){ opt1Items += lt; }
+      else if(cat.indexOf("Option 2") !== -1){ opt2Items += lt; }
+    });
+    var mgnPct = num(state.margin_pct);
+    var raw1 = common + opt1Items, raw2 = common + opt2Items;
+    var mgn1 = raw1 * mgnPct / 100, mgn2 = raw2 * mgnPct / 100;
+    return {
+      screen: commonByCat["A - Projection Screen (locked scope)"] || 0,
+      sonos: commonByCat["C - Sonos Integration & Unified Control"] || 0,
+      mobilization: commonByCat["D - Mobilization & Site Protection"] || 0,
+      opt1Projector: opt1Items, opt2Projector: opt2Items,
+      mgnPct: mgnPct, mgn1: mgn1, mgn2: mgn2,
+      total1: raw1 + mgn1, total2: raw2 + mgn2,
+      depositPct: num(state.deposit_pct)
+    };
+  }
+  function esc(s){ var d=document.createElement("div"); d.textContent = s==null?"":String(s); return d.innerHTML; }
+  function renderClientPdf(){
+    var t = computeOptionTotals();
+    var dep1 = t.total1 * t.depositPct/100, dep2 = t.total2 * t.depositPct/100;
+    var stamp = versionStamp();
+    var today = new Date().toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"});
+    var html = ''
+      + '<div class="cpv-wrap">'
+      + '  <div class="cpv-back"><button id="cpv-back-btn">← Back to project hub</button> '
+      + '    <button id="cpv-print-btn" class="btn-amber" style="margin-left:8px;">🖨 Print / Save as PDF</button></div>'
+      + '  <div class="cpv-head">'
+      + '    <div class="cpv-brand">Adroit Communications</div>'
+      + '    <h1>Home Theater Design &amp; Integration — Estimate</h1>'
+      + '    <div class="cpv-tag">Technology Design · Audio/Visual · Structured Cabling</div>'
+      + '  </div>'
+      + '  <div class="cpv-amberline"></div>'
+      + '  <div class="cpv-body">'
+      + '    <div class="cpv-prepared"><b>Prepared exclusively for</b> Mr. Oliver Wright &amp; Ms. Allison Everett'
+      + '      &nbsp;·&nbsp; <b>Residence:</b> Georgetown, Washington DC &nbsp;·&nbsp; <b>Date:</b> ' + esc(today) + '</div>'
+      + '    <div class="cpv-intro">Thank you for the opportunity to design and deliver your home theater experience. '
+      + '      Every element below reflects our engineering review of your space and the preferences you shared with us '
+      + '      on-site — a fully integrated system, finished to the same precision and clean architectural lines as the '
+      + '      rest of your home.</div>'
+      + '    <div class="cpv-scope">'
+      + '      <h2>The Experience We\'re Designing</h2>'
+      + '      <ul>'
+      + '        <li>A premium ceiling-recessed motorized projection screen, sized to your room and bright enough to '
+      + '            perform beautifully in natural light — no blackout curtains required.</li>'
+      + '        <li>A 4K laser projector integrated with your existing Sonos system (Arc Ultra, Sub 4, Era 300) through '
+      + '            a single, simple control experience — no separate remotes, no visible wiring.</li>'
+      + '        <li>Every cable run and wall plate planned to disappear, matching the flush, no-baseboard lines '
+      + '            throughout your home.</li>'
+      + '        <li>Full protective staging of your space for the duration of on-site work.</li>'
+      + '      </ul>'
+      + '    </div>'
+      + '    <div class="cpv-pricing">'
+      + '      <h2>Investment — Two Design Paths</h2>'
+      + '      <div class="cpv-options">'
+      + '        <div class="cpv-opt"><div class="cpv-opt-head">Option 1 — Ceiling-Mounted Projector</div>'
+      + '          <table>'
+      + '            <tr><td>Projection Screen</td><td style="text-align:right;">' + money(t.screen) + '</td></tr>'
+      + '            <tr><td>Projector &amp; Mounting</td><td style="text-align:right;">' + money(t.opt1Projector) + '</td></tr>'
+      + '            <tr><td>Sonos Integration &amp; AV Cabinet</td><td style="text-align:right;">' + money(t.sonos) + '</td></tr>'
+      + '            <tr><td>Mobilization &amp; Site Protection</td><td style="text-align:right;">' + money(t.mobilization) + '</td></tr>'
+      + '            <tr><td>System Assurance &amp; Warranty Package</td><td style="text-align:right;">' + money(t.mgn1) + '</td></tr>'
+      + '            <tr class="cpv-total"><td>Total</td><td style="text-align:right;">' + money(t.total1) + '</td></tr>'
+      + '          </table></div>'
+      + '        <div class="cpv-opt"><div class="cpv-opt-head">Option 2 — Fully Recessed Lift</div>'
+      + '          <table>'
+      + '            <tr><td>Projection Screen</td><td style="text-align:right;">' + money(t.screen) + '</td></tr>'
+      + '            <tr><td>Projector &amp; Mounting</td><td style="text-align:right;">' + money(t.opt2Projector) + '</td></tr>'
+      + '            <tr><td>Sonos Integration &amp; AV Cabinet</td><td style="text-align:right;">' + money(t.sonos) + '</td></tr>'
+      + '            <tr><td>Mobilization &amp; Site Protection</td><td style="text-align:right;">' + money(t.mobilization) + '</td></tr>'
+      + '            <tr><td>System Assurance &amp; Warranty Package</td><td style="text-align:right;">' + money(t.mgn2) + '</td></tr>'
+      + '            <tr class="cpv-total"><td>Total</td><td style="text-align:right;">' + money(t.total2) + '</td></tr>'
+      + '          </table></div>'
+      + '      </div>'
+      + '    </div>'
+      + '    <div class="cpv-terms"><b>Payment terms:</b> ' + t.depositPct + '% deposit to commence (' + money(dep1) + ' under Option 1, '
+      + money(dep2) + ' under Option 2), balance due on completion. Equipment costs reflect our current sourcing basis and are '
+      + 'subject to confirmation prior to order.</div>'
+      + '    <div class="cpv-sig">'
+      + '      Accepted by — Oliver Wright: <span class="sig-line"></span> Date: <span class="sig-line" style="width:140px;"></span><br><br>'
+      + '      Option selected: &nbsp;☐ Option 1 (Ceiling-Mount) &nbsp;&nbsp; ☐ Option 2 (Recessed Lift)'
+      + '    </div>'
+      + '  </div>'
+      + '  <div class="cpv-foot">Adroit Communications LLC · support@adroit7.net · 2624 Monroe Street NE, Washington, DC 20018'
+      + '    <div class="cpv-stamp">Generated from the Wright project working estimate — version ' + esc(stamp) + '</div>'
+      + '  </div>'
+      + '</div>';
+    document.getElementById("client-pdf-view").innerHTML = html;
+    document.getElementById("cpv-back-btn").addEventListener("click", closeClientPdf);
+    document.getElementById("cpv-print-btn").addEventListener("click", function(){ window.print(); });
+  }
+  function openClientPdf(){
+    renderClientPdf();
+    document.body.classList.add("client-view");
+    window.scrollTo(0,0);
+  }
+  function closeClientPdf(){
+    document.body.classList.remove("client-view");
+  }
+  document.getElementById("btn-export").addEventListener("click", function(){
+    var subtotal = 0;
+    var items = state.items.map(function(it){
+      var active = (it.active !== false);
+      var lt = active ? lineTotal(it) : 0;
+      if(active) subtotal += lt;
+      return { id:it.id, category:it.category, description:it.description, url:it.url||"",
+               qty:num(it.qty), unit:it.unit, unit_rate:num(it.unit_rate),
+               active: active, notes:it.notes||"",
+               line_total: Math.round(lt*100)/100 };
+    });
+    var mgnPct = num(state.margin_pct);
+    var mgnAmt = Math.round(subtotal*mgnPct/100*100)/100;
+    var total = Math.round((subtotal+mgnAmt)*100)/100;
+    var depPct = num(state.deposit_pct);
+    var dep = Math.round(total*depPct/100*100)/100;
+    var out = {
+      meta: state.meta,
+      line_items: items,
+      summary: {
+        raw_subtotal: Math.round(subtotal*100)/100,
+        margin_pct: mgnPct,
+        margin_amount: mgnAmt,
+        total: total,
+        deposit_pct: depPct,
+        deposit_amount: dep,
+        balance_amount: Math.round((total-dep)*100)/100,
+        distribution: {
+          tunde_pct: num(state.tunde_pct), claudio_pct: num(state.claudio_pct), business_pct: num(state.business_pct),
+          tunde_amount: Math.round(total*num(state.tunde_pct)/100*100)/100,
+          claudio_amount: Math.round(total*num(state.claudio_pct)/100*100)/100,
+          business_amount: Math.round(total*num(state.business_pct)/100*100)/100
+        }
+      },
+      exported_at: new Date().toISOString(),
+      _note: "INTERNAL working estimate — edited copy exported from the Wright project hub (browser-local)."
+    };
+    var blob = new Blob([JSON.stringify(out, null, 2)], {type:"application/json"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "Itemization_ADR-2026-WRIGHT_edited_" + new Date().toISOString().slice(0,10) + ".json";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1500);
+  });
+
+  var dl = document.createElement("datalist"); dl.id = "cat-list";
+  CAT_ORDER.forEach(function(c){ var o=document.createElement("option"); o.value=c; dl.appendChild(o); });
+  document.body.appendChild(dl);
+
+  if(!loadHistory().length){ snapshotHistory("Page loaded — starting point", "checkpoint"); }
+  render();
+  startSync();
+})();
+</script>
 </body>
 </html>
