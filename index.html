@@ -39,6 +39,34 @@
   h2{font-size:12px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--teal-dark);
     border-bottom:2px solid var(--teal);padding-bottom:8px;margin:0 0 14px;}
   h3{font-size:15px;color:var(--navy);margin:0 0 6px;}
+
+  /* ── Collapsible sections ───────────────────────────────────────────────────────────────
+     Always default OPEN on a visitor's first-ever load — nothing hides unless the user
+     collapses it themselves. Chevron + "Tap to collapse/expand" label stay visible at all
+     times (not just on hover) so the affordance is obvious on mobile, where hover doesn't exist. */
+  .sec-toggle{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;
+    width:100%;min-height:48px;cursor:pointer;padding:6px 4px 14px;margin:0 0 14px;
+    border-bottom:2px solid var(--teal);-webkit-tap-highlight-color:rgba(14,124,123,.15);}
+  .sec-toggle:active{background:var(--teal-wash);}
+  .sec-toggle .chevron{flex:0 0 auto;font-size:15px;line-height:1;color:var(--teal);
+    transition:transform .2s ease;display:inline-block;transform:rotate(90deg);}
+  .sec-toggle[aria-expanded="false"] .chevron{transform:rotate(0deg);}
+  .sec-toggle .sec-title{font-size:12px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;
+    color:var(--teal-dark);flex:1 1 auto;text-align:left;}
+  .sec-toggle .sec-count{flex:0 0 auto;background:var(--navy-wash);color:var(--navy);font-size:10.5px;
+    font-weight:800;border-radius:20px;padding:3px 9px;}
+  .sec-toggle .sec-hint{flex:0 0 auto;font-size:10.5px;font-weight:700;color:var(--teal-dark);
+    text-transform:none;letter-spacing:0;white-space:nowrap;background:var(--teal-wash);
+    border-radius:20px;padding:4px 10px;}
+  .sec-body{overflow:hidden;}
+  .sec-body.collapsed{display:none;}
+  @media (max-width:640px){
+    .sec-toggle{padding:8px 4px 14px;align-items:flex-start;flex-wrap:wrap;}
+    .sec-toggle .sec-title{flex-basis:100%;order:1;}
+    .sec-toggle .chevron{order:0;}
+    .sec-toggle .sec-count{order:2;}
+    .sec-toggle .sec-hint{order:3;margin-left:25px;}
+  }
   .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 16px;margin-bottom:12px;
     box-shadow:0 1px 2px rgba(31,45,77,.05);}
   .contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
@@ -169,8 +197,9 @@
   .recon{font-size:12px;color:var(--grey);padding:6px 0 14px;}
   .recon b{color:var(--teal-dark);}
   .glossary{margin:26px 0 8px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px 0 8px;}
-  .glossary h2{font-size:14px;letter-spacing:1px;text-transform:uppercase;color:var(--teal-dark);
-    background:var(--teal-wash);margin:0;padding:12px 16px;border-radius:14px 14px 0 0;border-bottom:0;}
+  .glossary .glossary-toggle{background:var(--teal-wash);border-radius:14px 14px 0 0;border-bottom:0;
+    padding:12px 16px;margin:0;min-height:44px;}
+  .glossary .glossary-toggle[aria-expanded="false"]{border-radius:14px;}
   .glossary .gloss-intro{font-size:12.5px;color:var(--grey);padding:12px 16px 0;}
   dl.gterms{margin:6px 16px 10px;}
   dl.gterms dt{font-weight:800;color:var(--navy);font-size:13.5px;margin-top:12px;}
@@ -252,7 +281,8 @@
     body{background:#fff;padding:0;}
     header.masthead,.amberline,.updated,.callout,section > h2,.contacts,ul.scope,.client-grid,
     .timeline,.open-items,footer,.toolbar,.a-active,.note,.a-link,.a-linkbtn,.a-notes,.modal-overlay,
-    .saved-indicator,.sync-indicator{display:none !important;}
+    .saved-indicator,.sync-indicator,.sec-toggle{display:none !important;}
+    .sec-body.collapsed{display:block !important;} /* never let a collapsed section print blank */
     .tool-banner{position:static;border-radius:0;}
     .item{break-inside:avoid;border:1px solid #bbb;box-shadow:none;
       grid-template-columns:150px 1fr 60px 80px 100px 100px;
@@ -288,7 +318,11 @@
   </div>
 
   <section>
-    <h2>Contacts</h2>
+    <button class="sec-toggle" data-target="body-contacts" aria-expanded="true">
+      <span class="chevron">▸</span><span class="sec-title">Contacts</span>
+      <span class="sec-count">6</span><span class="sec-hint"></span>
+    </button>
+    <div class="sec-body" id="body-contacts">
     <div class="contacts">
       <div class="card contact-card">
         <b>Oliver Wright <span class="tag">Client</span></b>
@@ -322,10 +356,15 @@
         <a href="mailto:tunde@adroit7.net">tunde@adroit7.net</a>
       </div>
     </div>
+    </div>
   </section>
 
   <section>
-    <h2>Scope Summary</h2>
+    <button class="sec-toggle" data-target="body-scope" aria-expanded="true">
+      <span class="chevron">▸</span><span class="sec-title">Scope Summary</span>
+      <span class="sec-count">4</span><span class="sec-hint"></span>
+    </button>
+    <div class="sec-body" id="body-scope">
     <div class="card">
       <ul class="scope">
         <li><b>Projection screen (locked scope, top priority):</b> ~110–120" ceiling-recessed motorized screen, bright enough for ambient light — no blackout curtains needed.</li>
@@ -337,10 +376,15 @@
         <li><b>Design constraints:</b> preserve the art-wall accent light, precision flush finish matching the home's no-baseboard lines, full construction dust protection during install.</li>
       </ul>
     </div>
+    </div>
   </section>
 
   <section>
-    <h2>Client Specifications, Requirements &amp; Concessions</h2>
+    <button class="sec-toggle" data-target="body-clientspecs" aria-expanded="true">
+      <span class="chevron">▸</span><span class="sec-title">Client Specifications, Requirements &amp; Concessions</span>
+      <span class="sec-count">4</span><span class="sec-hint"></span>
+    </button>
+    <div class="sec-body" id="body-clientspecs">
     <div class="client-grid">
       <div class="client-box spec">
         <h4><span class="dot"></span>Specifications</h4>
@@ -384,10 +428,15 @@
         </ul>
       </div>
     </div>
+    </div>
   </section>
 
   <section>
-    <h2>Current Estimate — ADR-EST-2026-WRIGHT (Live, Editable)</h2>
+    <button class="sec-toggle" data-target="body-estimate" aria-expanded="true">
+      <span class="chevron">▸</span><span class="sec-title">Current Estimate — ADR-EST-2026-WRIGHT (Live, Editable)</span>
+      <span class="sec-hint"></span>
+    </button>
+    <div class="sec-body" id="body-estimate">
 
     <div class="tool-banner">INTERNAL — WORKING ESTIMATE · NOT CLIENT-FACING
       <span class="sub">Exposes internal cost levers (margin %, raw cost, profit split). Use "Generate Client PDF" below to produce anything client-safe.</span>
@@ -473,7 +522,11 @@
       public-retail pricing for the screen/lift — pending real ADI dealer cost.</div>
 
     <div class="glossary">
-      <h2>Glossary — Terms, Jargon &amp; Acronyms</h2>
+      <button class="sec-toggle glossary-toggle" data-target="body-glossary" aria-expanded="false">
+        <span class="chevron">▸</span><span class="sec-title">Glossary — Terms, Jargon &amp; Acronyms</span>
+        <span class="sec-count">13</span><span class="sec-hint"></span>
+      </button>
+      <div class="sec-body collapsed" id="body-glossary" style="padding:0 16px 8px;">
       <div class="gloss-intro">Reference for every term used in the estimate tool above, in the order they matter most to reading the numbers.</div>
       <dl class="gterms">
         <dt>System Assurance &amp; Warranty Package</dt>
@@ -518,11 +571,17 @@
         <dt>Internal Distribution</dt>
         <dd>How the final project total is split internally between the people/entities involved in delivering and running the job (here: Tunde, Claudio, and the Business) — never shown to the client.</dd>
       </dl>
+      </div>
+    </div>
     </div>
   </section>
 
   <section>
-    <h2>Timeline</h2>
+    <button class="sec-toggle" data-target="body-timeline" aria-expanded="true">
+      <span class="chevron">▸</span><span class="sec-title">Timeline</span>
+      <span class="sec-count">6</span><span class="sec-hint"></span>
+    </button>
+    <div class="sec-body" id="body-timeline">
     <div class="timeline">
       <div class="tl-item"><div class="tl-date">Jul 8</div><div class="tl-body">Jordan introduces Adroit to Oliver &amp; Allison — "A/V Meeting" thread kicks off. Scope: retractable projection screen + possible motorized credenza.</div></div>
       <div class="tl-item"><div class="tl-date">Jul 10–11</div><div class="tl-body">Initial call, then on-site walkthrough &amp; measurements at the residence.</div></div>
@@ -531,10 +590,15 @@
       <div class="tl-item"><div class="tl-date">Jul 15</div><div class="tl-body">Adroit sends engineering-review update flagging the lift's tight tolerance. Jordan asks for material + labor cost estimate, screen prioritized. Oliver replies with a compromise: ceiling-mount the projector instead of recessing, to avoid structural changes.</div></div>
       <div class="tl-item"><div class="tl-date">Jul 17</div><div class="tl-body">Two-option estimate built. Oliver's existing Sonos gear confirmed via SMS to Claudio: Arc Ultra, Sub 4, Era 300 pair. This page consolidated into one live, shared planning tool.</div></div>
     </div>
+    </div>
   </section>
 
   <section>
-    <h2>Open Items</h2>
+    <button class="sec-toggle" data-target="body-openitems" aria-expanded="true">
+      <span class="chevron">▸</span><span class="sec-title">Open Items</span>
+      <span class="sec-count">6</span><span class="sec-hint"></span>
+    </button>
+    <div class="sec-body" id="body-openitems">
     <ul class="open-items">
       <li>Pull real ADI Global Distribution dealer cost for the screen and (if Option 2) the projector lift — current numbers are public retail list, likely high.</li>
       <li>Select and price an actual projector model/brand — none chosen yet; Adroit sources through a separate AV supplier.</li>
@@ -543,6 +607,7 @@
       <li>Decide: send the two-option estimate as-is (with pricing-basis caveat) or hold for real dealer numbers.</li>
       <li>Third mitigation floated internally (7/14 team call, not yet raised with Jordan or the client): reframe/drop a section of ceiling to gain lift depth tolerance for Option 2 — not costed.</li>
     </ul>
+    </div>
   </section>
 
 </div>
@@ -1222,6 +1287,49 @@
   var dl = document.createElement("datalist"); dl.id = "cat-list";
   CAT_ORDER.forEach(function(c){ var o=document.createElement("option"); o.value=c; dl.appendChild(o); });
   document.body.appendChild(dl);
+
+  // ── Collapsible sections — default OPEN on first-ever visit (nothing hidden unless the user
+  // chooses to hide it), except the Glossary which defaults closed since it's static reference
+  // material, not project data. Each section's state is remembered per-browser. ─────────────
+  var COLLAPSE_KEY = "adroit-wright-hub:collapsed:v1";
+  function loadCollapseState(){
+    try{
+      var raw = localStorage.getItem(COLLAPSE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    }catch(e){ return {}; }
+  }
+  function saveCollapseState(s){
+    try{ localStorage.setItem(COLLAPSE_KEY, JSON.stringify(s)); }catch(e){}
+  }
+  function setToggleUI(btn, expanded){
+    btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+    var chevron = btn.querySelector(".chevron");
+    if(chevron) chevron.textContent = "▸";
+    var hint = btn.querySelector(".sec-hint");
+    if(hint) hint.textContent = expanded ? "Tap to collapse" : "Tap to expand";
+  }
+  function initCollapsibles(){
+    var collapseState = loadCollapseState();
+    var toggles = document.querySelectorAll(".sec-toggle");
+    toggles.forEach(function(btn){
+      var targetId = btn.getAttribute("data-target");
+      var body = document.getElementById(targetId);
+      if(!body) return;
+      var defaultExpanded = btn.getAttribute("aria-expanded") !== "false";
+      var expanded = (targetId in collapseState) ? collapseState[targetId] : defaultExpanded;
+      body.classList.toggle("collapsed", !expanded);
+      setToggleUI(btn, expanded);
+      btn.addEventListener("click", function(){
+        var nowExpanded = body.classList.contains("collapsed");
+        body.classList.toggle("collapsed", !nowExpanded);
+        setToggleUI(btn, nowExpanded);
+        collapseState[targetId] = nowExpanded;
+        saveCollapseState(collapseState);
+        if(nowExpanded){ btn.scrollIntoView({behavior:"smooth", block:"start"}); }
+      });
+    });
+  }
+  initCollapsibles();
 
   if(!loadHistory().length){ snapshotHistory("Page loaded — starting point", "checkpoint"); }
   render();
