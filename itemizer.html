@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1F2D4D">
+<title>INTERNAL — Wright Itemizer (ADR-2026-WRIGHT)</title>
+<style>
+  :root{
+    --teal:#0E7C7B; --teal-dark:#0A5E5D; --teal-wash:#E6F2F1;
+    --navy:#1F2D4D; --navy-wash:#EAEEF5;
+    --amber:#C77F1A; --amber-wash:#FBF1DF;
+    --ink:#23282E; --grey:#6B7480; --line:#DCE1E6; --bg:#F4F6F8; --red:#B23A3A;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;overflow-x:hidden;}
+  body{margin:0;background:var(--bg);color:var(--ink);overflow-x:hidden;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.45;-webkit-font-smoothing:antialiased;padding-bottom:60px;}
+  .wrap{max-width:1040px;margin:0 auto;}
+  a, button{-webkit-tap-highlight-color:rgba(14,124,123,.15);}
+  .banner{background:repeating-linear-gradient(135deg,#7a1f1f 0 14px,#8f2626 14px 28px);
+    color:#fff;text-align:center;font-weight:800;letter-spacing:.6px;font-size:13.5px;
+    padding:11px 14px;position:sticky;top:0;z-index:30;text-transform:uppercase;
+    box-shadow:0 2px 6px rgba(0,0,0,.18);}
+  .banner .sub{display:block;font-weight:600;letter-spacing:.3px;text-transform:none;
+    font-size:12px;opacity:.92;margin-top:2px;}
+  .backlink{display:block;text-align:center;background:#fff;border-bottom:1px solid var(--line);
+    padding:8px 14px;font-size:12.5px;}
+  .backlink a{color:var(--teal-dark);text-decoration:none;font-weight:700;}
+  .backlink a:hover{text-decoration:underline;}
+  header.meta{background:linear-gradient(135deg,var(--navy) 0%,#16223b 100%);color:#fff;
+    padding:18px 18px 16px;}
+  header.meta .brand{font-weight:800;letter-spacing:3px;font-size:13px;color:#8fd3d2;}
+  header.meta h1{margin:6px 0 8px;font-size:19px;line-height:1.25;font-weight:700;}
+  header.meta .kv{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13px;color:#cdd6e6;}
+  header.meta .kv b{color:#fff;font-weight:600;}
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;padding:12px 14px;background:#fff;
+    border-bottom:1px solid var(--line);position:sticky;top:42px;z-index:20;}
+  button{font-family:inherit;font-size:15px;font-weight:700;border:0;border-radius:10px;
+    min-height:44px;padding:0 16px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;}
+  .btn-primary{background:var(--teal);color:#fff;}
+  .btn-amber{background:var(--amber);color:#fff;}
+  .btn-ghost{background:var(--navy-wash);color:var(--navy);}
+  .btn-danger-ghost{background:#fff;color:var(--red);border:1px solid #e6c3c3;}
+  button:active{transform:translateY(1px);}
+  .note{font-size:12.5px;color:var(--grey);padding:8px 16px 0;line-height:1.5;}
+  .note b{color:var(--navy);}
+  .callout{margin:14px 12px 0;background:var(--amber-wash);border:1px solid #edd3a3;border-left:4px solid var(--amber);
+    border-radius:10px;padding:12px 14px;font-size:12.5px;color:#5a4419;}
+  .callout b{color:#8a5c0f;}
+  .callout ul{margin:6px 0 0;padding-left:18px;}
+  .callout li{margin:3px 0;}
+  #groups{padding:6px 12px 0;}
+  .group{margin:14px 0 4px;}
+  .group-head{display:flex;justify-content:space-between;align-items:baseline;
+    padding:6px 6px 6px 4px;border-bottom:2px solid var(--teal);margin-bottom:8px;}
+  .group-head .gname{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--teal-dark);}
+  .group-head .gsum{font-size:14px;font-weight:800;color:var(--navy);}
+  .item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;
+    display:grid;gap:10px 12px;box-shadow:0 1px 2px rgba(31,45,77,.05);
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-areas:"cat cat cat" "desc desc desc" "qty unit rate" "total total active";}
+  .fld{display:flex;flex-direction:column;gap:3px;min-width:0;}
+  .fld label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--grey);}
+  .fld input, .fld textarea{font-family:inherit;font-size:16px;color:var(--ink);
+    border:1px solid var(--line);border-radius:8px;padding:9px 10px;min-height:44px;width:100%;background:#fff;}
+  .fld input:focus, .fld textarea:focus{outline:2px solid var(--teal);border-color:var(--teal);}
+  .fld textarea{min-height:60px;resize:vertical;line-height:1.4;}
+  .a-cat{grid-area:cat;} .a-desc{grid-area:desc;} .a-qty{grid-area:qty;}
+  .a-unit{grid-area:unit;} .a-rate{grid-area:rate;} .a-total{grid-area:total;} .a-active{grid-area:active;}
+  .a-total .val{font-size:18px;font-weight:800;color:var(--navy);padding:8px 0;}
+  .a-total .val.neg{color:var(--red);}
+  .a-active{align-self:end;}
+  .toggle-wrap{display:flex;align-items:center;gap:8px;min-height:44px;background:var(--teal-wash);
+    border-radius:8px;padding:0 10px;justify-content:center;}
+  .toggle-wrap input{width:20px;height:20px;min-height:0;padding:0;accent-color:var(--teal);}
+  .toggle-wrap span{font-size:12.5px;font-weight:700;color:var(--teal-dark);}
+  .rate-neg input{color:var(--red);}
+  .item.inactive{background:#EDEEF0;box-shadow:none;opacity:.72;}
+  .item.inactive .fld input, .item.inactive .fld textarea{
+    text-decoration:line-through;text-decoration-color:var(--red);color:#8a8f96;background:#E7E8EA;}
+  .item.inactive .a-total .val{text-decoration:line-through;text-decoration-color:var(--red);color:#8a8f96;}
+  .item.inactive .toggle-wrap{background:#E2C9C9;}
+  .item.inactive .toggle-wrap span{color:var(--red);}
+  .option-flag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;
+    border-radius:20px;padding:2px 9px;margin-left:8px;vertical-align:middle;}
+  .option-flag.opt1{background:var(--teal-wash);color:var(--teal-dark);}
+  .option-flag.opt2{background:var(--amber-wash);color:#8a5c0f;}
+  .summary{margin:18px 12px 8px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+  .summary .s-title{background:var(--teal-wash);color:var(--teal-dark);font-weight:800;font-size:12px;
+    letter-spacing:1px;text-transform:uppercase;padding:10px 16px;}
+  .summary .s-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);gap:10px 14px;}
+  .summary .s-row .lbl{color:var(--navy);font-weight:600;flex:1 1 160px;min-width:0;}
+  .summary .s-row .amt{font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;}
+  .summary .s-row.auto{background:#FAFBFC;}
+  .summary .s-row .lbl small{display:block;color:var(--grey);font-weight:500;font-size:12px;}
+  .pct-input{width:84px;min-height:40px;font-size:16px;text-align:right;border:1px solid var(--line);
+    border-radius:8px;padding:6px 8px;font-family:inherit;}
+  @media (max-width:420px){
+    .summary .s-row{padding:12px 14px;}
+    .kv{font-size:12px;}
+  }
+  .summary .s-total{background:var(--navy);color:#fff;padding:16px;}
+  .summary .s-total .lbl{font-size:13px;letter-spacing:1px;text-transform:uppercase;opacity:.85;}
+  .summary .s-total .amt{font-size:26px;font-weight:800;color:#fff;}
+  .warn-row{font-size:12px;color:var(--red);padding:4px 16px 10px;font-weight:700;}
+  .recon{font-size:12px;color:var(--grey);padding:6px 16px 14px;}
+  .recon b{color:var(--teal-dark);}
+  .glossary{margin:26px 12px 8px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px 0 8px;}
+  .glossary h2{font-size:14px;letter-spacing:1px;text-transform:uppercase;color:var(--teal-dark);
+    background:var(--teal-wash);margin:0;padding:12px 16px;border-radius:14px 14px 0 0;}
+  .glossary .gloss-intro{font-size:12.5px;color:var(--grey);padding:12px 16px 0;}
+  dl.gterms{margin:6px 16px 10px;}
+  dl.gterms dt{font-weight:800;color:var(--navy);font-size:13.5px;margin-top:12px;}
+  dl.gterms dd{margin:3px 0 0;font-size:13px;color:var(--ink);line-height:1.5;}
+  footer{text-align:center;color:var(--grey);font-size:12px;padding:18px;}
+  @media (min-width:900px){
+    .item{grid-template-columns:200px minmax(220px,1fr) 70px 90px 110px 118px 96px;
+      grid-template-areas:"cat desc qty unit rate total active";align-items:end;}
+    .item .fld textarea{min-height:44px;}
+  }
+  @media print{
+    body{background:#fff;padding:0;}
+    .toolbar,.a-active,.note,.backlink{display:none !important;}
+    .banner{position:static;}
+    .toolbar{position:static;}
+    .item{break-inside:avoid;border:1px solid #bbb;box-shadow:none;
+      grid-template-columns:150px 1fr 60px 80px 100px 100px;
+      grid-template-areas:"cat desc qty unit rate total";}
+    .fld input,.fld textarea{border:0;padding:2px 0;min-height:0;font-size:12px;}
+    .summary{break-inside:avoid;}
+    .pct-input{border:0;}
+    .glossary{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="banner">INTERNAL — WORKING ESTIMATE · NOT CLIENT-FACING
+    <span class="sub">Exposes internal cost levers (margin %, raw cost, profit split). Do not send or show to the client.</span>
+  </div>
+  <div class="backlink">← <a href="index.html">Back to Wright Project Hub</a></div>
+
+  <header class="meta">
+    <div class="brand">ADROIT COMMUNICATIONS LLC</div>
+    <h1 id="m-title">—</h1>
+    <div class="kv">
+      <span><b>Project:</b> <span id="m-proj">—</span></span>
+      <span><b>Site:</b> <span id="m-addr">—</span></span>
+      <span><b>Client:</b> <span id="m-client">—</span></span>
+      <span><b>Coordinating GC:</b> <span id="m-poc">—</span></span>
+      <span><b>Date:</b> <span id="m-date">—</span></span>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button class="btn-primary" id="btn-add">+ Add line item</button>
+    <button class="btn-ghost" id="btn-export">⭳ Export JSON</button>
+    <button class="btn-ghost" id="btn-print">⎙ Print / Save PDF</button>
+    <button class="btn-danger-ghost" id="btn-reset">↺ Reset to original</button>
+  </div>
+  <div class="note"><b>Working tool:</b> your edits are saved <b>only in this browser</b> (localStorage) — they are
+    not shared or stored on a server. Use <b>Export JSON</b> to save or share a version, and <b>Reset to original</b>
+    to restore the baseline itemization. <b>Line total</b> is computed (qty × unit rate) and not directly editable.
+    Toggling a row's <b>Active</b> switch off removes it from every total/subtotal below (strikethrough, grayed) without
+    deleting it — flip it back on any time. <b>System Assurance &amp; Warranty Package</b> below is computed automatically
+    (editable %, default 5%) from whichever rows are active — it is not a line item, so it recalculates correctly no
+    matter which projector option you have toggled on.</div>
+
+  <div class="callout">
+    <b>Section B is two mutually exclusive projector options</b> — toggle ON only the option you're quoting and OFF
+    the other, so the total reflects one coherent scope:
+    <ul>
+      <li><b>Option 1 (Ceiling-Mount)</b> — Oliver's stated preference (2026-07-15): no structural/framing changes. Active by default below.</li>
+      <li><b>Option 2 (Recessed Lift)</b> — the original vision; engineering review found the lowest-profile lift barely fits the existing ceiling framing. Inactive by default below.</li>
+    </ul>
+    <b>Open items before issuing:</b>
+    <ul>
+      <li>Pull real ADI Global Distribution dealer cost for the screen + lift — current rates are public retail list pricing, likely high.</li>
+      <li>Select and price an actual projector model/brand — none chosen yet.</li>
+      <li>Confirm exact site street address (Georgetown, DC).</li>
+      <li>Internal team floated a third mitigation for Option 2's tight ceiling tolerance (7/14 call): reframe/drop a
+        section of ceiling ("build a pocket") to gain lift depth without exposing the mechanism. Not yet costed,
+        not yet discussed with Jordan or the client — would add a construction-side line item if pursued.</li>
+    </ul>
+  </div>
+
+  <div id="groups"></div>
+
+  <div class="summary">
+    <div class="s-title">Automated Summary — recomputes live from active rows</div>
+    <div class="s-row"><span class="lbl">Raw subtotal <small>Σ active line items (screen/projector/Sonos/mobilization), before margin</small></span><span class="amt" id="s-subtotal">—</span></div>
+    <div class="s-row"><span class="lbl">System Assurance &amp; Warranty Package <small>editable %, internal margin — never itemized to the client</small></span>
+      <span style="display:flex;align-items:center;gap:8px;"><input class="pct-input" id="s-mgn-pct" type="number" inputmode="decimal" step="any" min="0"> %</span></div>
+    <div class="s-row auto"><span class="lbl">Margin amount</span><span class="amt" id="s-mgn-amt">—</span></div>
+    <div class="s-row s-total"><span class="lbl">Total (client-facing price) <small style="color:#cdd6e6;">Raw subtotal + margin, active rows only</small></span><span class="amt" id="s-total">—</span></div>
+  </div>
+
+  <div class="summary">
+    <div class="s-title">Payment Terms — automated from total</div>
+    <div class="s-row"><span class="lbl">Deposit <small>editable %, due to commence</small></span>
+      <span style="display:flex;align-items:center;gap:8px;"><input class="pct-input" id="s-dep-pct" type="number" inputmode="decimal" step="any" min="0"> %</span></div>
+    <div class="s-row auto"><span class="lbl">Deposit amount</span><span class="amt" id="s-dep-amt">—</span></div>
+    <div class="s-row auto"><span class="lbl">Balance <small>due on completion</small></span><span class="amt" id="s-bal-amt">—</span></div>
+  </div>
+
+  <div class="summary">
+    <div class="s-title">Internal Distribution — 2026 split, automated from total</div>
+    <div class="s-row"><span class="lbl">Tunde <small>editable %</small></span>
+      <span style="display:flex;align-items:center;gap:14px;">
+        <input class="pct-input" id="s-tunde-pct" type="number" inputmode="decimal" step="any" min="0"> %
+        <span class="amt" id="s-tunde-amt">—</span></span></div>
+    <div class="s-row"><span class="lbl">Claudio <small>editable %</small></span>
+      <span style="display:flex;align-items:center;gap:14px;">
+        <input class="pct-input" id="s-claudio-pct" type="number" inputmode="decimal" step="any" min="0"> %
+        <span class="amt" id="s-claudio-amt">—</span></span></div>
+    <div class="s-row"><span class="lbl">Business <small>editable %</small></span>
+      <span style="display:flex;align-items:center;gap:14px;">
+        <input class="pct-input" id="s-business-pct" type="number" inputmode="decimal" step="any" min="0"> %
+        <span class="amt" id="s-business-amt">—</span></span></div>
+    <div class="s-row auto"><span class="lbl">Total distribution</span><span class="amt" id="s-dist-total">—</span></div>
+    <div class="warn-row" id="s-dist-warn" style="display:none;"></div>
+  </div>
+
+  <div class="recon">Baseline reconciliation (Option 1 active, Option 2 inactive — as loaded): raw subtotal <b>$11,825.00</b> ·
+    + 5% margin <b>$591.25</b> · total <b>$12,416.25</b>. Switching to Option 2 (toggle its rows on, Option 1's off) moves
+    raw subtotal to <b>$15,550.00</b>, margin to <b>$777.50</b>, total to <b>$16,327.50</b>. All figures use placeholder
+    public-retail pricing for the screen/lift — pending real ADI dealer cost.</div>
+
+  <div class="glossary">
+    <h2>Glossary — Terms, Jargon &amp; Acronyms</h2>
+    <div class="gloss-intro">Reference for every term used on this page and in the underlying itemization, in the order they matter most to reading the numbers above.</div>
+    <dl class="gterms">
+      <dt>System Assurance &amp; Warranty Package</dt>
+      <dd>An internal margin line (default 5% of the active raw subtotal), computed automatically and folded into the client-facing price. It is real margin, not a pass-through cost, and is never itemized or named as a fee to the client.</dd>
+
+      <dt>Raw subtotal</dt>
+      <dd>The sum of every <em>active</em> line item's qty × unit rate before the margin is applied — Adroit's standard cost for the job as currently toggled.</dd>
+
+      <dt>Line item / Line total</dt>
+      <dd>One row of billable work (equipment or labor). Line total = quantity × unit rate, computed automatically and not directly editable.</dd>
+
+      <dt>Ceiling-recessed motorized screen</dt>
+      <dd>A projection screen that retracts up into a pocket built into the ceiling when not in use, appearing flush/invisible — the locked-scope Section A item.</dd>
+
+      <dt>Short-throw projector</dt>
+      <dd>A projector designed to sit close to the screen (a few feet, not the back of the room) and still fill it — required here so the unit can be ceiling-mounted or lift-concealed near the screen wall rather than at the back of the room.</dd>
+
+      <dt>Projector lift (e.g. AeroLift-class)</dt>
+      <dd>A motorized mechanism that lowers a projector out of a ceiling recess for use and raises it back up out of sight afterward — Option 2's approach; requires more ceiling depth/tolerance than a fixed ceiling mount.</dd>
+
+      <dt>eARC (Enhanced Audio Return Channel)</dt>
+      <dd>An HDMI feature carrying high-quality audio back from the display/projector to a soundbar over a single cable — how the existing Sonos Arc Ultra will connect, avoiding separate audio wiring.</dd>
+
+      <dt>ADI Global Distribution</dt>
+      <dd>Adroit's AV/security equipment dealer — the source for actual (non-retail-list) screen and lift pricing; not yet quoted for this job.</dd>
+
+      <dt>Mobilization</dt>
+      <dd>Time and cost to get the crew, tools, and materials staged and the work area protected before productive install work begins — priced once per project, not per task.</dd>
+
+      <dt>Turnkey scope</dt>
+      <dd>A pricing structure where Adroit supplies both labor and materials (screen, projector, mounting/lift hardware, conduit, AV cabinet). The client's existing Sonos system is the exception — integrated, not replaced or supplied.</dd>
+
+      <dt>Fixed price</dt>
+      <dd>A single agreed total price for the defined scope of work, as opposed to time-and-materials billing.</dd>
+
+      <dt>Change order</dt>
+      <dd>A documented addition or modification to the original scope (and its price) after work has started.</dd>
+
+      <dt>Deposit / Balance</dt>
+      <dd>The upfront percentage of the total price collected to begin work (deposit), with the remainder (balance) due upon completion.</dd>
+
+      <dt>Internal Distribution</dt>
+      <dd>How the final project total is split internally between the people/entities involved in delivering and running the job (here: Tunde, Claudio, and the Business) — never shown to the client.</dd>
+    </dl>
+  </div>
+
+  <footer>Adroit Communications LLC · Internal itemization tool · ADR-2026-WRIGHT</footer>
+</div>
+
+<script type="application/json" id="baseline-data">
+{"meta":{"project_id":"ADR-2026-WRIGHT","title":"Oliver Wright Residence — Home Theater Design & Integration — Granular Internal Itemization","usage":"INTERNAL — working estimate, not client-facing. Contains internal margin; NEVER expose to client.","client":"Oliver Wright + Allison Everett","poc":"Jordan Ghrist (Link Construction)","address":"Georgetown, Washington DC — exact street TBD","date":"2026-07-17"},
+"line_items":[
+{"id":"A1","category":"A - Projection Screen (locked scope)","description":"Draper Access V-class ceiling-recessed motorized screen, ~110-120\" HDTV [16:9], matte white — PLACEHOLDER: Draper list ~$5,051 (model 140110, 119\"); replace with real ADI dealer cost","qty":1,"unit":"unit","unit_rate":5051.00,"active":true},
+{"id":"A2","category":"A - Projection Screen (locked scope)","description":"Screen install — recess coordination with Link Construction, mount, wire to low-voltage control, commission","qty":1,"unit":"project","unit_rate":650.00,"active":true},
+{"id":"A3","category":"A - Projection Screen (locked scope)","description":"Low-voltage control integration — wall control / app tie-in","qty":1,"unit":"project","unit_rate":150.00,"active":true},
+
+{"id":"B1-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"4K laser short-throw projector, ambient-light-capable — PLACEHOLDER model/brand TBD (~$3,499-class unit)","qty":1,"unit":"unit","unit_rate":3499.00,"active":true},
+{"id":"B2-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"White ceiling mount bracket, paint-matched finish per client's 'super clean, nothing bulky' requirement","qty":1,"unit":"unit","unit_rate":175.00,"active":true},
+{"id":"B3-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"Mount, align to screen, calibrate — no structural/framing changes required","qty":1,"unit":"project","unit_rate":450.00,"active":true},
+{"id":"B4-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"HDMI/Cat6 conduit run — AV closet to ceiling projector location","qty":1,"unit":"project","unit_rate":325.00,"active":true},
+
+{"id":"B1-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"4K laser short-throw projector — same unit as Option 1","qty":1,"unit":"unit","unit_rate":3499.00,"active":false},
+{"id":"B2-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"Draper AeroLift 35-class ceiling-recessed projector lift (35 lb cap., ~24.5\" max extension) — PLACEHOLDER retail $2,419-$4,138 range, used midpoint; replace with real ADI dealer cost. Lowest-profile lift on the market, near-zero tolerance against existing ceiling framing","qty":1,"unit":"unit","unit_rate":3500.00,"active":false},
+{"id":"B3-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"Framing coordination with Link Construction (tight tolerance), lift mount, precision alignment, commissioning","qty":1,"unit":"project","unit_rate":850.00,"active":false},
+{"id":"B4-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"HDMI/Cat6 conduit run — AV closet to recessed lift location","qty":1,"unit":"project","unit_rate":325.00,"active":false},
+{"id":"B5-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"OPTIONAL mitigation (floated internally 7/14, not yet costed/discussed with Jordan or client): reframe/drop a section of ceiling to gain lift depth tolerance — set qty to 1 and price if pursued","qty":0,"unit":"project","unit_rate":0.00,"active":false},
+
+{"id":"C1","category":"C - Sonos Integration & Unified Control","description":"Integrate existing Sonos (Arc Ultra soundbar, Sub 4, Era 300 surround pair) into single control experience via single eARC HDMI run to the Arc Ultra — Sub 4 and Era 300s are wireless, no separate remotes, no wall speakers (client rejected)","qty":1,"unit":"project","unit_rate":450.00,"active":true},
+{"id":"C2","category":"C - Sonos Integration & Unified Control","description":"AV closet/cabinet build-out — HDMI switching, equipment housing (credenza siting per site visit)","qty":1,"unit":"project","unit_rate":600.00,"active":true},
+
+{"id":"D1","category":"D - Mobilization & Site Protection","description":"Full construction dust protection — doorways, windows, walls, furniture draping (explicit client requirement)","qty":1,"unit":"project","unit_rate":275.00,"active":true},
+{"id":"D2","category":"D - Mobilization & Site Protection","description":"Mobilization & site setup","qty":1,"unit":"project","unit_rate":200.00,"active":true}
+],
+"summary":{"margin_pct":5,"deposit_pct":30,"distribution":{"tunde_pct":35,"claudio_pct":35,"business_pct":30}}}
+</script>
+<script>
+(function(){
+  "use strict";
+  var STORAGE_KEY = "adroit-itemizer:ADR-2026-WRIGHT:v1";
+  var CAT_ORDER = ["A - Projection Screen (locked scope)","B - Projector — Option 1: Ceiling-Mount",
+                   "B - Projector — Option 2: Recessed Lift","C - Sonos Integration & Unified Control",
+                   "D - Mobilization & Site Protection"];
+  var BASELINE = JSON.parse(document.getElementById("baseline-data").textContent);
+
+  function deep(o){ return JSON.parse(JSON.stringify(o)); }
+  function num(v){ var n = parseFloat(v); return isNaN(n) ? 0 : n; }
+  function money(n){
+    var neg = n < 0;
+    var s = Math.abs(n).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+    return (neg ? "-$" : "$") + s;
+  }
+  function lineTotal(it){ return num(it.qty) * num(it.unit_rate); }
+
+  function freshState(){
+    return {
+      meta: deep(BASELINE.meta),
+      items: deep(BASELINE.line_items),
+      margin_pct: (BASELINE.summary && BASELINE.summary.margin_pct != null) ? BASELINE.summary.margin_pct : 5,
+      deposit_pct: (BASELINE.summary && BASELINE.summary.deposit_pct != null) ? BASELINE.summary.deposit_pct : 30,
+      tunde_pct: (BASELINE.summary && BASELINE.summary.distribution && BASELINE.summary.distribution.tunde_pct != null) ? BASELINE.summary.distribution.tunde_pct : 35,
+      claudio_pct: (BASELINE.summary && BASELINE.summary.distribution && BASELINE.summary.distribution.claudio_pct != null) ? BASELINE.summary.distribution.claudio_pct : 35,
+      business_pct: (BASELINE.summary && BASELINE.summary.distribution && BASELINE.summary.distribution.business_pct != null) ? BASELINE.summary.distribution.business_pct : 30
+    };
+  }
+  function loadState(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(raw){
+        var s = JSON.parse(raw);
+        if(s && Array.isArray(s.items)) return s;
+      }
+    }catch(e){}
+    return freshState();
+  }
+  function persist(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){} }
+
+  var state = loadState();
+  var nextId = 1;
+
+  function fillMeta(){
+    var m = state.meta || {};
+    document.getElementById("m-title").textContent  = m.title || "Itemization";
+    document.getElementById("m-proj").textContent   = m.project_id || "ADR-2026-WRIGHT";
+    document.getElementById("m-addr").textContent   = m.address || "";
+    document.getElementById("m-client").textContent = m.client || "";
+    document.getElementById("m-poc").textContent    = m.poc || "";
+    document.getElementById("m-date").textContent   = m.date || "";
+  }
+
+  function orderedCategories(){
+    var seen = [];
+    state.items.forEach(function(it){
+      var c = (it.category || "Uncategorized");
+      if(seen.indexOf(c) === -1) seen.push(c);
+    });
+    var ordered = CAT_ORDER.filter(function(c){ return seen.indexOf(c) !== -1; });
+    seen.forEach(function(c){ if(ordered.indexOf(c) === -1) ordered.push(c); });
+    return ordered;
+  }
+
+  var groupsEl = document.getElementById("groups");
+
+  function makeField(cls, area, labelText, inputEl){
+    var f = document.createElement("div");
+    f.className = "fld " + cls + " a-" + area;
+    var l = document.createElement("label"); l.textContent = labelText;
+    f.appendChild(l); f.appendChild(inputEl);
+    return f;
+  }
+  function inp(type, val){
+    var e = document.createElement("input");
+    e.type = type;
+    if(type === "number"){ e.step = "any"; e.setAttribute("inputmode","decimal"); }
+    e.value = (val == null ? "" : val);
+    return e;
+  }
+
+  function makeRow(it, idx){
+    var card = document.createElement("div");
+    card.className = "item" + (it.active === false ? " inactive" : "");
+    card.setAttribute("data-idx", idx);
+
+    var cat = inp("text", it.category);
+    cat.setAttribute("list","cat-list");
+    cat.addEventListener("change", function(){ it.category = cat.value.trim() || "Uncategorized"; persist(); render(); });
+    card.appendChild(makeField("","cat","Category",cat));
+
+    var desc = document.createElement("textarea");
+    desc.value = it.description || "";
+    desc.addEventListener("input", function(){ it.description = desc.value; persist(); });
+    card.appendChild(makeField("","desc","Description",desc));
+
+    var qty = inp("number", it.qty);
+    qty.addEventListener("input", function(){ it.qty = qty.value; refreshRow(card, it); recompute(); persist(); });
+    card.appendChild(makeField("","qty","Qty",qty));
+
+    var unit = inp("text", it.unit);
+    unit.addEventListener("input", function(){ it.unit = unit.value; persist(); });
+    card.appendChild(makeField("","unit","Unit",unit));
+
+    var rate = inp("number", it.unit_rate);
+    var rateField = makeField("","rate","Unit rate ($)",rate);
+    rate.addEventListener("input", function(){
+      it.unit_rate = rate.value;
+      rateField.classList.toggle("rate-neg", num(it.unit_rate) < 0);
+      refreshRow(card, it); recompute(); persist();
+    });
+    if(num(it.unit_rate) < 0) rateField.classList.add("rate-neg");
+    card.appendChild(rateField);
+
+    var totWrap = document.createElement("div");
+    totWrap.className = "fld a-total";
+    var tl = document.createElement("label"); tl.textContent = "Line total";
+    var tv = document.createElement("div"); tv.className = "val"; tv.setAttribute("data-lt","1");
+    totWrap.appendChild(tl); totWrap.appendChild(tv);
+    card.appendChild(totWrap);
+
+    var actWrap = document.createElement("div"); actWrap.className = "fld a-active";
+    var al = document.createElement("label"); al.textContent = "Active";
+    var toggleWrap = document.createElement("div"); toggleWrap.className = "toggle-wrap";
+    var cb = document.createElement("input"); cb.type = "checkbox"; cb.checked = (it.active !== false);
+    var cbLbl = document.createElement("span"); cbLbl.textContent = (it.active !== false) ? "Active" : "Deactivated";
+    cb.addEventListener("change", function(){
+      it.active = cb.checked;
+      cbLbl.textContent = it.active ? "Active" : "Deactivated";
+      card.classList.toggle("inactive", !it.active);
+      recompute(); persist();
+    });
+    toggleWrap.appendChild(cb); toggleWrap.appendChild(cbLbl);
+    actWrap.appendChild(al); actWrap.appendChild(toggleWrap);
+    card.appendChild(actWrap);
+
+    refreshRow(card, it);
+    return card;
+  }
+
+  function refreshRow(card, it){
+    var lt = lineTotal(it);
+    var tv = card.querySelector('[data-lt]');
+    if(tv){ tv.textContent = money(lt); tv.classList.toggle("neg", lt < 0); }
+  }
+
+  function render(){
+    fillMeta();
+    groupsEl.innerHTML = "";
+    var cats = orderedCategories();
+    cats.forEach(function(cat){
+      var g = document.createElement("div"); g.className = "group";
+      var head = document.createElement("div"); head.className = "group-head";
+      var gn = document.createElement("span"); gn.className = "gname"; gn.textContent = cat;
+      var flag = "";
+      if(cat.indexOf("Option 1") !== -1){ var f1=document.createElement("span"); f1.className="option-flag opt1"; f1.textContent="Oliver's pref"; gn.appendChild(f1); }
+      if(cat.indexOf("Option 2") !== -1){ var f2=document.createElement("span"); f2.className="option-flag opt2"; f2.textContent="Original vision"; gn.appendChild(f2); }
+      var gs = document.createElement("span"); gs.className = "gsum"; gs.setAttribute("data-groupsum", cat);
+      head.appendChild(gn); head.appendChild(gs); g.appendChild(head);
+      var addBtn = document.createElement("button");
+      addBtn.type = "button"; addBtn.className = "btn-ghost"; addBtn.style.marginBottom = "8px";
+      addBtn.textContent = "+ Add item to " + cat;
+      addBtn.addEventListener("click", function(){
+        state.items.push({ id:"NEW-"+(nextId++), category:cat, description:"", qty:1, unit:"", unit_rate:0, active:true });
+        persist(); render();
+      });
+      state.items.forEach(function(it, i){
+        if((it.category || "Uncategorized") === cat) g.appendChild(makeRow(it, i));
+      });
+      g.appendChild(addBtn);
+      groupsEl.appendChild(g);
+    });
+    document.getElementById("s-mgn-pct").value = state.margin_pct;
+    document.getElementById("s-dep-pct").value = state.deposit_pct;
+    document.getElementById("s-tunde-pct").value = state.tunde_pct;
+    document.getElementById("s-claudio-pct").value = state.claudio_pct;
+    document.getElementById("s-business-pct").value = state.business_pct;
+    recompute();
+  }
+
+  function recompute(){
+    var subtotal = 0;
+    var byCat = {};
+    state.items.forEach(function(it){
+      var active = (it.active !== false);
+      var lt = active ? lineTotal(it) : 0;
+      if(active) subtotal += lt;
+      var c = (it.category || "Uncategorized");
+      byCat[c] = (byCat[c] || 0) + lt;
+    });
+    var sums = groupsEl.querySelectorAll('[data-groupsum]');
+    sums.forEach(function(el){
+      var c = el.getAttribute("data-groupsum");
+      el.textContent = money(byCat[c] || 0);
+    });
+    document.getElementById("s-subtotal").textContent = money(subtotal);
+
+    var mgnPct = num(document.getElementById("s-mgn-pct").value);
+    var mgnAmt = subtotal * mgnPct / 100;
+    document.getElementById("s-mgn-amt").textContent = money(mgnAmt);
+
+    var total = subtotal + mgnAmt;
+    document.getElementById("s-total").textContent = money(total);
+
+    var depPct = num(document.getElementById("s-dep-pct").value);
+    var dep = total * depPct / 100;
+    document.getElementById("s-dep-amt").textContent = money(dep);
+    document.getElementById("s-bal-amt").textContent = money(total - dep);
+
+    var tPct = num(document.getElementById("s-tunde-pct").value);
+    var cPct = num(document.getElementById("s-claudio-pct").value);
+    var bPct = num(document.getElementById("s-business-pct").value);
+    var tAmt = total * tPct / 100, cAmt = total * cPct / 100, bAmt = total * bPct / 100;
+    document.getElementById("s-tunde-amt").textContent = money(tAmt);
+    document.getElementById("s-claudio-amt").textContent = money(cAmt);
+    document.getElementById("s-business-amt").textContent = money(bAmt);
+    document.getElementById("s-dist-total").textContent = money(tAmt+cAmt+bAmt);
+    var warn = document.getElementById("s-dist-warn");
+    var sumPct = tPct+cPct+bPct;
+    if(Math.abs(sumPct-100) > 0.01){
+      warn.style.display = "block";
+      warn.textContent = "⚠ Distribution percentages sum to " + sumPct.toFixed(2) + "%, not 100%.";
+    } else {
+      warn.style.display = "none";
+    }
+  }
+
+  document.getElementById("s-mgn-pct").addEventListener("input", function(){
+    state.margin_pct = num(this.value); recompute(); persist();
+  });
+  document.getElementById("s-dep-pct").addEventListener("input", function(){
+    state.deposit_pct = num(this.value); recompute(); persist();
+  });
+  document.getElementById("s-tunde-pct").addEventListener("input", function(){
+    state.tunde_pct = num(this.value); recompute(); persist();
+  });
+  document.getElementById("s-claudio-pct").addEventListener("input", function(){
+    state.claudio_pct = num(this.value); recompute(); persist();
+  });
+  document.getElementById("s-business-pct").addEventListener("input", function(){
+    state.business_pct = num(this.value); recompute(); persist();
+  });
+  document.getElementById("btn-add").addEventListener("click", function(){
+    state.items.push({ id:"NEW-"+(nextId++), category:"A - Projection Screen (locked scope)", description:"", qty:1, unit:"", unit_rate:0, active:true });
+    persist(); render();
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+  document.getElementById("btn-reset").addEventListener("click", function(){
+    if(confirm("Reset to the original baseline itemization? This discards your current edits in this browser.")){
+      state = freshState(); persist(); render();
+    }
+  });
+  document.getElementById("btn-print").addEventListener("click", function(){ window.print(); });
+  document.getElementById("btn-export").addEventListener("click", function(){
+    var subtotal = 0;
+    var items = state.items.map(function(it){
+      var active = (it.active !== false);
+      var lt = active ? lineTotal(it) : 0;
+      if(active) subtotal += lt;
+      return { id:it.id, category:it.category, description:it.description,
+               qty:num(it.qty), unit:it.unit, unit_rate:num(it.unit_rate),
+               active: active,
+               line_total: Math.round(lt*100)/100 };
+    });
+    var mgnPct = num(state.margin_pct);
+    var mgnAmt = Math.round(subtotal*mgnPct/100*100)/100;
+    var total = Math.round((subtotal+mgnAmt)*100)/100;
+    var depPct = num(state.deposit_pct);
+    var dep = Math.round(total*depPct/100*100)/100;
+    var out = {
+      meta: state.meta,
+      line_items: items,
+      summary: {
+        raw_subtotal: Math.round(subtotal*100)/100,
+        margin_pct: mgnPct,
+        margin_amount: mgnAmt,
+        total: total,
+        deposit_pct: depPct,
+        deposit_amount: dep,
+        balance_amount: Math.round((total-dep)*100)/100,
+        distribution: {
+          tunde_pct: num(state.tunde_pct), claudio_pct: num(state.claudio_pct), business_pct: num(state.business_pct),
+          tunde_amount: Math.round(total*num(state.tunde_pct)/100*100)/100,
+          claudio_amount: Math.round(total*num(state.claudio_pct)/100*100)/100,
+          business_amount: Math.round(total*num(state.business_pct)/100*100)/100
+        }
+      },
+      exported_at: new Date().toISOString(),
+      _note: "INTERNAL working estimate — edited copy exported from the Wright itemizer (browser-local)."
+    };
+    var blob = new Blob([JSON.stringify(out, null, 2)], {type:"application/json"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "Itemization_ADR-2026-WRIGHT_edited_" + new Date().toISOString().slice(0,10) + ".json";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1500);
+  });
+
+  var dl = document.createElement("datalist"); dl.id = "cat-list";
+  CAT_ORDER.forEach(function(c){ var o=document.createElement("option"); o.value=c; dl.appendChild(o); });
+  document.body.appendChild(dl);
+
+  render();
+})();
+</script>
+</body>
+</html>
