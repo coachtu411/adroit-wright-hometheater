@@ -196,6 +196,25 @@
   .warn-row{font-size:12px;color:var(--red);padding:4px 16px 10px;font-weight:700;}
   .recon{font-size:12px;color:var(--grey);padding:6px 0 14px;}
   .recon b{color:var(--teal-dark);}
+  .equip-appendix{margin:22px 0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+  .equip-intro{font-size:12.5px;color:var(--grey);padding:12px 16px 4px;}
+  #equip-list{padding:4px 12px 12px;}
+  .equip-group{margin:12px 0 4px;}
+  .equip-group-name{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;
+    color:var(--teal-dark);padding:4px 4px 6px;}
+  .equip-card{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:start;
+    background:#FAFBFC;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;}
+  .equip-card.inactive{opacity:.55;}
+  .equip-card .eq-name{font-weight:700;color:var(--navy);font-size:13.5px;grid-column:1;}
+  .equip-card.inactive .eq-name{text-decoration:line-through;text-decoration-color:var(--red);}
+  .equip-card .eq-price{font-weight:800;color:var(--navy);font-size:13.5px;grid-column:2;text-align:right;white-space:nowrap;}
+  .equip-card .eq-meta{grid-column:1/-1;font-size:12px;color:var(--grey);display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  .equip-card .eq-meta a{color:var(--teal-dark);text-decoration:none;font-weight:700;}
+  .equip-card .eq-meta a:hover{text-decoration:underline;}
+  .equip-card .eq-status{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;
+    border-radius:20px;padding:2px 8px;background:var(--teal-wash);color:var(--teal-dark);}
+  .equip-card.inactive .eq-status{background:#EDEEF0;color:#8a8f96;}
+  .equip-empty{color:var(--grey);font-size:13px;padding:12px;text-align:center;}
   .glossary{margin:26px 0 8px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px 0 8px;}
   .glossary .glossary-toggle{background:var(--teal-wash);border-radius:14px 14px 0 0;border-bottom:0;
     padding:12px 16px;margin:0;min-height:44px;}
@@ -268,7 +287,19 @@
   .cpv-foot{padding:20px 40px 30px;border-top:1px solid var(--line);font-size:11px;color:var(--grey);line-height:1.7;}
   .cpv-foot .cpv-stamp{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10px;
     color:#9aa2ab;letter-spacing:.3px;margin-top:8px;}
-  @media (max-width:640px){ .cpv-options{grid-template-columns:1fr;} .cpv-head,.cpv-body{padding:24px 20px;} }
+  .cpv-appendix{margin:40px 40px 0;padding-top:28px;border-top:2px solid var(--line);}
+  .cpv-appendix-head{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
+    color:var(--teal-dark);border-bottom:2px solid var(--teal);padding-bottom:8px;margin:0 0 6px;}
+  .cpv-appendix-note{font-size:12.5px;color:var(--grey);margin-bottom:18px;line-height:1.6;}
+  .cpv-eq-group{margin-bottom:18px;}
+  .cpv-eq-group-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;
+    color:var(--navy);margin-bottom:8px;}
+  .cpv-eq-card{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px;background:#FAFBFC;}
+  .cpv-eq-name{font-weight:700;color:var(--navy);font-size:13.5px;}
+  .cpv-eq-blurb{font-size:12.5px;color:var(--ink);margin-top:4px;line-height:1.55;}
+  .cpv-eq-link{display:inline-block;margin-top:6px;font-size:12px;font-weight:700;color:var(--teal-dark);text-decoration:none;}
+  .cpv-eq-link:hover{text-decoration:underline;}
+  @media (max-width:640px){ .cpv-options{grid-template-columns:1fr;} .cpv-head,.cpv-body{padding:24px 20px;} .cpv-appendix{margin:32px 20px 0;} }
   @media (max-width:420px){ .summary .s-row{padding:12px 14px;} }
   @media (min-width:900px){
     .item{grid-template-columns:200px minmax(220px,1fr) 70px 90px 110px 118px 96px;
@@ -293,6 +324,8 @@
     .glossary{break-inside:avoid;}
     body.client-view .cpv-back{display:none !important;}
     .cpv-opt{break-inside:avoid;}
+    .cpv-appendix{break-before:page;padding-top:0;border-top:0;margin-top:0;}
+    .cpv-eq-card{break-inside:avoid;}
   }
 </style>
 </head>
@@ -523,6 +556,12 @@
       with the 7/17 client call: added a $2,750 "Additional Scope" line (cable pulls, screen power/remote wiring, behind-ceiling
       conduit labor) per Claudio's live call-out that the original itemization was under-scoped by roughly $2,500-3,000.
       Screen/lift figures are still public-retail pricing pending real ADI dealer cost.</div>
+
+    <div class="equip-appendix">
+      <h2 style="border-bottom:0;background:var(--teal-wash);margin:0;padding:12px 16px;border-radius:14px 14px 0 0;">Appendix — Equipment Only</h2>
+      <div class="equip-intro">Every physical piece of hardware in the estimate above (labor lines filtered out), pulled live from whatever's currently in the tool. Grayed rows are toggled inactive and not in either total.</div>
+      <div id="equip-list"></div>
+    </div>
 
     <div class="glossary">
       <button class="sec-toggle glossary-toggle" data-target="body-glossary" aria-expanded="false">
@@ -1024,6 +1063,52 @@
     if(tv){ tv.textContent = money(lt); tv.classList.toggle("neg", lt < 0); }
   }
 
+  // ── Equipment Appendix (internal) — physical hardware only (unit === "unit"), labor filtered out.
+  // Names are derived from each item's own description (cut at the first " — " or sentence break)
+  // rather than duplicated by hand, so the appendix always reflects live edits to the tool above.
+  function equipDisplayName(desc){
+    var d = String(desc || "").trim();
+    var opt = d.match(/^OPTIONAL\s*[—-]\s*/i);
+    if(opt) d = d.slice(opt[0].length);
+    var dashIdx = d.indexOf(" — ");
+    if(dashIdx > 0 && dashIdx < 120) return d.slice(0, dashIdx);
+    var perIdx = d.indexOf(". ");
+    if(perIdx > 0 && perIdx < 140) return d.slice(0, perIdx + 1);
+    return d.length > 140 ? d.slice(0, 140) + "…" : (d || "(untitled equipment item)");
+  }
+  function renderEquipmentAppendix(){
+    var list = document.getElementById("equip-list");
+    if(!list) return;
+    var equip = state.items.filter(function(it){ return String(it.unit || "").trim().toLowerCase() === "unit"; });
+    if(!equip.length){
+      list.innerHTML = '<div class="equip-empty">No equipment line items yet — set a row\'s Unit to "unit" to have it appear here.</div>';
+      return;
+    }
+    var cats = orderedCategories().filter(function(cat){
+      return equip.some(function(it){ return (it.category || "Uncategorized") === cat; });
+    });
+    var html = "";
+    cats.forEach(function(cat){
+      var group = equip.filter(function(it){ return (it.category || "Uncategorized") === cat; });
+      if(!group.length) return;
+      html += '<div class="equip-group"><div class="equip-group-name">' + esc(cat) + '</div>';
+      group.forEach(function(it){
+        var inactive = it.active === false;
+        html += '<div class="equip-card' + (inactive ? ' inactive' : '') + '">'
+          + '<div class="eq-name">' + esc(equipDisplayName(it.description)) + '</div>'
+          + '<div class="eq-price">' + money(lineTotal(it)) + '</div>'
+          + '<div class="eq-meta">'
+          + '<span class="eq-status">' + (inactive ? 'Inactive' : 'Active') + '</span>'
+          + (num(it.qty) !== 1 ? '<span>Qty ' + esc(it.qty) + '</span>' : '')
+          + (it.url ? '<a href="' + esc(it.url) + '" target="_blank" rel="noopener">↗ Product / specs page</a>' : '')
+          + '</div>'
+          + '</div>';
+      });
+      html += '</div>';
+    });
+    list.innerHTML = html;
+  }
+
   function render(){
     fillMeta();
     groupsEl.innerHTML = "";
@@ -1055,6 +1140,7 @@
     document.getElementById("s-claudio-pct").value = state.claudio_pct;
     document.getElementById("s-business-pct").value = state.business_pct;
     recompute();
+    renderEquipmentAppendix();
   }
 
   function recompute(){
@@ -1149,11 +1235,21 @@
     var common = 0;
     var commonByCat = {}, opt1Items = 0, opt2Items = 0;
     state.items.forEach(function(it){
-      if(it.active === false) return;
       var cat = it.category || "";
       var lt = lineTotal(it);
-      if(commonCats.indexOf(cat) !== -1){ common += lt; commonByCat[cat] = (commonByCat[cat]||0) + lt; }
-      else if(cat.indexOf("Option 1") !== -1){ opt1Items += lt; }
+      if(commonCats.indexOf(cat) !== -1){
+        // Common items (screen/Sonos/mobilization/additional scope) are genuinely optional —
+        // respect the Active toggle (e.g. the Apple TV line stays out unless switched on).
+        if(it.active === false) return;
+        common += lt; commonByCat[cat] = (commonByCat[cat]||0) + lt;
+      }
+      else if(cat.indexOf("Option 1") !== -1){
+        // Option 1/2 items are NOT gated by active here — the comparison must show both
+        // hypothetical scopes in full regardless of which one is toggled "live" for the
+        // single-total calculator above. (Bug found 2026-07-17: this used to skip whichever
+        // option was toggled off, silently zeroing that column's projector/lift cost.)
+        opt1Items += lt;
+      }
       else if(cat.indexOf("Option 2") !== -1){ opt2Items += lt; }
     });
     var mgnPct = num(state.margin_pct);
@@ -1171,6 +1267,65 @@
     };
   }
   function esc(s){ var d=document.createElement("div"); d.textContent = s==null?"":String(s); return d.innerHTML; }
+  function findItem(id){
+    var m = state.items.filter(function(it){ return it.id === id; });
+    return m[0] || null;
+  }
+  function clientEquipCard(name, blurb, url){
+    return '<div class="cpv-eq-card">'
+      + '<div class="cpv-eq-name">' + esc(name) + '</div>'
+      + (blurb ? '<div class="cpv-eq-blurb">' + esc(blurb) + '</div>' : '')
+      + (url ? '<a class="cpv-eq-link" href="' + esc(url) + '" target="_blank" rel="noopener">View product specifications ↗</a>' : '')
+      + '</div>';
+  }
+  function renderEquipmentAppendixClient(){
+    // Hand-written, client-safe hardware copy — deliberately NOT the raw internal `description`
+    // field, which carries sourcing caveats and placeholder-cost notes not meant for Oliver.
+    // Links + active/inactive state are still pulled live from the tool so they never go stale.
+    var a1 = findItem("A1");
+    var b1o1 = findItem("B1-OPT1"), b2o1 = findItem("B2-OPT1");
+    var b1o2 = findItem("B1-OPT2"), b2o2 = findItem("B2-OPT2");
+    var appleTv = findItem("C3");
+    var html = ''
+      + '<div class="cpv-appendix">'
+      + '  <div class="cpv-appendix-head">Appendix — Equipment Specification</div>'
+      + '  <div class="cpv-appendix-note">The specific hardware Adroit will supply and install under each option, plus '
+      + '    your existing equipment being integrated into the new system.</div>'
+      + '  <div class="cpv-eq-group"><div class="cpv-eq-group-name">Shared Equipment — Both Options</div>'
+      +      clientEquipCard("Draper Access V-Class Ceiling-Recessed Motorized Screen",
+             "110–120\" diagonal, matte white, engineered to perform beautifully in ambient daylight — no blackout curtains required.",
+             a1 && a1.url)
+      + '  </div>'
+      + '  <div class="cpv-eq-group"><div class="cpv-eq-group-name">Option 1 — Ceiling-Mounted Equipment</div>'
+      +      clientEquipCard("BenQ TK710STi 4K HDR Laser Projector (White)",
+             "True 4K laser light source (20,000+ hour life), 3,200 ANSI lumens, built-in smart streaming platform, Bluetooth audio.",
+             b1o1 && b1o1.url)
+      +      clientEquipCard("Chief Ceiling Mount",
+             "Paint-matched finish for a clean, low-profile ceiling installation.",
+             b2o1 && b2o1.url)
+      + '  </div>'
+      + '  <div class="cpv-eq-group"><div class="cpv-eq-group-name">Option 2 — Recessed Lift Equipment</div>'
+      +      clientEquipCard("BenQ TK710STi 4K HDR Laser Projector (White)",
+             "Same projector as Option 1, housed in a motorized recessed lift.",
+             b1o2 && b1o2.url)
+      +      clientEquipCard("Draper AeroLift 35 Recessed Projector Lift",
+             "The lowest-profile motorized lift on the market — the projector disappears into the ceiling when not in use.",
+             b2o2 && b2o2.url)
+      + '  </div>'
+      + (appleTv && appleTv.active !== false
+          ? ('  <div class="cpv-eq-group"><div class="cpv-eq-group-name">Optional Add-On</div>'
+             + clientEquipCard("Apple TV 4K", "Streaming media player for simple, reliable access to your favorite apps.", appleTv.url)
+             + '</div>')
+          : '')
+      + '  <div class="cpv-eq-group"><div class="cpv-eq-group-name">Your Existing Equipment '
+      + '    <span style="font-weight:600;text-transform:none;letter-spacing:0;">(client-furnished — being integrated, not purchased by Adroit)</span></div>'
+      +      clientEquipCard("Sonos Arc Ultra Soundbar", "Integrated via a single eARC HDMI run into the unified control experience.")
+      +      clientEquipCard("Sonos Sub 4", "Wireless subwoofer, already part of your existing system.")
+      +      clientEquipCard("Sonos Era 300 Surround Pair", "Wireless surround speakers, already part of your existing system.")
+      + '  </div>'
+      + '</div>';
+    return html;
+  }
   function renderClientPdf(){
     var t = computeOptionTotals();
     var dep1 = t.total1 * t.depositPct/100, dep2 = t.total2 * t.depositPct/100;
@@ -1238,6 +1393,7 @@
       + '      Option selected: &nbsp;☐ Option 1 (Ceiling-Mount) &nbsp;&nbsp; ☐ Option 2 (Recessed Lift)'
       + '    </div>'
       + '  </div>'
+      + renderEquipmentAppendixClient()
       + '  <div class="cpv-foot">Adroit Communications LLC · support@adroit7.net · 2624 Monroe Street NE, Washington, DC 20018'
       + '    <div class="cpv-stamp">Generated from the Wright project working estimate — version ' + esc(stamp) + '</div>'
       + '  </div>'
