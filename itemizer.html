@@ -124,6 +124,66 @@
   dl.gterms dt{font-weight:800;color:var(--navy);font-size:13.5px;margin-top:12px;}
   dl.gterms dd{margin:3px 0 0;font-size:13px;color:var(--ink);line-height:1.5;}
   footer{text-align:center;color:var(--grey);font-size:12px;padding:18px;}
+  .saved-indicator{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--teal-dark);
+    font-weight:700;padding:0 8px;}
+  .saved-indicator .dot2{width:7px;height:7px;border-radius:50%;background:var(--teal);flex:0 0 auto;}
+  .btn-history{background:#fff;color:var(--navy);border:1px solid var(--line);}
+  .modal-overlay{position:fixed;inset:0;background:rgba(15,20,35,.55);z-index:100;display:none;
+    align-items:flex-start;justify-content:center;padding:20px 12px;overflow-y:auto;}
+  .modal-overlay.open{display:flex;}
+  .modal-card{background:#fff;border-radius:14px;max-width:640px;width:100%;margin-top:20px;
+    box-shadow:0 12px 40px rgba(0,0,0,.25);overflow:hidden;}
+  .modal-head{background:var(--navy);color:#fff;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;}
+  .modal-head h3{margin:0;font-size:14px;letter-spacing:.5px;text-transform:uppercase;}
+  .modal-close{background:rgba(255,255,255,.15);color:#fff;border-radius:8px;min-height:34px;padding:0 12px;font-size:13px;}
+  .modal-body{padding:14px 18px;max-height:60vh;overflow-y:auto;}
+  .modal-actions{padding:12px 18px;border-top:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap;}
+  .hist-empty{color:var(--grey);font-size:13.5px;padding:20px 4px;text-align:center;}
+  .hist-row{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;
+    display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+  .hist-row .hist-meta{font-size:13px;color:var(--navy);font-weight:600;}
+  .hist-row .hist-sub{font-size:11.5px;color:var(--grey);margin-top:2px;}
+  .hist-row .hist-actions{display:flex;gap:6px;}
+  .hist-row .hist-actions button{min-height:36px;padding:0 12px;font-size:12.5px;}
+  .hist-row.current{border-color:var(--teal);background:var(--teal-wash);}
+  .durable-note{background:var(--navy-wash);border-radius:10px;padding:10px 12px;font-size:12px;color:var(--navy);
+    margin-bottom:12px;line-height:1.5;}
+  .durable-note a{color:var(--teal-dark);font-weight:700;}
+  /* Client PDF view */
+  #client-pdf-view{display:none;}
+  body.client-view .wrap > *:not(#client-pdf-view){display:none !important;}
+  body.client-view #client-pdf-view{display:block !important;}
+  .cpv-wrap{max-width:800px;margin:0 auto;background:#fff;}
+  .cpv-back{padding:12px 16px;background:var(--navy-wash);}
+  .cpv-back button{background:var(--navy);color:#fff;}
+  .cpv-head{background:linear-gradient(135deg,var(--navy) 0%,#16223b 100%);color:#fff;padding:34px 40px 26px;}
+  .cpv-head .cpv-brand{font-weight:800;letter-spacing:4px;font-size:13px;color:#8fd3d2;text-transform:uppercase;}
+  .cpv-head h1{margin:10px 0 4px;font-size:24px;font-weight:700;}
+  .cpv-head .cpv-tag{color:#cdd6e6;font-size:13.5px;}
+  .cpv-amberline{height:5px;background:var(--amber);}
+  .cpv-body{padding:34px 40px;}
+  .cpv-prepared{font-size:13px;color:var(--grey);margin-bottom:22px;letter-spacing:.3px;}
+  .cpv-prepared b{color:var(--navy);}
+  .cpv-intro{font-size:14.5px;line-height:1.7;color:var(--ink);margin-bottom:26px;}
+  .cpv-scope h2, .cpv-pricing h2{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
+    color:var(--teal-dark);border-bottom:2px solid var(--teal);padding-bottom:8px;margin:0 0 14px;}
+  .cpv-scope ul{margin:0 0 26px;padding-left:20px;}
+  .cpv-scope li{font-size:14px;line-height:1.7;margin:8px 0;color:var(--ink);}
+  .cpv-options{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px;}
+  .cpv-opt{border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .cpv-opt-head{background:var(--teal-wash);color:var(--teal-dark);font-weight:800;font-size:12.5px;
+    letter-spacing:.4px;text-transform:uppercase;padding:10px 14px;}
+  .cpv-opt table{width:100%;border-collapse:collapse;font-size:13px;}
+  .cpv-opt td{padding:9px 14px;border-bottom:1px solid var(--line);}
+  .cpv-opt tr.cpv-total td{font-weight:800;color:var(--navy);border-top:2px solid var(--teal);font-size:15px;background:#FAFBFC;}
+  .cpv-terms{font-size:13.5px;color:var(--ink);line-height:1.7;margin:22px 0;padding:16px 18px;
+    background:var(--amber-wash);border-radius:10px;border-left:4px solid var(--amber);}
+  .cpv-sig{margin-top:36px;border-top:1px solid var(--line);padding-top:22px;font-size:13.5px;}
+  .cpv-sig .sig-line{display:inline-block;border-bottom:1px solid var(--ink);width:280px;margin:0 10px 6px 0;}
+  .cpv-foot{padding:20px 40px 30px;border-top:1px solid var(--line);font-size:11px;color:var(--grey);line-height:1.7;}
+  .cpv-foot .cpv-stamp{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10px;
+    color:#9aa2ab;letter-spacing:.3px;margin-top:8px;}
+  @media (max-width:640px){ .cpv-options{grid-template-columns:1fr;} .cpv-head,.cpv-body{padding:24px 20px;} }
   @media (min-width:900px){
     .item{grid-template-columns:200px minmax(220px,1fr) 70px 90px 110px 118px 96px;
       grid-template-areas:"cat desc qty unit rate total active" "link link link linkbtn notes notes notes";
@@ -133,7 +193,7 @@
   }
   @media print{
     body{background:#fff;padding:0;}
-    .toolbar,.a-active,.note,.backlink,.a-link,.a-linkbtn,.a-notes{display:none !important;}
+    .toolbar,.a-active,.note,.backlink,.a-link,.a-linkbtn,.a-notes,.modal-overlay,.saved-indicator{display:none !important;}
     .banner{position:static;}
     .toolbar{position:static;}
     .item{break-inside:avoid;border:1px solid #bbb;box-shadow:none;
@@ -143,6 +203,9 @@
     .summary{break-inside:avoid;}
     .pct-input{border:0;}
     .glossary{break-inside:avoid;}
+    body.client-view .banner,body.client-view .backlink{display:none !important;}
+    body.client-view .cpv-back{display:none !important;}
+    .cpv-opt{break-inside:avoid;}
   }
 </style>
 </head>
@@ -168,9 +231,12 @@
 
   <div class="toolbar">
     <button class="btn-primary" id="btn-add">+ Add line item</button>
+    <button class="btn-history" id="btn-history">🕘 Version History</button>
+    <button class="btn-amber" id="btn-client-pdf">🖨 Generate Client PDF</button>
     <button class="btn-ghost" id="btn-export">⭳ Export JSON</button>
-    <button class="btn-ghost" id="btn-print">⎙ Print / Save PDF</button>
+    <button class="btn-ghost" id="btn-print">⎙ Print working copy</button>
     <button class="btn-danger-ghost" id="btn-reset">↺ Reset to original</button>
+    <span class="saved-indicator" id="saved-indicator"><span class="dot2"></span><span id="saved-text">Saved</span></span>
   </div>
   <div class="note"><b>Working tool:</b> your edits are saved <b>only in this browser</b> (localStorage) — they are
     not shared or stored on a server, so Tunde's edits and Claudio's edits on their own devices won't sync to each
@@ -182,7 +248,16 @@
     matter which projector option you have toggled on. Each row now has a <b>Product URL</b> (click <b>↗ Open</b> to
     jump straight to specs/pricing) and a <b>Notes</b> field for sourcing status, vendor calls, or concerns — for a
     note to become <b>durable</b> (visible to both of you, survives a browser reset), export or say so and it'll get
-    baked into the page and pushed to GitHub; anything only typed here is provisional until then.</div>
+    baked into the page and pushed to GitHub; anything only typed here is provisional until then.
+    <br><br><b>Auto-save &amp; version history:</b> every change saves to this browser instantly (see the "Saved" indicator
+    in the toolbar), and a checkpoint is captured automatically a few seconds after you stop typing. Open
+    <b>🕘 Version History</b> to browse past checkpoints or revert to any of them — reverting itself is undoable.
+    That history is local to this device; the real durable, shared history is every version actually pushed to GitHub
+    (linked inside the Version History panel).
+    <br><br><b>🖨 Generate Client PDF</b> builds a polished, client-safe document from whatever is currently in the
+    tool — both pricing options side by side, no margin/split/internal notes exposed — and stamps the footer with a
+    version fingerprint tying the printout back to the exact numbers that produced it. "Print / Save PDF" via your
+    browser's print dialog once it opens.</div>
 
   <div class="callout">
     <b>Section B is two mutually exclusive projector options</b> — toggle ON only the option you're quoting and OFF
@@ -293,6 +368,29 @@
   </div>
 
   <footer>Adroit Communications LLC · Internal itemization tool · ADR-2026-WRIGHT</footer>
+
+  <div id="client-pdf-view"></div>
+</div>
+
+<div class="modal-overlay" id="history-overlay">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3>Version History</h3>
+      <button class="modal-close" id="history-close">✕ Close</button>
+    </div>
+    <div class="modal-body">
+      <div class="durable-note">
+        <b>Two layers of history:</b> everything below is <b>auto-saved to this browser</b> every few seconds
+        as you edit, plus a checkpoint you can save on demand — good for quick undo, but it's local to this
+        device. For the <b>durable, shared</b> history — every version either of you has actually pushed live —
+        see the <a href="https://github.com/coachtu411/adroit-wright-hometheater/commits/main/itemizer.html" target="_blank" rel="noopener">GitHub commit history</a> for this page.
+      </div>
+      <div id="history-list"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-primary" id="btn-save-version">📌 Save a named checkpoint now</button>
+    </div>
+  </div>
 </div>
 
 <script type="application/json" id="baseline-data">
@@ -360,7 +458,120 @@
     }catch(e){}
     return freshState();
   }
-  function persist(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){} }
+  function persist(){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+    markSaved();
+    scheduleAutoSnapshot();
+  }
+
+  // ── Version history (browser-local: auto-snapshots + on-demand named checkpoints) ──────────
+  var HISTORY_KEY = "adroit-itemizer:ADR-2026-WRIGHT:history:v1";
+  var MAX_HISTORY = 50;
+  var autoSnapTimer = null;
+
+  function loadHistory(){
+    try{
+      var raw = localStorage.getItem(HISTORY_KEY);
+      var h = raw ? JSON.parse(raw) : [];
+      return Array.isArray(h) ? h : [];
+    }catch(e){ return []; }
+  }
+  function saveHistory(h){
+    try{
+      if(h.length > MAX_HISTORY) h = h.slice(h.length - MAX_HISTORY);
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(h));
+    }catch(e){}
+  }
+  function snapshotHistory(label, kind){
+    var h = loadHistory();
+    h.push({ ts: new Date().toISOString(), label: label || "", kind: kind || "auto", state: deep(state) });
+    saveHistory(h);
+  }
+  function scheduleAutoSnapshot(){
+    if(autoSnapTimer) clearTimeout(autoSnapTimer);
+    autoSnapTimer = setTimeout(function(){ snapshotHistory("", "auto"); }, 4000);
+  }
+  function fmtHistTime(iso){
+    try{
+      var d = new Date(iso);
+      return d.toLocaleString("en-US", {month:"short", day:"numeric", hour:"numeric", minute:"2-digit"});
+    }catch(e){ return iso; }
+  }
+  function renderHistoryPanel(){
+    var listEl = document.getElementById("history-list");
+    var h = loadHistory().slice().reverse(); // newest first
+    if(!h.length){
+      listEl.innerHTML = '<div class="hist-empty">No saved versions yet — one is auto-captured a few seconds after your first edit.</div>';
+      return;
+    }
+    listEl.innerHTML = "";
+    h.forEach(function(snap, i){
+      var row = document.createElement("div");
+      row.className = "hist-row" + (i === 0 ? " current" : "");
+      var meta = document.createElement("div");
+      var m1 = document.createElement("div"); m1.className = "hist-meta";
+      m1.textContent = (snap.label ? snap.label : (snap.kind === "revert" ? "Reverted" : "Auto-save")) + (i===0 ? " (most recent)" : "");
+      var m2 = document.createElement("div"); m2.className = "hist-sub";
+      var snapTotal = computeSubtotalForState(snap.state);
+      m2.textContent = fmtHistTime(snap.ts) + " · raw subtotal " + money(snapTotal);
+      meta.appendChild(m1); meta.appendChild(m2);
+      var actions = document.createElement("div"); actions.className = "hist-actions";
+      var revertBtn = document.createElement("button");
+      revertBtn.className = "btn-ghost"; revertBtn.textContent = "Revert to this";
+      revertBtn.addEventListener("click", function(){
+        if(confirm("Revert the itemizer to this saved version (" + fmtHistTime(snap.ts) + ")? Your current state will itself be saved to history first, so this is undoable.")){
+          revertToSnapshot(snap);
+        }
+      });
+      actions.appendChild(revertBtn);
+      row.appendChild(meta); row.appendChild(actions);
+      listEl.appendChild(row);
+    });
+  }
+  function computeSubtotalForState(s){
+    var sub = 0;
+    (s.items || []).forEach(function(it){ if(it.active !== false) sub += lineTotal(it); });
+    return sub;
+  }
+  function revertToSnapshot(snap){
+    snapshotHistory("Before revert to " + fmtHistTime(snap.ts), "checkpoint");
+    state = deep(snap.state);
+    persist(); render();
+    snapshotHistory("Reverted to " + fmtHistTime(snap.ts), "revert");
+    renderHistoryPanel();
+    closeHistoryPanel();
+  }
+  function openHistoryPanel(){
+    renderHistoryPanel();
+    document.getElementById("history-overlay").classList.add("open");
+  }
+  function closeHistoryPanel(){
+    document.getElementById("history-overlay").classList.remove("open");
+  }
+  var savedTextEl, savedTimer;
+  function markSaved(){
+    if(!savedTextEl) savedTextEl = document.getElementById("saved-text");
+    if(!savedTextEl) return;
+    savedTextEl.textContent = "Saved just now";
+    if(savedTimer) clearTimeout(savedTimer);
+    savedTimer = setTimeout(function(){ if(savedTextEl) savedTextEl.textContent = "Saved"; }, 3000);
+  }
+
+  // ── Simple deterministic fingerprint of the current state (for the client-PDF version stamp) ─
+  function hashState(obj){
+    var str = JSON.stringify(obj);
+    var h = 5381;
+    for(var i=0; i<str.length; i++){ h = ((h << 5) + h + str.charCodeAt(i)) | 0; }
+    var hex = (h >>> 0).toString(16).toUpperCase();
+    while(hex.length < 8) hex = "0" + hex;
+    return hex;
+  }
+  function versionStamp(){
+    var d = new Date();
+    var pad = function(n){ return (n<10?"0":"")+n; };
+    var ts = d.getFullYear()+""+pad(d.getMonth()+1)+pad(d.getDate())+"-"+pad(d.getHours())+pad(d.getMinutes())+pad(d.getSeconds());
+    return "WRIGHT-" + ts + "-" + hashState(state);
+  }
 
   var state = loadState();
   var nextId = 1;
@@ -604,6 +815,127 @@
     }
   });
   document.getElementById("btn-print").addEventListener("click", function(){ window.print(); });
+  document.getElementById("btn-history").addEventListener("click", openHistoryPanel);
+  document.getElementById("history-close").addEventListener("click", closeHistoryPanel);
+  document.getElementById("history-overlay").addEventListener("click", function(e){
+    if(e.target === this) closeHistoryPanel();
+  });
+  document.getElementById("btn-save-version").addEventListener("click", function(){
+    var label = prompt("Label for this checkpoint (optional) — e.g. \"Sent scope-only estimate to Jordan\":", "");
+    if(label === null) return; // cancelled
+    snapshotHistory(label, "checkpoint");
+    renderHistoryPanel();
+  });
+  document.getElementById("btn-client-pdf").addEventListener("click", openClientPdf);
+
+  // ── Client-facing PDF: side-by-side option comparison, computed live from current qty/rate ──
+  function computeOptionTotals(){
+    var commonCats = ["A - Projection Screen (locked scope)","C - Sonos Integration & Unified Control","D - Mobilization & Site Protection"];
+    var common = 0, opt1 = 0, opt2 = 0;
+    var commonByCat = {}, opt1Items = 0, opt2Items = 0;
+    state.items.forEach(function(it){
+      if(it.active === false) return;
+      var cat = it.category || "";
+      var lt = lineTotal(it);
+      if(commonCats.indexOf(cat) !== -1){ common += lt; commonByCat[cat] = (commonByCat[cat]||0) + lt; }
+      else if(cat.indexOf("Option 1") !== -1){ opt1 += lt; opt1Items += lt; }
+      else if(cat.indexOf("Option 2") !== -1){ opt2 += lt; opt2Items += lt; }
+    });
+    var mgnPct = num(state.margin_pct);
+    var raw1 = common + opt1Items, raw2 = common + opt2Items;
+    var mgn1 = raw1 * mgnPct / 100, mgn2 = raw2 * mgnPct / 100;
+    return {
+      screen: commonByCat["A - Projection Screen (locked scope)"] || 0,
+      sonos: commonByCat["C - Sonos Integration & Unified Control"] || 0,
+      mobilization: commonByCat["D - Mobilization & Site Protection"] || 0,
+      opt1Projector: opt1Items, opt2Projector: opt2Items,
+      mgnPct: mgnPct, mgn1: mgn1, mgn2: mgn2,
+      total1: raw1 + mgn1, total2: raw2 + mgn2,
+      depositPct: num(state.deposit_pct)
+    };
+  }
+  function esc(s){ var d=document.createElement("div"); d.textContent = s==null?"":String(s); return d.innerHTML; }
+  function renderClientPdf(){
+    var t = computeOptionTotals();
+    var dep1 = t.total1 * t.depositPct/100, dep2 = t.total2 * t.depositPct/100;
+    var stamp = versionStamp();
+    var today = new Date().toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"});
+    var html = ''
+      + '<div class="cpv-wrap">'
+      + '  <div class="cpv-back"><button id="cpv-back-btn">← Back to itemizer</button> '
+      + '    <button id="cpv-print-btn" class="btn-amber" style="margin-left:8px;">🖨 Print / Save as PDF</button></div>'
+      + '  <div class="cpv-head">'
+      + '    <div class="cpv-brand">Adroit Communications</div>'
+      + '    <h1>Home Theater Design &amp; Integration — Estimate</h1>'
+      + '    <div class="cpv-tag">Technology Design · Audio/Visual · Structured Cabling</div>'
+      + '  </div>'
+      + '  <div class="cpv-amberline"></div>'
+      + '  <div class="cpv-body">'
+      + '    <div class="cpv-prepared"><b>Prepared exclusively for</b> Mr. Oliver Wright &amp; Ms. Allison Everett'
+      + '      &nbsp;·&nbsp; <b>Residence:</b> Georgetown, Washington DC &nbsp;·&nbsp; <b>Date:</b> ' + esc(today) + '</div>'
+      + '    <div class="cpv-intro">Thank you for the opportunity to design and deliver your home theater experience. '
+      + '      Every element below reflects our engineering review of your space and the preferences you shared with us '
+      + '      on-site — a fully integrated system, finished to the same precision and clean architectural lines as the '
+      + '      rest of your home.</div>'
+      + '    <div class="cpv-scope">'
+      + '      <h2>The Experience We\'re Designing</h2>'
+      + '      <ul>'
+      + '        <li>A premium ceiling-recessed motorized projection screen, sized to your room and bright enough to '
+      + '            perform beautifully in natural light — no blackout curtains required.</li>'
+      + '        <li>A 4K laser projector integrated with your existing Sonos system (Arc Ultra, Sub 4, Era 300) through '
+      + '            a single, simple control experience — no separate remotes, no visible wiring.</li>'
+      + '        <li>Every cable run and wall plate planned to disappear, matching the flush, no-baseboard lines '
+      + '            throughout your home.</li>'
+      + '        <li>Full protective staging of your space for the duration of on-site work.</li>'
+      + '      </ul>'
+      + '    </div>'
+      + '    <div class="cpv-pricing">'
+      + '      <h2>Investment — Two Design Paths</h2>'
+      + '      <div class="cpv-options">'
+      + '        <div class="cpv-opt"><div class="cpv-opt-head">Option 1 — Ceiling-Mounted Projector</div>'
+      + '          <table>'
+      + '            <tr><td>Projection Screen</td><td style="text-align:right;">' + money(t.screen) + '</td></tr>'
+      + '            <tr><td>Projector &amp; Mounting</td><td style="text-align:right;">' + money(t.opt1Projector) + '</td></tr>'
+      + '            <tr><td>Sonos Integration &amp; AV Cabinet</td><td style="text-align:right;">' + money(t.sonos) + '</td></tr>'
+      + '            <tr><td>Mobilization &amp; Site Protection</td><td style="text-align:right;">' + money(t.mobilization) + '</td></tr>'
+      + '            <tr><td>System Assurance &amp; Warranty Package</td><td style="text-align:right;">' + money(t.mgn1) + '</td></tr>'
+      + '            <tr class="cpv-total"><td>Total</td><td style="text-align:right;">' + money(t.total1) + '</td></tr>'
+      + '          </table></div>'
+      + '        <div class="cpv-opt"><div class="cpv-opt-head">Option 2 — Fully Recessed Lift</div>'
+      + '          <table>'
+      + '            <tr><td>Projection Screen</td><td style="text-align:right;">' + money(t.screen) + '</td></tr>'
+      + '            <tr><td>Projector &amp; Mounting</td><td style="text-align:right;">' + money(t.opt2Projector) + '</td></tr>'
+      + '            <tr><td>Sonos Integration &amp; AV Cabinet</td><td style="text-align:right;">' + money(t.sonos) + '</td></tr>'
+      + '            <tr><td>Mobilization &amp; Site Protection</td><td style="text-align:right;">' + money(t.mobilization) + '</td></tr>'
+      + '            <tr><td>System Assurance &amp; Warranty Package</td><td style="text-align:right;">' + money(t.mgn2) + '</td></tr>'
+      + '            <tr class="cpv-total"><td>Total</td><td style="text-align:right;">' + money(t.total2) + '</td></tr>'
+      + '          </table></div>'
+      + '      </div>'
+      + '    </div>'
+      + '    <div class="cpv-terms"><b>Payment terms:</b> ' + t.depositPct + '% deposit to commence (' + money(dep1) + ' under Option 1, '
+      + money(dep2) + ' under Option 2), balance due on completion. Equipment costs reflect our current sourcing basis and are '
+      + 'subject to confirmation prior to order.</div>'
+      + '    <div class="cpv-sig">'
+      + '      Accepted by — Oliver Wright: <span class="sig-line"></span> Date: <span class="sig-line" style="width:140px;"></span><br><br>'
+      + '      Option selected: &nbsp;☐ Option 1 (Ceiling-Mount) &nbsp;&nbsp; ☐ Option 2 (Recessed Lift)'
+      + '    </div>'
+      + '  </div>'
+      + '  <div class="cpv-foot">Adroit Communications LLC · support@adroit7.net · 2624 Monroe Street NE, Washington, DC 20018'
+      + '    <div class="cpv-stamp">Generated from the Wright project working estimate — version ' + esc(stamp) + '</div>'
+      + '  </div>'
+      + '</div>';
+    document.getElementById("client-pdf-view").innerHTML = html;
+    document.getElementById("cpv-back-btn").addEventListener("click", closeClientPdf);
+    document.getElementById("cpv-print-btn").addEventListener("click", function(){ window.print(); });
+  }
+  function openClientPdf(){
+    renderClientPdf();
+    document.body.classList.add("client-view");
+    window.scrollTo(0,0);
+  }
+  function closeClientPdf(){
+    document.body.classList.remove("client-view");
+  }
   document.getElementById("btn-export").addEventListener("click", function(){
     var subtotal = 0;
     var items = state.items.map(function(it){
@@ -653,6 +985,7 @@
   CAT_ORDER.forEach(function(c){ var o=document.createElement("option"); o.value=c; dl.appendChild(o); });
   document.body.appendChild(dl);
 
+  if(!loadHistory().length){ snapshotHistory("Page loaded — starting point", "checkpoint"); }
   render();
 })();
 </script>
