@@ -11,6 +11,8 @@
     --teal:#0E7C7B; --teal-dark:#0A5E5D; --teal-wash:#E6F2F1;
     --navy:#1F2D4D; --navy-wash:#EAEEF5;
     --amber:#C77F1A; --amber-wash:#FBF1DF;
+    --red:#B23A3A; --red-wash:#FBEAEA;
+    --green:#3F8F5F; --green-wash:#E9F5EE;
     --ink:#23282E; --grey:#6B7480; --line:#DCE1E6; --bg:#F4F6F8;
   }
   *{box-sizing:border-box}
@@ -71,6 +73,26 @@
   .open-items{list-style:none;margin:0;padding:0;}
   .open-items li{background:#fff;border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:8px;
     padding:11px 14px;margin-bottom:8px;font-size:14px;line-height:1.5;}
+  .client-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;}
+  .client-box{border-radius:12px;padding:15px 16px;border:1px solid var(--line);box-shadow:0 1px 2px rgba(31,45,77,.05);}
+  .client-box h4{margin:0 0 4px;font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;
+    display:flex;align-items:center;gap:7px;}
+  .client-box .cb-sub{font-size:11.5px;font-weight:500;color:var(--grey);margin:0 0 10px;text-transform:none;letter-spacing:0;}
+  .client-box ul{margin:0;padding-left:18px;}
+  .client-box li{margin:7px 0;font-size:13.5px;line-height:1.5;}
+  .client-box.spec{background:var(--navy-wash);border-color:#c8d2e6;}
+  .client-box.spec h4{color:var(--navy);}
+  .client-box.req{background:var(--teal-wash);border-color:#bfe0df;}
+  .client-box.req h4{color:var(--teal-dark);}
+  .client-box.concession{background:var(--green-wash);border-color:#c3e3d1;}
+  .client-box.concession h4{color:var(--green);}
+  .client-box.hardline{background:var(--red-wash);border-color:#e6bcbc;}
+  .client-box.hardline h4{color:var(--red);}
+  .client-box .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto;}
+  .client-box.spec .dot{background:var(--navy);}
+  .client-box.req .dot{background:var(--teal);}
+  .client-box.concession .dot{background:var(--green);}
+  .client-box.hardline .dot{background:var(--red);}
   footer{text-align:center;color:var(--grey);font-size:11.5px;padding:22px 16px 8px;line-height:1.6;}
   footer a{color:var(--teal-dark);}
   footer code, .updated code, .callout code{word-break:break-all;}
@@ -152,6 +174,53 @@
         <li><b>Sonos integration:</b> existing Arc Ultra soundbar, Sub 4, and Era 300 surround pair, unified into one control experience via a single eARC HDMI run. No in-wall speakers (client rejected).</li>
         <li><b>Design constraints:</b> preserve the art-wall accent light, precision flush finish matching the home's no-baseboard lines, full construction dust protection during install.</li>
       </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Client Specifications, Requirements &amp; Concessions</h2>
+    <div class="client-grid">
+      <div class="client-box spec">
+        <h4><span class="dot"></span>Specifications</h4>
+        <div class="cb-sub">Concrete, measurable facts about the space and gear</div>
+        <ul>
+          <li>Screen size: 110–120" (135" measured too big for the room)</li>
+          <li>Existing Sonos: Arc Ultra soundbar, Sub 4 (white), Era 300 surround pair</li>
+          <li>Existing projector ("Cosmos" brand, portable) is being replaced</li>
+          <li>Ceiling joist depth ~9¼" — the constraint driving the lift-vs-mount decision</li>
+          <li>Entertainment cabinet / chimney feature already built into the room</li>
+        </ul>
+      </div>
+      <div class="client-box req">
+        <h4><span class="dot"></span>Requirements</h4>
+        <div class="cb-sub">Explicit asks — expected, but some flex on exact method</div>
+        <ul>
+          <li>One integrated system — single simple control, no separate remotes</li>
+          <li>Reliable streaming built in with the Sonos audio, not patched together</li>
+          <li>Full construction dust protection — doorways, windows, walls, furniture draped, "no dust left"</li>
+          <li>Timeline and equipment lead times communicated up front so expectations are set early</li>
+        </ul>
+      </div>
+      <div class="client-box concession">
+        <h4><span class="dot"></span>Concessions <small style="font-weight:600;">(client gave ground)</small></h4>
+        <div class="cb-sub">Where Oliver moved off his original ask once he heard the tradeoffs</div>
+        <ul>
+          <li>Will accept a ceiling-mounted projector instead of insisting on a fully recessed lift (2026-07-15), given the tight ceiling tolerance</li>
+          <li>Open to a projector without a smart streaming platform if the price/performance tradeoff is explained</li>
+          <li>Prioritizing the screen over the projector decision, so work can start while the projector question is settled</li>
+        </ul>
+      </div>
+      <div class="client-box hardline">
+        <h4><span class="dot"></span>Hardline Requirements <small style="font-weight:600;">(non-negotiable)</small></h4>
+        <div class="cb-sub">Explicitly rejected alternatives — do not propose around these</div>
+        <ul>
+          <li>No in-wall speakers — rejected outright over the effect on the room</li>
+          <li>No blackout curtains — projector must perform in ambient daylight</li>
+          <li>No drastic structural/framing changes to the home</li>
+          <li>Preserve the art-wall accent light — design around it, not through it</li>
+          <li>Precision flush finish matching the home's no-baseboard lines throughout — "super clean, nothing bulky"</li>
+        </ul>
+      </div>
     </div>
   </section>
 
