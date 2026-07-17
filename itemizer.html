@@ -61,7 +61,7 @@
   .item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;
     display:grid;gap:10px 12px;box-shadow:0 1px 2px rgba(31,45,77,.05);
     grid-template-columns:1fr 1fr 1fr;
-    grid-template-areas:"cat cat cat" "desc desc desc" "qty unit rate" "total total active";}
+    grid-template-areas:"cat cat cat" "desc desc desc" "link link linkbtn" "qty unit rate" "total total active" "notes notes notes";}
   .fld{display:flex;flex-direction:column;gap:3px;min-width:0;}
   .fld label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--grey);}
   .fld input, .fld textarea{font-family:inherit;font-size:16px;color:var(--ink);
@@ -73,6 +73,14 @@
   .a-total .val{font-size:18px;font-weight:800;color:var(--navy);padding:8px 0;}
   .a-total .val.neg{color:var(--red);}
   .a-active{align-self:end;}
+  .a-link{grid-area:link;} .a-linkbtn{grid-area:linkbtn;align-self:end;} .a-notes{grid-area:notes;}
+  .link-open{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;width:100%;
+    background:var(--teal-wash);color:var(--teal-dark);border-radius:8px;font-weight:700;font-size:13px;
+    text-decoration:none;border:1px solid transparent;}
+  .link-open:hover{background:var(--teal);color:#fff;}
+  .link-open.disabled{background:#EDEEF0;color:#a3a9b0;pointer-events:none;}
+  .fld.notes-fld textarea{min-height:52px;background:#FFFDF5;border-color:#edd3a3;}
+  .fld.notes-fld label{color:#8a5c0f;}
   .toggle-wrap{display:flex;align-items:center;gap:8px;min-height:44px;background:var(--teal-wash);
     border-radius:8px;padding:0 10px;justify-content:center;}
   .toggle-wrap input{width:20px;height:20px;min-height:0;padding:0;accent-color:var(--teal);}
@@ -118,12 +126,14 @@
   footer{text-align:center;color:var(--grey);font-size:12px;padding:18px;}
   @media (min-width:900px){
     .item{grid-template-columns:200px minmax(220px,1fr) 70px 90px 110px 118px 96px;
-      grid-template-areas:"cat desc qty unit rate total active";align-items:end;}
+      grid-template-areas:"cat desc qty unit rate total active" "link link link linkbtn notes notes notes";
+      align-items:end;}
     .item .fld textarea{min-height:44px;}
+    .item .notes-fld textarea{min-height:44px;}
   }
   @media print{
     body{background:#fff;padding:0;}
-    .toolbar,.a-active,.note,.backlink{display:none !important;}
+    .toolbar,.a-active,.note,.backlink,.a-link,.a-linkbtn,.a-notes{display:none !important;}
     .banner{position:static;}
     .toolbar{position:static;}
     .item{break-inside:avoid;border:1px solid #bbb;box-shadow:none;
@@ -163,12 +173,16 @@
     <button class="btn-danger-ghost" id="btn-reset">↺ Reset to original</button>
   </div>
   <div class="note"><b>Working tool:</b> your edits are saved <b>only in this browser</b> (localStorage) — they are
-    not shared or stored on a server. Use <b>Export JSON</b> to save or share a version, and <b>Reset to original</b>
+    not shared or stored on a server, so Tunde's edits and Claudio's edits on their own devices won't sync to each
+    other automatically. Use <b>Export JSON</b> to save or share a version, and <b>Reset to original</b>
     to restore the baseline itemization. <b>Line total</b> is computed (qty × unit rate) and not directly editable.
     Toggling a row's <b>Active</b> switch off removes it from every total/subtotal below (strikethrough, grayed) without
     deleting it — flip it back on any time. <b>System Assurance &amp; Warranty Package</b> below is computed automatically
     (editable %, default 5%) from whichever rows are active — it is not a line item, so it recalculates correctly no
-    matter which projector option you have toggled on.</div>
+    matter which projector option you have toggled on. Each row now has a <b>Product URL</b> (click <b>↗ Open</b> to
+    jump straight to specs/pricing) and a <b>Notes</b> field for sourcing status, vendor calls, or concerns — for a
+    note to become <b>durable</b> (visible to both of you, survives a browser reset), export or say so and it'll get
+    baked into the page and pushed to GitHub; anything only typed here is provisional until then.</div>
 
   <div class="callout">
     <b>Section B is two mutually exclusive projector options</b> — toggle ON only the option you're quoting and OFF
@@ -284,26 +298,26 @@
 <script type="application/json" id="baseline-data">
 {"meta":{"project_id":"ADR-2026-WRIGHT","title":"Oliver Wright Residence — Home Theater Design & Integration — Granular Internal Itemization","usage":"INTERNAL — working estimate, not client-facing. Contains internal margin; NEVER expose to client.","client":"Oliver Wright + Allison Everett","poc":"Jordan Ghrist (Link Construction)","address":"Georgetown, Washington DC — exact street TBD","date":"2026-07-17"},
 "line_items":[
-{"id":"A1","category":"A - Projection Screen (locked scope)","description":"Draper Access V-class ceiling-recessed motorized screen, ~110-120\" HDTV [16:9], matte white — PLACEHOLDER: Draper list ~$5,051 (model 140110, 119\"); replace with real ADI dealer cost","qty":1,"unit":"unit","unit_rate":5051.00,"active":true},
-{"id":"A2","category":"A - Projection Screen (locked scope)","description":"Screen install — recess coordination with Link Construction, mount, wire to low-voltage control, commission","qty":1,"unit":"project","unit_rate":650.00,"active":true},
-{"id":"A3","category":"A - Projection Screen (locked scope)","description":"Low-voltage control integration — wall control / app tie-in","qty":1,"unit":"project","unit_rate":150.00,"active":true},
+{"id":"A1","category":"A - Projection Screen (locked scope)","description":"Draper Access V-class ceiling-recessed motorized screen, ~110-120\" HDTV [16:9], matte white — PLACEHOLDER: Draper list ~$5,051 (model 140110, 119\"); replace with real ADI dealer cost","url":"https://www.adiglobaldistribution.us/Product/DF-140110","qty":1,"unit":"unit","unit_rate":5051.00,"active":true,"notes":"ADI page = spec sheet, not dealer login pricing. Log into ADI for actual cost. Confirm exact ceiling opening size before ordering."},
+{"id":"A2","category":"A - Projection Screen (locked scope)","description":"Screen install — recess coordination with Link Construction, mount, wire to low-voltage control, commission","url":"","qty":1,"unit":"project","unit_rate":650.00,"active":true,"notes":""},
+{"id":"A3","category":"A - Projection Screen (locked scope)","description":"Low-voltage control integration — wall control / app tie-in","url":"","qty":1,"unit":"project","unit_rate":150.00,"active":true,"notes":""},
 
-{"id":"B1-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"4K laser short-throw projector, ambient-light-capable — PLACEHOLDER model/brand TBD (~$3,499-class unit)","qty":1,"unit":"unit","unit_rate":3499.00,"active":true},
-{"id":"B2-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"White ceiling mount bracket, paint-matched finish per client's 'super clean, nothing bulky' requirement","qty":1,"unit":"unit","unit_rate":175.00,"active":true},
-{"id":"B3-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"Mount, align to screen, calibrate — no structural/framing changes required","qty":1,"unit":"project","unit_rate":450.00,"active":true},
-{"id":"B4-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"HDMI/Cat6 conduit run — AV closet to ceiling projector location","qty":1,"unit":"project","unit_rate":325.00,"active":true},
+{"id":"B1-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"4K laser short-throw projector, ambient-light-capable — PLACEHOLDER model/brand TBD (~$3,499-class unit)","url":"","qty":1,"unit":"unit","unit_rate":3499.00,"active":true,"notes":"No model selected yet. Adroit doesn't stock projectors (confirmed 7/14 dealer call) — need AV supplier rec for a true SHORT-THROW (not ultra-short-throw/UST console unit) that can ceiling-mount and stay bright enough for Oliver's no-blackout-curtain requirement."},
+{"id":"B2-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"White ceiling mount bracket, paint-matched finish per client's 'super clean, nothing bulky' requirement","url":"","qty":1,"unit":"unit","unit_rate":175.00,"active":true,"notes":""},
+{"id":"B3-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"Mount, align to screen, calibrate — no structural/framing changes required","url":"","qty":1,"unit":"project","unit_rate":450.00,"active":true,"notes":""},
+{"id":"B4-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"HDMI/Cat6 conduit run — AV closet to ceiling projector location","url":"","qty":1,"unit":"project","unit_rate":325.00,"active":true,"notes":""},
 
-{"id":"B1-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"4K laser short-throw projector — same unit as Option 1","qty":1,"unit":"unit","unit_rate":3499.00,"active":false},
-{"id":"B2-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"Draper AeroLift 35-class ceiling-recessed projector lift (35 lb cap., ~24.5\" max extension) — PLACEHOLDER retail $2,419-$4,138 range, used midpoint; replace with real ADI dealer cost. Lowest-profile lift on the market, near-zero tolerance against existing ceiling framing","qty":1,"unit":"unit","unit_rate":3500.00,"active":false},
-{"id":"B3-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"Framing coordination with Link Construction (tight tolerance), lift mount, precision alignment, commissioning","qty":1,"unit":"project","unit_rate":850.00,"active":false},
-{"id":"B4-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"HDMI/Cat6 conduit run — AV closet to recessed lift location","qty":1,"unit":"project","unit_rate":325.00,"active":false},
-{"id":"B5-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"OPTIONAL mitigation (floated internally 7/14, not yet costed/discussed with Jordan or client): reframe/drop a section of ceiling to gain lift depth tolerance — set qty to 1 and price if pursued","qty":0,"unit":"project","unit_rate":0.00,"active":false},
+{"id":"B1-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"4K laser short-throw projector — same unit as Option 1","url":"","qty":1,"unit":"unit","unit_rate":3499.00,"active":false,"notes":"Same model-TBD as Option 1 — see B1-OPT1 notes."},
+{"id":"B2-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"Draper AeroLift 35-class ceiling-recessed projector lift (35 lb cap., ~24.5\" max extension) — PLACEHOLDER retail $2,419-$4,138 range, used midpoint; replace with real ADI dealer cost. Lowest-profile lift on the market, near-zero tolerance against existing ceiling framing","url":"https://www.adiglobaldistribution.us/Product/DF-300319","qty":1,"unit":"unit","unit_rate":3500.00,"active":false,"notes":"Near-zero tolerance vs the ~9\u00bc\" ceiling joist depth per engineering review. See 7/14 team call for the 'drop the ceiling / build a pocket' fallback idea (not costed)."},
+{"id":"B3-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"Framing coordination with Link Construction (tight tolerance), lift mount, precision alignment, commissioning","url":"","qty":1,"unit":"project","unit_rate":850.00,"active":false,"notes":""},
+{"id":"B4-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"HDMI/Cat6 conduit run — AV closet to recessed lift location","url":"","qty":1,"unit":"project","unit_rate":325.00,"active":false,"notes":""},
+{"id":"B5-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"OPTIONAL mitigation (floated internally 7/14, not yet costed/discussed with Jordan or client): reframe/drop a section of ceiling to gain lift depth tolerance — set qty to 1 and price if pursued","url":"","qty":0,"unit":"project","unit_rate":0.00,"active":false,"notes":""},
 
-{"id":"C1","category":"C - Sonos Integration & Unified Control","description":"Integrate existing Sonos (Arc Ultra soundbar, Sub 4, Era 300 surround pair) into single control experience via single eARC HDMI run to the Arc Ultra — Sub 4 and Era 300s are wireless, no separate remotes, no wall speakers (client rejected)","qty":1,"unit":"project","unit_rate":450.00,"active":true},
-{"id":"C2","category":"C - Sonos Integration & Unified Control","description":"AV closet/cabinet build-out — HDMI switching, equipment housing (credenza siting per site visit)","qty":1,"unit":"project","unit_rate":600.00,"active":true},
+{"id":"C1","category":"C - Sonos Integration & Unified Control","description":"Integrate existing Sonos (Arc Ultra soundbar, Sub 4, Era 300 surround pair) into single control experience via single eARC HDMI run to the Arc Ultra — Sub 4 and Era 300s are wireless, no separate remotes, no wall speakers (client rejected)","url":"https://www.sonos.com/en-us/shop/arc-ultra","qty":1,"unit":"project","unit_rate":450.00,"active":true,"notes":"Client-furnished, not purchased by Adroit — link is for spec reference (eARC/HDMI requirements) only."},
+{"id":"C2","category":"C - Sonos Integration & Unified Control","description":"AV closet/cabinet build-out — HDMI switching, equipment housing (credenza siting per site visit)","url":"","qty":1,"unit":"project","unit_rate":600.00,"active":true,"notes":""},
 
-{"id":"D1","category":"D - Mobilization & Site Protection","description":"Full construction dust protection — doorways, windows, walls, furniture draping (explicit client requirement)","qty":1,"unit":"project","unit_rate":275.00,"active":true},
-{"id":"D2","category":"D - Mobilization & Site Protection","description":"Mobilization & site setup","qty":1,"unit":"project","unit_rate":200.00,"active":true}
+{"id":"D1","category":"D - Mobilization & Site Protection","description":"Full construction dust protection — doorways, windows, walls, furniture draping (explicit client requirement)","url":"","qty":1,"unit":"project","unit_rate":275.00,"active":true,"notes":""},
+{"id":"D2","category":"D - Mobilization & Site Protection","description":"Mobilization & site setup","url":"","qty":1,"unit":"project","unit_rate":200.00,"active":true,"notes":""}
 ],
 "summary":{"margin_pct":5,"deposit_pct":30,"distribution":{"tunde_pct":35,"claudio_pct":35,"business_pct":30}}}
 </script>
@@ -404,6 +418,28 @@
     desc.addEventListener("input", function(){ it.description = desc.value; persist(); });
     card.appendChild(makeField("","desc","Description",desc));
 
+    var linkInp = inp("url", it.url);
+    linkInp.placeholder = "https://…product / specs & pricing page";
+    var linkField = makeField("","link","Product URL",linkInp);
+    card.appendChild(linkField);
+
+    var linkBtn = document.createElement("a");
+    linkBtn.className = "link-open" + (it.url ? "" : " disabled");
+    linkBtn.textContent = "↗ Open";
+    linkBtn.target = "_blank"; linkBtn.rel = "noopener";
+    linkBtn.href = it.url || "#";
+    var linkBtnWrap = document.createElement("div");
+    linkBtnWrap.className = "fld a-linkbtn";
+    var lbl2 = document.createElement("label"); lbl2.textContent = " ";
+    linkBtnWrap.appendChild(lbl2); linkBtnWrap.appendChild(linkBtn);
+    card.appendChild(linkBtnWrap);
+    linkInp.addEventListener("input", function(){
+      it.url = linkInp.value.trim();
+      linkBtn.href = it.url || "#";
+      linkBtn.classList.toggle("disabled", !it.url);
+      persist();
+    });
+
     var qty = inp("number", it.qty);
     qty.addEventListener("input", function(){ it.qty = qty.value; refreshRow(card, it); recompute(); persist(); });
     card.appendChild(makeField("","qty","Qty",qty));
@@ -444,6 +480,13 @@
     actWrap.appendChild(al); actWrap.appendChild(toggleWrap);
     card.appendChild(actWrap);
 
+    var notes = document.createElement("textarea");
+    notes.placeholder = "Notes from Tunde / Claudio — sourcing status, vendor calls, concerns…";
+    notes.value = it.notes || "";
+    notes.addEventListener("input", function(){ it.notes = notes.value; persist(); });
+    var notesField = makeField("notes-fld","notes","Notes (Tunde / Claudio)",notes);
+    card.appendChild(notesField);
+
     refreshRow(card, it);
     return card;
   }
@@ -471,7 +514,7 @@
       addBtn.type = "button"; addBtn.className = "btn-ghost"; addBtn.style.marginBottom = "8px";
       addBtn.textContent = "+ Add item to " + cat;
       addBtn.addEventListener("click", function(){
-        state.items.push({ id:"NEW-"+(nextId++), category:cat, description:"", qty:1, unit:"", unit_rate:0, active:true });
+        state.items.push({ id:"NEW-"+(nextId++), category:cat, description:"", url:"", qty:1, unit:"", unit_rate:0, active:true, notes:"" });
         persist(); render();
       });
       state.items.forEach(function(it, i){
@@ -551,7 +594,7 @@
     state.business_pct = num(this.value); recompute(); persist();
   });
   document.getElementById("btn-add").addEventListener("click", function(){
-    state.items.push({ id:"NEW-"+(nextId++), category:"A - Projection Screen (locked scope)", description:"", qty:1, unit:"", unit_rate:0, active:true });
+    state.items.push({ id:"NEW-"+(nextId++), category:"A - Projection Screen (locked scope)", description:"", url:"", qty:1, unit:"", unit_rate:0, active:true, notes:"" });
     persist(); render();
     window.scrollTo(0, document.body.scrollHeight);
   });
@@ -567,9 +610,9 @@
       var active = (it.active !== false);
       var lt = active ? lineTotal(it) : 0;
       if(active) subtotal += lt;
-      return { id:it.id, category:it.category, description:it.description,
+      return { id:it.id, category:it.category, description:it.description, url:it.url||"",
                qty:num(it.qty), unit:it.unit, unit_rate:num(it.unit_rate),
-               active: active,
+               active: active, notes:it.notes||"",
                line_total: Math.round(lt*100)/100 };
     });
     var mgnPct = num(state.margin_pct);
