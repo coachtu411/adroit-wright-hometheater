@@ -14,55 +14,67 @@
     --ink:#23282E; --grey:#6B7480; --line:#DCE1E6; --bg:#F4F6F8;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
+  html{-webkit-text-size-adjust:100%;overflow-x:hidden;}
+  body{margin:0;background:var(--bg);color:var(--ink);overflow-x:hidden;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     line-height:1.5;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:920px;margin:0 auto;padding:0 18px 60px;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 16px 60px;}
   header.masthead{background:linear-gradient(135deg,var(--navy) 0%,#16223b 100%);color:#fff;
-    padding:28px 18px 24px;margin-bottom:0;}
+    padding:22px 16px 20px;margin-bottom:0;}
   header.masthead .inner{max-width:920px;margin:0 auto;}
-  .brand{font-weight:800;letter-spacing:3px;font-size:12.5px;color:#8fd3d2;text-transform:uppercase;}
-  header.masthead h1{margin:8px 0 6px;font-size:24px;line-height:1.25;font-weight:700;}
-  header.masthead .sub{color:#cdd6e6;font-size:14px;}
+  .brand{font-weight:800;letter-spacing:3px;font-size:11.5px;color:#8fd3d2;text-transform:uppercase;}
+  header.masthead h1{margin:8px 0 6px;font-size:21px;line-height:1.3;font-weight:700;}
+  header.masthead .sub{color:#cdd6e6;font-size:13px;}
   .amberline{height:4px;background:var(--amber);}
-  .updated{background:#fff;border-bottom:1px solid var(--line);padding:8px 18px;font-size:12px;color:var(--grey);text-align:center;}
-  .callout{margin:20px 0;background:var(--amber-wash);border:1px solid #edd3a3;border-left:4px solid var(--amber);
-    border-radius:10px;padding:14px 16px;font-size:13.5px;color:#5a4419;}
+  .updated{background:#fff;border-bottom:1px solid var(--line);padding:8px 16px;font-size:11.5px;color:var(--grey);text-align:center;}
+  .callout{margin:18px 0;background:var(--amber-wash);border:1px solid #edd3a3;border-left:4px solid var(--amber);
+    border-radius:10px;padding:13px 15px;font-size:13.5px;color:#5a4419;word-wrap:break-word;overflow-wrap:break-word;}
   .callout b{color:#8a5c0f;}
-  section{margin:28px 0;}
-  h2{font-size:12.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--teal-dark);
+  section{margin:26px 0;}
+  h2{font-size:12px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--teal-dark);
     border-bottom:2px solid var(--teal);padding-bottom:8px;margin:0 0 14px;}
   h3{font-size:15px;color:var(--navy);margin:0 0 6px;}
-  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 16px;margin-bottom:12px;
     box-shadow:0 1px 2px rgba(31,45,77,.05);}
-  .contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
-  .contact-card b{display:block;color:var(--navy);font-size:14px;margin-bottom:2px;}
-  .contact-card .role{color:var(--grey);font-size:12px;margin-bottom:6px;}
-  .contact-card a{color:var(--teal-dark);text-decoration:none;font-size:13px;display:block;}
+  .contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
+  .contact-card b{display:block;color:var(--navy);font-size:15px;margin-bottom:2px;word-wrap:break-word;}
+  .contact-card .role{color:var(--grey);font-size:12px;margin-bottom:8px;}
+  .contact-card a{color:var(--teal-dark);text-decoration:none;font-size:14px;display:block;
+    padding:6px 0;min-height:32px;word-break:break-word;}
   .contact-card a:hover{text-decoration:underline;}
-  .tag{display:inline-block;background:var(--navy-wash);color:var(--navy);font-size:10.5px;font-weight:700;
-    letter-spacing:.4px;text-transform:uppercase;border-radius:20px;padding:2px 9px;margin-left:6px;}
+  .tag{display:inline-block;background:var(--navy-wash);color:var(--navy);font-size:10px;font-weight:700;
+    letter-spacing:.4px;text-transform:uppercase;border-radius:20px;padding:3px 9px;margin-left:6px;
+    white-space:nowrap;vertical-align:middle;}
   .tag.gc{background:var(--amber-wash);color:#8a5c0f;}
   ul.scope{margin:0;padding-left:20px;}
-  ul.scope li{margin:6px 0;font-size:14px;}
-  table{width:100%;border-collapse:collapse;font-size:13.5px;}
-  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);}
-  th{background:var(--navy-wash);color:var(--navy);font-size:11px;text-transform:uppercase;letter-spacing:.5px;}
+  ul.scope li{margin:9px 0;font-size:14.5px;line-height:1.55;}
+  .table-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px;}
+  table{width:100%;min-width:520px;border-collapse:collapse;font-size:13.5px;}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap;}
+  th{background:var(--navy-wash);color:var(--navy);font-size:10.5px;text-transform:uppercase;letter-spacing:.4px;}
+  td:first-child,th:first-child{white-space:normal;min-width:150px;}
   tr.total td{font-weight:800;color:var(--navy);border-top:2px solid var(--teal);font-size:15px;}
-  .option-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;
-    border-radius:6px;padding:2px 8px;margin-left:6px;}
+  .option-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;
+    border-radius:6px;padding:2px 7px;margin-left:6px;white-space:normal;}
   .option-badge.pref{background:var(--teal-wash);color:var(--teal-dark);}
-  .timeline{border-left:2px solid var(--line);margin-left:6px;padding-left:20px;}
+  .scroll-hint{font-size:11px;color:var(--grey);margin:6px 2px 0;display:none;}
+  .timeline{border-left:2px solid var(--line);margin-left:8px;padding-left:18px;}
   .tl-item{position:relative;margin-bottom:16px;}
-  .tl-item::before{content:"";position:absolute;left:-25px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--teal);}
-  .tl-date{font-size:11.5px;font-weight:800;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.4px;}
-  .tl-body{font-size:13.5px;margin-top:2px;}
+  .tl-item::before{content:"";position:absolute;left:-23px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--teal);}
+  .tl-date{font-size:11px;font-weight:800;color:var(--teal-dark);text-transform:uppercase;letter-spacing:.4px;}
+  .tl-body{font-size:14px;margin-top:3px;line-height:1.55;}
   .open-items{list-style:none;margin:0;padding:0;}
   .open-items li{background:#fff;border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:8px;
-    padding:10px 14px;margin-bottom:8px;font-size:13.5px;}
-  footer{text-align:center;color:var(--grey);font-size:11.5px;padding:24px 18px 8px;}
+    padding:11px 14px;margin-bottom:8px;font-size:14px;line-height:1.5;}
+  footer{text-align:center;color:var(--grey);font-size:11.5px;padding:22px 16px 8px;line-height:1.6;}
   footer a{color:var(--teal-dark);}
-  @media (max-width:640px){ header.masthead h1{font-size:20px;} .item-grid{grid-template-columns:1fr;} }
+  footer code, .updated code, .callout code{word-break:break-all;}
+  a, button{-webkit-tap-highlight-color:rgba(14,124,123,.15);}
+  @media (max-width:640px){
+    header.masthead h1{font-size:19px;}
+    .card{padding:14px;}
+    .scroll-hint{display:block;}
+  }
 </style>
 </head>
 <body>
@@ -141,17 +153,20 @@
   <section>
     <h2>Current Estimate — ADR-EST-2026-WRIGHT (Draft)</h2>
     <div class="card">
-      <table>
-        <thead><tr><th>Item</th><th>Option 1 — Ceiling-Mount<span class="option-badge pref">Oliver's pref</span></th><th>Option 2 — Recessed Lift</th></tr></thead>
-        <tbody>
-          <tr><td>Projection Screen</td><td>$5,851.00</td><td>$5,851.00</td></tr>
-          <tr><td>Projector &amp; Mounting</td><td>$4,449.00</td><td>$8,174.00</td></tr>
-          <tr><td>Sonos Integration &amp; AV Cabinet</td><td>$1,050.00</td><td>$1,050.00</td></tr>
-          <tr><td>Mobilization &amp; Site Protection</td><td>$475.00</td><td>$475.00</td></tr>
-          <tr><td>System Assurance &amp; Warranty Package</td><td>$591.25</td><td>$777.50</td></tr>
-          <tr class="total"><td>TOTAL</td><td>$12,416.25</td><td>$16,327.50</td></tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Item</th><th>Option 1 — Ceiling-Mount<span class="option-badge pref">Oliver's pref</span></th><th>Option 2 — Recessed Lift</th></tr></thead>
+          <tbody>
+            <tr><td>Projection Screen</td><td>$5,851.00</td><td>$5,851.00</td></tr>
+            <tr><td>Projector &amp; Mounting</td><td>$4,449.00</td><td>$8,174.00</td></tr>
+            <tr><td>Sonos Integration &amp; AV Cabinet</td><td>$1,050.00</td><td>$1,050.00</td></tr>
+            <tr><td>Mobilization &amp; Site Protection</td><td>$475.00</td><td>$475.00</td></tr>
+            <tr><td>System Assurance &amp; Warranty Package</td><td>$591.25</td><td>$777.50</td></tr>
+            <tr class="total"><td>TOTAL</td><td>$12,416.25</td><td>$16,327.50</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="scroll-hint">← swipe to see both options →</div>
     </div>
     <div class="callout">
       <b>Pricing basis note:</b> equipment costs are current public retail list pricing (pulled 7/17) as a placeholder —
