@@ -119,6 +119,20 @@
   .rp-qual.forum{background:var(--purple-wash);color:var(--purple);}
   .rp-qual.unreliable{background:var(--red-wash);color:var(--red);}
 
+  /* Table of contents */
+  nav.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px 6px;margin:22px 0 30px;}
+  nav.toc .toc-label{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+    color:var(--grey);margin-bottom:8px;}
+  nav.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc;}
+  nav.toc li{counter-increment:toc;margin:0;}
+  nav.toc li+li{border-top:1px solid var(--line);}
+  nav.toc a{display:flex;align-items:center;gap:10px;padding:9px 2px;font-size:13.5px;font-weight:600;
+    color:var(--navy);text-decoration:none;}
+  nav.toc a:hover{color:var(--teal-dark);}
+  nav.toc a::before{content:counter(toc);flex:0 0 auto;font-size:11px;font-weight:800;color:var(--teal-dark);
+    background:var(--teal-wash);border-radius:50%;width:20px;height:20px;display:inline-flex;
+    align-items:center;justify-content:center;}
+
   /* Collapsible prompt section (reused pattern from index.html) */
   .sec-toggle{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;
     width:100%;min-height:48px;cursor:pointer;padding:6px 4px 14px;margin:0 0 14px;
@@ -160,23 +174,50 @@
 
 <div class="wrap">
 
-  <section class="rp-tldr">
-    <div class="rp-tldr-label">⚡ Bottom line</div>
-    <p><b>Both research passes agree:</b> an ultra-short-throw (UST) laser projector paired with a true
-      ambient-light-rejecting (ALR/CLR) screen is the right <i>category</i> of solution for this
-      daylight-lit room with no blackout curtains — validating the direction the existing $4,861.74 ADI
-      dealer quote (#16708070) was already headed. The <b>Optoma ZK420UST</b> projector in that quote
-      checks out well. But <b>the recessed screen in that same quote is likely a plain, non-ALR surface —
-      possibly the weak link</b> against the room's own ambient-light requirement.</p>
-    <p><b>Where they diverge:</b> the adversarially-verified pass says nothing researched is yet
-      <i>proven</i> to beat the incumbent quote — real trade pricing on alternatives is still the missing
-      piece. The single-pass agent went further and named a specific fix (swap to an ALR floor-rising
-      screen). Nothing here has been applied to the live pricing — see the recommendation section below
-      for both takes side by side.</p>
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">On This Page</div>
+    <ol>
+      <li><a href="#sec-tldr">Bottom Line</a></li>
+      <li><a href="#sec-passes">Two Independent Research Passes</a></li>
+      <li><a href="#sec-confirmed">Verified Pass — Confirmed Findings</a></li>
+      <li><a href="#sec-refuted">Verified Pass — Refuted (Do Not Cite)</a></li>
+      <li><a href="#sec-singlepass">Single-Pass — 5 Pairings Evaluated</a></li>
+      <li><a href="#sec-gaps">Gaps &amp; Open Questions</a></li>
+      <li><a href="#sec-reco">Recommended Next Step</a></li>
+      <li><a href="#sec-sources">Sources Consulted</a></li>
+      <li><a href="#sec-prompt">Original Research Prompt (full text)</a></li>
+    </ol>
+  </nav>
+
+  <section id="sec-tldr">
+    <button type="button" class="sec-toggle" data-target="body-tldr" aria-expanded="false">
+      <span class="chevron">▸</span><span class="sec-title">⚡ Bottom Line</span>
+      <span class="sec-hint"></span>
+    </button>
+    <div class="sec-body collapsed" id="body-tldr">
+    <div class="rp-tldr">
+      <div class="rp-tldr-label">⚡ Bottom line</div>
+      <p><b>Both research passes agree:</b> an ultra-short-throw (UST) laser projector paired with a true
+        ambient-light-rejecting (ALR/CLR) screen is the right <i>category</i> of solution for this
+        daylight-lit room with no blackout curtains — validating the direction the existing $4,861.74 ADI
+        dealer quote (#16708070) was already headed. The <b>Optoma ZK420UST</b> projector in that quote
+        checks out well. But <b>the recessed screen in that same quote is likely a plain, non-ALR surface —
+        possibly the weak link</b> against the room's own ambient-light requirement.</p>
+      <p><b>Where they diverge:</b> the adversarially-verified pass says nothing researched is yet
+        <i>proven</i> to beat the incumbent quote — real trade pricing on alternatives is still the missing
+        piece. The single-pass agent went further and named a specific fix (swap to an ALR floor-rising
+        screen). Nothing here has been applied to the live pricing — see the recommendation section below
+        for both takes side by side.</p>
+    </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Two Independent Research Passes</h2>
+  <section id="sec-passes">
+    <button type="button" class="sec-toggle" data-target="body-passes" aria-expanded="false">
+      <span class="chevron">▸</span><span class="sec-title">Two Independent Research Passes</span>
+      <span class="sec-hint"></span>
+    </button>
+    <div class="sec-body collapsed" id="body-passes">
     <div class="rp-pass-grid">
       <div class="rp-pass-card verified">
         <div class="rp-pass-badge">✔ Adversarially Verified</div>
@@ -195,10 +236,15 @@
           separately refuted by the verified pass above — treat this pass as directional, not settled.</p>
       </div>
     </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Verified Pass — Confirmed Findings</h2>
+  <section id="sec-confirmed">
+    <button type="button" class="sec-toggle" data-target="body-confirmed" aria-expanded="false">
+      <span class="chevron">▸</span><span class="sec-title">Verified Pass — Confirmed Findings</span>
+      <span class="sec-hint"></span>
+    </button>
+    <div class="sec-body collapsed" id="body-confirmed">
 
     <div class="rp-finding confirmed">
       <div class="rp-finding-head">
@@ -298,10 +344,15 @@
       <div class="rp-src">Source: projectorcentral.com UST-TV Buyer's Guide, corroborated by AWOL Vision,
         XGIMI, Sony Pro, Dangbei spec pages</div>
     </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Verified Pass — Refuted (Do Not Cite)</h2>
+  <section id="sec-refuted">
+    <button type="button" class="sec-toggle" data-target="body-refuted" aria-expanded="false">
+      <span class="chevron">▸</span><span class="sec-title">Verified Pass — Refuted (Do Not Cite)</span>
+      <span class="sec-hint"></span>
+    </button>
+    <div class="sec-body collapsed" id="body-refuted">
 
     <div class="rp-finding refuted">
       <div class="rp-finding-head">
@@ -340,10 +391,15 @@
       </div>
       <p>Treat as unconfirmed, not disproven.</p>
     </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Single-Pass — 5 Pairings Evaluated</h2>
+  <section id="sec-singlepass">
+    <button type="button" class="sec-toggle" data-target="body-singlepass" aria-expanded="false">
+      <span class="chevron">▸</span><span class="sec-title">Single-Pass — 5 Pairings Evaluated</span>
+      <span class="sec-hint"></span>
+    </button>
+    <div class="sec-body collapsed" id="body-singlepass">
     <p style="font-size:13px;color:var(--grey);margin:-4px 0 14px;">Ranked by ambient-light performance
       for this specific room (best → weakest). Pairing B is the projector/screen combination in the
       existing $4,861.74 ADI quote.</p>
@@ -392,10 +448,15 @@
       / AWOL Vision LTV-3500 Pro (DTC-only, no AV-trade distribution), and traditional dark-room-tier
       projectors (Sony VPL-XW5000ES, Epson LS11000/LS12000, JVC DLA-NZ — too dim for a no-blackout-curtains
       room).</p>
+    </div>
   </section>
 
-  <section>
-    <h2>Gaps &amp; Open Questions</h2>
+  <section id="sec-gaps">
+    <button type="button" class="sec-toggle" data-target="body-gaps" aria-expanded="false">
+      <span class="chevron">▸</span><span class="sec-title">Gaps &amp; Open Questions</span>
+      <span class="sec-hint"></span>
+    </button>
+    <div class="sec-body collapsed" id="body-gaps">
 
     <div class="rp-finding gap">
       <div class="rp-finding-head">
@@ -457,9 +518,15 @@
         the screen wall) or soffit build-out against the accent light fixture's actual on-site location
         before ordering.</p>
     </div>
+    </div>
   </section>
 
-  <section>
+  <section id="sec-reco">
+    <button type="button" class="sec-toggle" data-target="body-reco" aria-expanded="false">
+      <span class="chevron">▸</span><span class="sec-title">🎯 Recommended Next Step</span>
+      <span class="sec-hint"></span>
+    </button>
+    <div class="sec-body collapsed" id="body-reco">
     <div class="rp-reco">
       <div class="rp-reco-label">🎯 Recommended Next Step</div>
       <p><b>Not a research re-run — a targeted trade-pricing pull</b>, the same way Quote #16708070 was
@@ -479,10 +546,15 @@
         where the two disagree.
       </div>
     </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Sources Consulted (Verified Pass — 13 fetched, quality-flagged)</h2>
+  <section id="sec-sources">
+    <button type="button" class="sec-toggle" data-target="body-sources" aria-expanded="false">
+      <span class="chevron">▸</span><span class="sec-title">Sources Consulted (13 fetched, quality-flagged)</span>
+      <span class="sec-hint"></span>
+    </button>
+    <div class="sec-body collapsed" id="body-sources">
     <div class="rp-table-wrap">
       <table class="rp-sources">
         <tr><th>Source</th><th>Quality</th><th>Claims sourced</th></tr>
@@ -501,9 +573,10 @@
         <tr><td>hometheaterreview.com</td><td><span class="rp-qual unreliable">Unreliable</span></td><td>0 (no verifiable claims survived)</td></tr>
       </table>
     </div>
+    </div>
   </section>
 
-  <section>
+  <section id="sec-prompt">
     <button type="button" class="sec-toggle" data-target="body-prompt" aria-expanded="false">
       <span class="chevron">▸</span><span class="sec-title">Original Research Prompt (full text)</span>
       <span class="sec-hint"></span>
@@ -555,22 +628,54 @@ What I need back:
 
 <script>
 (function(){
+  var toggles = Array.prototype.slice.call(document.querySelectorAll(".sec-toggle"));
+
   function setToggleUI(btn, expanded){
     btn.setAttribute("aria-expanded", expanded ? "true" : "false");
     var hint = btn.querySelector(".sec-hint");
     if(hint) hint.textContent = expanded ? "Tap to collapse" : "Tap to expand";
   }
-  document.querySelectorAll(".sec-toggle").forEach(function(btn){
+
+  function collapse(btn, body){
+    body.classList.add("collapsed");
+    setToggleUI(btn, false);
+  }
+
+  function expand(btn, body){
+    // accordion: collapse every other section before opening this one
+    toggles.forEach(function(other){
+      if(other === btn) return;
+      var otherBody = document.getElementById(other.getAttribute("data-target"));
+      if(otherBody) collapse(other, otherBody);
+    });
+    body.classList.remove("collapsed");
+    setToggleUI(btn, true);
+  }
+
+  toggles.forEach(function(btn){
     var targetId = btn.getAttribute("data-target");
     var body = document.getElementById(targetId);
     if(!body) return;
-    var expanded = btn.getAttribute("aria-expanded") !== "false";
-    body.classList.toggle("collapsed", !expanded);
-    setToggleUI(btn, expanded);
+    collapse(btn, body); // every section starts collapsed
     btn.addEventListener("click", function(){
-      var nowExpanded = body.classList.contains("collapsed");
-      body.classList.toggle("collapsed", !nowExpanded);
-      setToggleUI(btn, nowExpanded);
+      if(body.classList.contains("collapsed")){
+        expand(btn, body);
+      } else {
+        collapse(btn, body);
+      }
+    });
+  });
+
+  document.querySelectorAll(".toc a[href^='#']").forEach(function(link){
+    link.addEventListener("click", function(e){
+      var section = document.getElementById(link.getAttribute("href").slice(1));
+      if(!section) return;
+      var btn = section.querySelector(".sec-toggle");
+      if(!btn) return;
+      e.preventDefault();
+      var body = document.getElementById(btn.getAttribute("data-target"));
+      if(body && body.classList.contains("collapsed")) expand(btn, body);
+      section.scrollIntoView({behavior:"smooth", block:"start"});
     });
   });
 })();
