@@ -1527,9 +1527,13 @@
   CAT_ORDER.forEach(function(c){ var o=document.createElement("option"); o.value=c; dl.appendChild(o); });
   document.body.appendChild(dl);
 
-  // ── Collapsible sections — default OPEN on first-ever visit (nothing hidden unless the user
-  // chooses to hide it), except the Glossary which defaults closed since it's static reference
-  // material, not project data. Each section's state is remembered per-browser. ─────────────
+  // ── Collapsible sections — collapsed by default on first-ever visit. The six top-level
+  // sections (Contacts, Scope Summary, Client Specs, Current Estimate, Timeline, Open Items)
+  // are an accordion: expanding one auto-collapses whichever of the others was open, so only
+  // one is ever open at a time. The nested Glossary toggle and the per-category pricing groups
+  // inside Current Estimate are separate widgets and stay independently multi-open — collapsing
+  // the whole page down to one section shouldn't fight the live estimate tool. Each toggle's
+  // state is remembered per-browser. ─────────────────────────────────────────────────────────
   var COLLAPSE_KEY = "adroit-wright-hub:collapsed:v2";
   function loadCollapseState(){
     try{
@@ -1567,6 +1571,11 @@
   function initCollapsibles(){
     var collapseState = loadCollapseState();
     var toggles = document.querySelectorAll(".sec-toggle");
+    // Accordion group = only the six top-level page sections (direct .wrap > section children).
+    // The Glossary toggle (nested inside Current Estimate) is a .sec-toggle too but isn't in this
+    // list, so it's unaffected by — and doesn't affect — the top-level accordion.
+    var accordionToggles = Array.prototype.slice.call(document.querySelectorAll(".wrap > section > .sec-toggle"));
+
     toggles.forEach(function(btn){
       var targetId = btn.getAttribute("data-target");
       var body = document.getElementById(targetId);
@@ -1577,6 +1586,18 @@
       setToggleUI(btn, expanded);
       btn.addEventListener("click", function(){
         var nowExpanded = body.classList.contains("collapsed");
+        if(nowExpanded && accordionToggles.indexOf(btn) !== -1){
+          accordionToggles.forEach(function(other){
+            if(other === btn) return;
+            var otherId = other.getAttribute("data-target");
+            var otherBody = document.getElementById(otherId);
+            if(otherBody && !otherBody.classList.contains("collapsed")){
+              otherBody.classList.add("collapsed");
+              setToggleUI(other, false);
+              collapseState[otherId] = false;
+            }
+          });
+        }
         body.classList.toggle("collapsed", !nowExpanded);
         setToggleUI(btn, nowExpanded);
         collapseState[targetId] = nowExpanded;
