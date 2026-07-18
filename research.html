@@ -67,12 +67,14 @@
   .rp-finding.confirmed{background:var(--green-wash);border-color:#bfe0cf;border-left:5px solid var(--green);}
   .rp-finding.refuted{background:var(--red-wash);border-color:#e6bcbc;border-left:5px solid var(--red);}
   .rp-finding.gap{background:var(--amber-wash);border-color:#edd3a3;border-left:5px solid var(--amber);}
+  .rp-finding.moot{background:#f1f2f4;border-color:var(--line);border-left:5px solid var(--grey);opacity:.85;}
   .rp-finding-head{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;}
   .rp-finding-badge{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
     border-radius:20px;padding:3px 10px;flex:0 0 auto;}
   .rp-finding.confirmed .rp-finding-badge{background:var(--green);color:#fff;}
   .rp-finding.refuted .rp-finding-badge{background:var(--red);color:#fff;}
   .rp-finding.gap .rp-finding-badge{background:var(--amber);color:#fff;}
+  .rp-finding.moot .rp-finding-badge{background:var(--grey);color:#fff;}
   .rp-finding-title{font-weight:700;color:var(--navy);font-size:14px;}
   .rp-finding p{margin:4px 0 0;font-size:13.5px;line-height:1.6;color:var(--ink);}
   .rp-finding .rp-src{margin-top:8px;font-size:11.5px;color:var(--grey);font-style:italic;}
@@ -88,12 +90,14 @@
   table.rp-table tr.rank-good{background:#fff;}
   table.rp-table tr.rank-conditional{background:var(--amber-wash);}
   table.rp-table tr.rank-weak{background:var(--red-wash);}
+  table.rp-table tr.rank-moot{background:#f1f2f4;opacity:.7;}
   .rp-rank-pill{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;
     border-radius:20px;padding:3px 9px;white-space:nowrap;}
   .rank-best .rp-rank-pill{background:var(--green);color:#fff;}
   .rank-good .rp-rank-pill{background:var(--teal);color:#fff;}
   .rank-conditional .rp-rank-pill{background:var(--amber);color:#fff;}
   .rank-weak .rp-rank-pill{background:var(--red);color:#fff;}
+  .rank-moot .rp-rank-pill{background:var(--grey);color:#fff;}
   .rp-type-tag{display:inline-block;background:var(--purple-wash);color:var(--purple);font-size:10px;
     font-weight:700;border-radius:20px;padding:2px 8px;margin-top:4px;}
 
@@ -107,7 +111,7 @@
   .rp-reco-caveat{margin-top:12px;padding:10px 12px;background:var(--amber-wash);border-radius:8px;
     border-left:4px solid var(--amber);font-size:13px;color:#5a4419;}
 
-  /* Sources table */
+  /* Sources / criteria table */
   table.rp-sources{width:100%;border-collapse:collapse;font-size:12.5px;}
   table.rp-sources th{text-align:left;padding:8px 10px;background:var(--navy-wash);color:var(--navy);
     font-size:10.5px;text-transform:uppercase;letter-spacing:.4px;}
@@ -118,6 +122,10 @@
   .rp-qual.blog{background:var(--amber-wash);color:#8a5c0f;}
   .rp-qual.forum{background:var(--purple-wash);color:var(--purple);}
   .rp-qual.unreliable{background:var(--red-wash);color:var(--red);}
+  .rp-qual.locked{background:var(--teal-wash);color:var(--teal-dark);}
+  .rp-qual.hard{background:var(--red-wash);color:var(--red);}
+  .rp-qual.soft{background:var(--amber-wash);color:#8a5c0f;}
+  .rp-qual.resolved{background:var(--green-wash);color:var(--green);}
 
   /* Table of contents */
   nav.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px 6px;margin:22px 0 30px;}
@@ -186,324 +194,162 @@
 
 <div class="wrap">
 
-  <section id="sec-decision" style="margin:22px 0 30px;">
-    <div class="rp-reco" style="border-left-color:var(--red);background:linear-gradient(135deg,var(--red-wash) 0%,#fff 100%);border-color:#e6bcbc;">
-      <div class="rp-reco-label" style="color:var(--red);">⛔ Client decision update — 2026-07-18 (Tunde, post-call w/ Claudio)</div>
-      <p><b>Floor-rising screens are disregarded entirely — do not recommend or reference them going
-        forward.</b> A floor-riser's housing/canister likely requires cutting into the floor, which
-        conflicts with the client's own non-negotiable "no drastic structural or framing changes." This
-        rules out the single-pass research's headline recommendation (Elite Screens Kestrel Tab-Tension 2
-        CLR3 121" floor-rising, Pairing A below) as a live candidate.</p>
-      <p><b>White housing is now a hard requirement</b> (was a soft preference). None of the three new
-        projector candidates (Hisense L9Q, AWOL Vision Aetherion Max, XGIMI Aura) have verified housing
-        color — this must close before any of them can be recommended.</p>
-      <p style="text-decoration:line-through;opacity:.6;"><b>Shortest throw distance is now a hard
-        requirement</b> (was a soft preference). Only the XGIMI Aura's throw (11.7"→120" screen) is
-        verified in this research; the incumbent Optoma ZK420UST's, the Hisense L9Q's, and the AWOL Vision
-        Aetherion Max's throw distances still need direct confirmation before a shortest-throw call can be
-        made.</p>
-      <p><b>⛔ SUPERSEDED same day, 2nd Claudio call (~10:44 AM ET):</b> the "shortest throw" framing above
-        was backwards — it conflated throw <i>distance</i> (how close to the screen a UST unit can sit,
-        e.g. 11") with the projector's own physical <i>body length</i>. A UST unit's body would sit close
-        enough to the wall to collide with an existing ceiling light fixture ~4 feet out. <b>UST is now
-        ruled out entirely.</b> The confirmed direction is a regular/standard short-throw projector
-        positioned <b>~3–4 feet</b> from the screen wall, clearing that fixture — which reaffirms the
-        original <b>BenQ TK710STi ceiling-mount</b> option already priced/approved with Oliver, not the
-        Optoma ZK420UST or any of the UST alternatives (Hisense L9Q, AWOL Vision Aetherion Max, XGIMI Aura)
-        evaluated by this research. Floor-rising-disregarded and white-housing-required above are
-        unaffected by this correction and still stand.</p>
-      <div class="rp-reco-caveat">
-        Net effect: with UST ruled out (not just floor-rising), the Optoma ZK420UST + ADI quote #16708070
-        comparison this entire research page was built around is very likely moot — it evaluates UST
-        candidates against a UST incumbent, and UST itself is now off the table. The live decision reverts
-        to the originally-priced BenQ TK710STi ceiling-mount + a regular short-throw-compatible screen
-        (Draper Access V-Class, upgraded to an ALR surface). Confirm this reversion explicitly before
-        closing out today's "ACTION NEEDED BEFORE SENDING" open item on the project hub.
-      </div>
-    </div>
-  </section>
-
   <nav class="toc" aria-label="Table of contents">
     <div class="toc-label">On This Page</div>
     <ol>
-      <li><a href="#sec-tldr">Bottom Line</a></li>
-      <li><a href="#sec-passes">Two Independent Research Passes</a></li>
-      <li><a href="#sec-confirmed">Verified Pass — Confirmed Findings</a></li>
-      <li><a href="#sec-refuted">Verified Pass — Refuted (Do Not Cite)</a></li>
-      <li><a href="#sec-singlepass">Single-Pass — 5 Pairings Evaluated</a></li>
-      <li><a href="#sec-gaps">Gaps &amp; Open Questions</a></li>
-      <li><a href="#sec-reco">Recommended Next Step</a></li>
+      <li><a href="#sec-reco">Recommendation</a></li>
+      <li><a href="#sec-criteria">Client-Locked Criteria</a></li>
+      <li><a href="#sec-unified">Unified Findings (Current Criteria)</a></li>
+      <li><a href="#sec-gaps">Remaining Gaps Before This Ships</a></li>
+      <li><a href="#sec-history">Decision History (Append-Only)</a></li>
+      <li><a href="#sec-archive">Original Two-Pass Research (Archived Detail)</a></li>
       <li><a href="#sec-sources">Sources Consulted</a></li>
       <li><a href="#sec-glossary">Glossary — Terms, Jargon &amp; Acronyms</a></li>
       <li><a href="#sec-prompt">Original Research Prompt (full text)</a></li>
     </ol>
   </nav>
 
-  <section id="sec-tldr">
-    <button type="button" class="sec-toggle" data-target="body-tldr" aria-expanded="false">
-      <span class="chevron">▸</span><span class="sec-title">⚡ Bottom Line</span>
+  <section id="sec-reco">
+    <button type="button" class="sec-toggle" data-target="body-reco" aria-expanded="true">
+      <span class="chevron">▸</span><span class="sec-title">🎯 Recommendation</span>
       <span class="sec-hint"></span>
     </button>
-    <div class="sec-body collapsed" id="body-tldr">
-    <div class="rp-tldr">
-      <div class="rp-tldr-label">⚡ Bottom line</div>
-      <p><b>Both research passes agree:</b> an ultra-short-throw (UST) laser projector paired with a true
-        ambient-light-rejecting (ALR/CLR) screen is the right <i>category</i> of solution for this
-        daylight-lit room with no blackout curtains — validating the direction the existing $4,861.74 ADI
-        dealer quote (#16708070) was already headed. The <b>Optoma ZK420UST</b> projector in that quote
-        checks out well. But <b>the recessed screen in that same quote is likely a plain, non-ALR surface —
-        possibly the weak link</b> against the room's own ambient-light requirement.</p>
-      <p><b>Where they diverge:</b> the adversarially-verified pass says nothing researched is yet
-        <i>proven</i> to beat the incumbent quote — real trade pricing on alternatives is still the missing
-        piece. The single-pass agent went further and named a specific fix (swap to an ALR floor-rising
-        screen). Nothing here has been applied to the live pricing — see the recommendation section below
-        for both takes side by side.</p>
-    </div>
-    </div>
-  </section>
-
-  <section id="sec-passes">
-    <button type="button" class="sec-toggle" data-target="body-passes" aria-expanded="false">
-      <span class="chevron">▸</span><span class="sec-title">Two Independent Research Passes</span>
-      <span class="sec-hint"></span>
-    </button>
-    <div class="sec-body collapsed" id="body-passes">
-    <div class="rp-pass-grid">
-      <div class="rp-pass-card verified">
-        <div class="rp-pass-badge">✔ Adversarially Verified</div>
-        <div class="rp-pass-stats">93 subagents · 3 search angles · 13 sources fetched · 48 claims
-          extracted · 25 cross-verified 3-vote each · <b>16 confirmed / 9 refuted</b></div>
-        <p>Every claim below survived (or failed) independent 3-vote adversarial verification before being
-          reported as fact. Run 2026-07-18, per Tunde's explicit instruction. This is the higher-confidence
-          pass — weight it more heavily where the two disagree.</p>
-      </div>
-      <div class="rp-pass-card singlepass">
-        <div class="rp-pass-badge">◐ Single-Pass</div>
-        <div class="rp-pass-stats">1 general-purpose agent · WebSearch + WebFetch · no adversarial
-          verification pass</div>
-        <p>A broader single sweep (8 projector brands, 10+ screens) with a named recommendation, but no
-          claim was independently fact-checked. One of its headline figures (Epson LS800 brightness) was
-          separately refuted by the verified pass above — treat this pass as directional, not settled.</p>
+    <div class="sec-body" id="body-reco">
+    <div class="rp-reco">
+      <div class="rp-reco-label">🎯 SME synthesis (AMOS), 2026-07-18 — merges both research passes against current locked criteria</div>
+      <p><b>Projector:</b> BenQ TK710STi — regular short-throw (not UST), ceiling-mount, positioned
+        ~4–5 ft from the screen wall to clear the existing ceiling light fixture. White body / gray face —
+        already confirmed acceptable with Oliver on the 7/17 call. 3,200 ANSI lumens, laser light source
+        (20,000+ hr life), built-in Android/Google TV. Retail $1,899 (Best Buy); real ADI trade cost not
+        yet pulled.</p>
+      <p><b>Screen:</b> the already-locked-scope ceiling-recessed motorized screen — Draper Access V-Class,
+        ~110–120", 16:9 — <b>upgraded to a TecVision XH900X ALR surface</b> rather than plain matte-white,
+        so it actually meets the room's no-blackout-curtains ambient-light requirement. This is the one
+        pairing that survives both research passes once UST and floor-rising are excluded (it's Pairing C
+        from the single-pass evaluation). Draper's plain matte-white ADI list price (~$5,051, not real
+        dealer cost) does not yet include the ALR upgrade cost.</p>
+      <p><b>Why this and not the researched UST alternatives</b> (Optoma ZK420UST, Hisense L9Q, AWOL Vision
+        Aetherion Max, XGIMI Aura): every one of them is a UST model, and UST is now ruled out entirely —
+        a UST unit's physical body would sit close enough to the wall to collide with the existing ceiling
+        light fixture. None of the deep research's brightness/lifespan findings for those candidates apply
+        to a decision that no longer includes them.</p>
+      <div class="rp-reco-caveat">
+        <b>Not yet verified before this can ship to the client:</b> (1) real ADI/trade pricing for the BenQ
+        and the TecVision ALR upgrade — everything above is retail/list; (2) whether BenQ's 3,200 ANSI
+        lumens is actually bright enough for this daylight room paired with an ALR screen — the deep
+        research's brightness comparisons were all run against UST candidates (2,000–5,000+ ANSI), never
+        against BenQ itself; (3) keystone/lens-shift correction capability, raised on the first Claudio
+        call and never resolved — more relevant now that the pick is a ceiling-mount unit, not UST; (4)
+        eARC pass-through to the Sonos Arc Ultra; (5) exact throw distance confirmed on-site (BenQ
+        recommends this before ordering). See Remaining Gaps below.
       </div>
     </div>
     </div>
   </section>
 
-  <section id="sec-confirmed">
-    <button type="button" class="sec-toggle" data-target="body-confirmed" aria-expanded="false">
-      <span class="chevron">▸</span><span class="sec-title">Verified Pass — Confirmed Findings</span>
+  <section id="sec-criteria">
+    <button type="button" class="sec-toggle" data-target="body-criteria" aria-expanded="false">
+      <span class="chevron">▸</span><span class="sec-title">Client-Locked Criteria</span>
       <span class="sec-hint"></span>
     </button>
-    <div class="sec-body collapsed" id="body-confirmed">
-
-    <div class="rp-finding confirmed">
-      <div class="rp-finding-head">
-        <span class="rp-finding-badge">Confirmed</span>
-        <span class="rp-finding-title">UST + ALR/CLR is the established answer for ambient light</span>
-      </div>
-      <p>High confidence, well-corroborated. The mechanism (diffusion layer over a highly reflective
-        surface + absorptive outer layer) is what lets a UST projector throw a usable image in daylight
-        without blackout curtains. Industry buying guides converge on prioritizing projector brightness
-        headroom <i>and</i> pairing with a UST-specific ALR screen — directly supports the incumbent
-        Optoma ZK420UST + Elite Screens direction as the right category of solution.</p>
-      <div class="rp-src">Sources: elitescreens.com, ecoustics.com, projectorscreen.com</div>
-    </div>
-
-    <div class="rp-finding confirmed">
-      <div class="rp-finding-head">
-        <span class="rp-finding-badge">Confirmed</span>
-        <span class="rp-finding-title">Elite Screens has a genuine motorized in-ceiling recessed UST line — but publishes no pricing</span>
-      </div>
-      <p>The "Evanesce" series (Evanesce, Evanesce Tab-Tension B, Evanesce AcousticPro UHD, etc.) is real,
-        with named SKUs, and designed to disappear into the ceiling when not in use — matches the
-        "invisible when not in use" requirement as well as Draper does. Pricing requires a separate
-        dealer/distributor pull, same as how the existing Optoma/Elite quote was obtained via ADI.</p>
-      <div class="rp-src">Source: elitescreens.com product category pages</div>
-    </div>
-
-    <div class="rp-finding confirmed">
-      <div class="rp-finding-head">
-        <span class="rp-finding-badge">Confirmed</span>
-        <span class="rp-finding-title">Snap One Dragonfly Ultra Black ALR screen is size-matched but not recessed</span>
-      </div>
-      <p>DFM-NTT-110-ALR / DFM-NTT-120-ALR — size-matched (110"/120", 16:9), rated to reject up to 95% of
-        ambient light (manufacturer spec, not independently lab-tested). The canister stays visible on the
-        wall unless separately boxed into a soffit or ceiling cavity — an external IR receiver ships with
-        it specifically because concealment isn't default, meaning "invisible" adds real build-out, which
-        may conflict with the "no drastic structural changes" constraint unless the soffit is trivial.
-        Snap One folded into ADI/Resideo in 2024, so trade pricing would come through the same ADI channel
-        — but no public price exists yet.</p>
-      <div class="rp-src">Sources: snapav.com (Dragonfly DFM + DFRM product pages, owner's manual)</div>
-    </div>
-
-    <div class="rp-finding confirmed">
-      <div class="rp-finding-head">
-        <span class="rp-finding-badge">Confirmed</span>
-        <span class="rp-finding-title">Two alternate Elite Screens ALR form factors both trade away something the brief asked for</span>
-      </div>
-      <p>Kestrel Tab-Tension CLR 5 (motorized floor-rising, gain 0.8, 170° viewing angle) is UST-only —
-        incompatible with the incumbent BenQ short-throw option — and its smallest available diagonal is
-        126", exceeding the 110"–120" target (though it would still clear the 117⅞" wall width by a few
-        inches). Aeon CLR 5 (fixed, non-retractable frame, same gain/viewing angle) sacrifices "invisible
-        when not in use" entirely. Neither is shown by verified evidence to meaningfully outperform the
-        Dragonfly or Draper options on ALR/brightness.</p>
-      <div class="rp-src">Sources: elitescreens.com, Aeon CLR 5 spec page, retailer listings (Neobits,
-        B&amp;H) for Kestrel model FTE126H3-CLR5</div>
-    </div>
-
-    <div class="rp-finding confirmed">
-      <div class="rp-finding-head">
-        <span class="rp-finding-badge">Confirmed</span>
-        <span class="rp-finding-title">Three UST laser projectors exceed the incumbent Optoma ZK420UST in rated brightness — retail pricing only</span>
-      </div>
-      <div class="rp-table-wrap" style="margin:8px 0;">
-        <table class="rp-table">
-          <tr><th>Model</th><th>Brightness</th><th>Price (retail/MSRP)</th><th>Notes</th></tr>
-          <tr><td><b>Hisense L9Q</b></td><td>5,000 ANSI rated, independently lab-measured at 5,185 ANSI (ProjectorCentral)</td><td>$5,997</td><td>One of the brightest USTs on the market</td></tr>
-          <tr><td><b>AWOL Vision Aetherion Max</b></td><td>3,300 ISO rated / ~3,031 ANSI measured</td><td>$4,499</td><td>#2 on ProjectorCentral's current (Jul 2026) top-10 UST ranking</td></tr>
-          <tr><td><b>XGIMI Aura</b></td><td>2,400 ANSI, laser, 4K UHD</td><td>— (not verified)</td><td>11.7" throw distance supports up to 120" screens; Android TV 10 built-in</td></tr>
-        </table>
-      </div>
-      <p>Typical UST-class brightness runs 2,000–3,500 ANSI, so the Hisense L9Q is a genuine brightness
-        upgrade over the class norm and plausibly over the ZK420UST — but the ZK420UST's own
-        independently-measured ANSI output was never verified in this pass, so that comparison isn't
-        proven yet.</p>
-      <div class="rp-src">Sources: projectorcentral.com (Top 10 UST July 2026), theaudioinsights.com</div>
-    </div>
-
-    <div class="rp-finding confirmed">
-      <div class="rp-finding-head">
-        <span class="rp-finding-badge">Confirmed</span>
-        <span class="rp-finding-title">The incumbent Optoma ZK420UST doesn't appear on ProjectorCentral's current top-10 UST ranking</span>
-      </div>
-      <p>Confirmed by direct fetch of the dated article — no Optoma model is among the 10 ranked entries.
-        A signal from one outlet's methodology, not proof of a brightness/quality shortfall; the
-        ZK420UST's own measured ANSI figure was not independently re-verified.</p>
-      <div class="rp-src">Source: projectorcentral.com</div>
-    </div>
-
-    <div class="rp-finding confirmed">
-      <div class="rp-finding-head">
-        <span class="rp-finding-badge">Confirmed</span>
-        <span class="rp-finding-title">The incumbent's laser life actually wins against the brighter alternatives</span>
-      </div>
-      <p>~20,000 hours is the category-wide marketed floor across UST projectors (including all three
-        brighter candidates above) — but the incumbent Optoma ZK420UST is spec'd even higher, at ~30,000
-        hours. On the "laser not lamp, low-maintenance" preference specifically, the already-quoted option
-        currently <b>wins</b> against the alternatives surfaced here, not loses.</p>
-      <div class="rp-src">Source: projectorcentral.com UST-TV Buyer's Guide, corroborated by AWOL Vision,
-        XGIMI, Sony Pro, Dangbei spec pages</div>
-    </div>
-    </div>
-  </section>
-
-  <section id="sec-refuted">
-    <button type="button" class="sec-toggle" data-target="body-refuted" aria-expanded="false">
-      <span class="chevron">▸</span><span class="sec-title">Verified Pass — Refuted (Do Not Cite)</span>
-      <span class="sec-hint"></span>
-    </button>
-    <div class="sec-body collapsed" id="body-refuted">
-
-    <div class="rp-finding refuted">
-      <div class="rp-finding-head">
-        <span class="rp-finding-badge">Refuted 0–3</span>
-        <span class="rp-finding-title">Ricoh UHL3660 rated at 6,500 ANSI / $6,695</span>
-      </div>
-      <p>Called out as a top ambient-light pick — refuted 0-3. If Ricoh is considered as a candidate, its
-        specs need independent re-verification from scratch.</p>
-    </div>
-
-    <div class="rp-finding refuted">
-      <div class="rp-finding-head">
-        <span class="rp-finding-badge">Refuted (twice)</span>
-        <span class="rp-finding-title">Epson LS800 / EpiqVision Ultra rated at 4,000 ANSI lumens</span>
-      </div>
-      <p>Refuted twice (0-3, 1-2) across two different source claims. Same caution: re-verify
-        independently before using in any client-facing material. <b>Note: the single-pass research below
-        used this figure</b> — treat that section's Epson pairing accordingly.</p>
-    </div>
-
-    <div class="rp-finding refuted">
-      <div class="rp-finding-head">
-        <span class="rp-finding-badge">Refuted at citation level</span>
-        <span class="rp-finding-title">"UST+ALR solves ambient light" — specific sources</span>
-      </div>
-      <p>Several near-identical claims sourced specifically to projectorscreen.com, compareprojector.com,
-        and projectorreviews.com were refuted at the citation level — the underlying general principle is
-        separately confirmed by the findings above from different sources, but do not re-cite those three
-        specific sources for that specific claim.</p>
-    </div>
-
-    <div class="rp-finding refuted">
-      <div class="rp-finding-head">
-        <span class="rp-finding-badge">Refuted 1–2</span>
-        <span class="rp-finding-title">Dragonfly screen's "gain 0.8" figure</span>
-      </div>
-      <p>Treat as unconfirmed, not disproven.</p>
-    </div>
-    </div>
-  </section>
-
-  <section id="sec-singlepass">
-    <button type="button" class="sec-toggle" data-target="body-singlepass" aria-expanded="false">
-      <span class="chevron">▸</span><span class="sec-title">Single-Pass — 5 Pairings Evaluated</span>
-      <span class="sec-hint"></span>
-    </button>
-    <div class="sec-body collapsed" id="body-singlepass">
-    <p style="font-size:13px;color:var(--grey);margin:-4px 0 14px;">Ranked by ambient-light performance
-      for this specific room (best → weakest). Pairing B is the projector/screen combination in the
-      existing $4,861.74 ADI quote.</p>
+    <div class="sec-body collapsed" id="body-criteria">
+    <p style="font-size:13px;color:var(--grey);margin:-4px 0 14px;">Everything below came from Tunde,
+      Claudio, or Oliver directly — not an AI judgment call. Status reflects the latest call as of
+      2026-07-18.</p>
     <div class="rp-table-wrap">
-      <table class="rp-table">
-        <tr><th>Rank</th><th>#</th><th>Projector</th><th>Screen</th><th>Est. cost</th></tr>
-        <tr class="rank-best">
-          <td><span class="rp-rank-pill">Best</span></td>
-          <td>A</td>
-          <td>Optoma ZK420UST <span class="rp-type-tag">UST · 4,200 ANSI</span></td>
-          <td>Elite Screens Kestrel Tab-Tension 2 CLR3 121" — motorized floor-rising, zero ceiling dependency</td>
-          <td>~$6,600–$7,000 retail</td>
-        </tr>
-        <tr class="rank-best">
-          <td><span class="rp-rank-pill">Best</span></td>
-          <td>E</td>
-          <td>Hisense PX3-Pro <span class="rp-type-tag">UST · 3,000 ANSI · Dolby Vision</span></td>
-          <td>Kestrel CLR3 floor-rising or VIVIDSTORM S PRO</td>
-          <td>~$5,500–$6,400 retail; no confirmed AV-trade channel</td>
-        </tr>
-        <tr class="rank-good">
-          <td><span class="rp-rank-pill">Good</span></td>
-          <td>D</td>
-          <td>Epson EpiqVision Ultra LS800 <span class="rp-type-tag">UST · ARC only, no eARC</span></td>
-          <td>Elite Screens Aeon CLR3 123" — fixed frame, visible when off</td>
-          <td>~$3,500–$4,800 retail (cheapest pairing)</td>
-        </tr>
-        <tr class="rank-conditional">
-          <td><span class="rp-rank-pill">Conditional</span></td>
-          <td>C</td>
-          <td>BenQ TK710STi <span class="rp-type-tag">Ceiling-mount · 3,200 ANSI</span></td>
-          <td>Draper Access V-Class recessed, <b>if</b> upgraded to TecVision XH900X ALR surface</td>
-          <td>Trade pricing not publicly found; retail ~$1,800–2,400 + ALR upcharge</td>
-        </tr>
-        <tr class="rank-weak">
-          <td><span class="rp-rank-pill">Weakest</span></td>
-          <td>B</td>
-          <td>Optoma ZK420UST <span class="rp-type-tag">Same as A</span></td>
-          <td>Elite Screens 120" recessed in-ceiling — <b>the actual ADI quote #16708070</b>, likely plain non-ALR</td>
-          <td><b>$4,861.74 real dealer total (confirmed)</b></td>
-        </tr>
+      <table class="rp-sources">
+        <tr><th>Criterion</th><th>Type</th><th>Status</th></tr>
+        <tr><td>No blackout curtains — must perform in ambient daylight</td><td><span class="rp-qual hard">Non-negotiable</span></td><td>Open — needs real-world brightness check for whatever's finally priced</td></tr>
+        <tr><td>No drastic structural/framing changes</td><td><span class="rp-qual hard">Non-negotiable</span></td><td>Drove floor-rising exclusion</td></tr>
+        <tr><td>No visible cables/conduit, flush aesthetic</td><td><span class="rp-qual hard">Non-negotiable</span></td><td>Never addressed by either research pass — open</td></tr>
+        <tr><td>Preserve existing art-wall accent light</td><td><span class="rp-qual hard">Non-negotiable</span></td><td>Never researched — open, lower priority now floor-rising is out</td></tr>
+        <tr><td>Screen size 110"–120", 16:9</td><td><span class="rp-qual locked">Locked</span></td><td>Respected by all remaining candidates</td></tr>
+        <tr><td>Screen: ceiling-recessed, motorized</td><td><span class="rp-qual locked">Locked scope, top priority</span></td><td>Draper Access V-Class already priced</td></tr>
+        <tr><td>Floor-rising screens</td><td><span class="rp-qual hard">Disregarded (2026-07-18)</span></td><td>Excluded — structural conflict</td></tr>
+        <tr><td>Ultra-short-throw (UST) projector</td><td><span class="rp-qual hard">Ruled out (2026-07-18)</span></td><td>Excluded — collides with ceiling light fixture</td></tr>
+        <tr><td>Regular short-throw, ~4–5 ft from wall</td><td><span class="rp-qual hard">Hard requirement (2026-07-18)</span></td><td>Confirmed direction — BenQ fits</td></tr>
+        <tr><td>White/light projector housing</td><td><span class="rp-qual hard">Hard requirement (2026-07-18)</span></td><td><span class="rp-qual resolved">Resolved</span> — BenQ white body/gray face, Oliver-approved</td></tr>
+        <tr><td>Laser (not lamp) light source</td><td><span class="rp-qual soft">Strongly preferred</span></td><td><span class="rp-qual resolved">Resolved</span> — BenQ is laser, 20,000+ hrs</td></tr>
+        <tr><td>Built-in smart-TV/streaming</td><td><span class="rp-qual soft">Nice-to-have</span></td><td><span class="rp-qual resolved">Resolved</span> — BenQ has built-in Android/Google TV</td></tr>
+        <tr><td>Simple eARC control to Sonos Arc Ultra, no extra remotes</td><td><span class="rp-qual soft">Preferred</span></td><td>Not yet verified for BenQ specifically — open</td></tr>
+        <tr><td>Keystone/lens-shift correction</td><td><span class="rp-qual soft">Raised, not yet classified</span></td><td>Never resolved since first raised — open</td></tr>
+        <tr><td>Real AV-trade/dealer pricing, not retail</td><td><span class="rp-qual hard">Sourcing requirement</span></td><td>Still the biggest open item — see Gaps</td></tr>
       </table>
     </div>
-    <p style="font-size:12.5px;color:var(--grey);margin-top:10px;">Explicitly ruled out: Samsung Premiere
-      LSP9T (discontinued), LG CineBeam HU915QE (no Dolby Vision, no clear trade channel), Formovie Theater
-      / AWOL Vision LTV-3500 Pro (DTC-only, no AV-trade distribution), and traditional dark-room-tier
-      projectors (Sony VPL-XW5000ES, Epson LS11000/LS12000, JVC DLA-NZ — too dim for a no-blackout-curtains
-      room).</p>
+    </div>
+  </section>
+
+  <section id="sec-unified">
+    <button type="button" class="sec-toggle" data-target="body-unified" aria-expanded="false">
+      <span class="chevron">▸</span><span class="sec-title">Unified Findings (Current Criteria)</span>
+      <span class="sec-hint"></span>
+    </button>
+    <div class="sec-body collapsed" id="body-unified">
+    <p style="font-size:13px;color:var(--grey);margin:-4px 0 14px;">Both research passes merged and
+      re-filtered through the criteria above. Confidence badges carried over from the adversarially-verified
+      pass where the finding was covered there; single-pass-only findings are marked accordingly.</p>
+
+    <div class="rp-finding confirmed">
+      <div class="rp-finding-head">
+        <span class="rp-finding-badge">Still applies</span>
+        <span class="rp-finding-title">Bright projector + true ALR screen surface is still the right general approach</span>
+      </div>
+      <p>The UST-specific mechanism is now moot, but the underlying principle both passes converged on —
+        pair enough projector brightness with a genuinely ambient-light-rejecting screen surface — still
+        governs. This is why the Draper's plain matte-white surface isn't good enough on its own and the
+        TecVision ALR upgrade matters.</p>
+      <div class="rp-src">Sources: elitescreens.com, ecoustics.com, projectorscreen.com (adversarially verified)</div>
+    </div>
+
+    <div class="rp-finding gap">
+      <div class="rp-finding-head">
+        <span class="rp-finding-badge">Gap — now the live question</span>
+        <span class="rp-finding-title">BenQ TK710STi's own 3,200 ANSI lumens was never stress-tested against this room</span>
+      </div>
+      <p>Every brightness comparison either research pass ran was against UST candidates (2,000–5,185 ANSI
+        range) — none of that work verified whether BenQ's 3,200 ANSI, paired with an ALR screen, is
+        actually sufficient for this specific daylight room with no blackout curtains. This is the single
+        most important open technical question now that BenQ is the confirmed direction.</p>
+    </div>
+
+    <div class="rp-finding confirmed">
+      <div class="rp-finding-head">
+        <span class="rp-finding-badge">Still applies</span>
+        <span class="rp-finding-title">Draper Access V-Class + TecVision XH900X ALR upgrade is the one surviving pairing from either pass</span>
+      </div>
+      <p>Single-pass Pairing C (BenQ TK710STi ceiling-mount + Draper Access V-Class recessed, upgraded to
+        TecVision XH900X ALR) is the only one of the 5 originally-evaluated pairings that isn't disqualified
+        by the UST exclusion or the floor-rising exclusion. It was ranked "Conditional" at the time only
+        because of the ALR-upgrade dependency and unconfirmed trade pricing — both still true today.</p>
+      <div class="rp-src">Source: single-pass evaluation (not independently fact-checked — treat as directional)</div>
+    </div>
+
+    <div class="rp-finding confirmed">
+      <div class="rp-finding-head">
+        <span class="rp-finding-badge">Still applies</span>
+        <span class="rp-finding-title">ALR "% ambient light rejected" figures are marketing specs, not lab-tested</span>
+      </div>
+      <p>Applies to the TecVision surface too, not just the now-moot Dragonfly/Kestrel/Aeon figures — treat
+        any ALR-rejection percentage from Draper's spec sheet with the same skepticism.</p>
+      <div class="rp-src">Source: adversarially verified pass</div>
+    </div>
+
+    <div class="rp-finding moot">
+      <div class="rp-finding-head">
+        <span class="rp-finding-badge">Moot — UST excluded</span>
+        <span class="rp-finding-title">Every UST-specific finding (Optoma ZK420UST, Hisense L9Q, AWOL Vision Aetherion Max, XGIMI Aura, Elite Screens Evanesce recessed line, Snap One Dragonfly, Kestrel/Aeon CLR screens, the $4,861.74 ADI quote #16708070)</span>
+      </div>
+      <p>All of it was real, sourced research — nothing here was wrong when it was written. It's moot now
+        because every projector candidate it evaluated is UST, and UST itself is ruled out. Kept in the
+        archived section below for the audit trail, not deleted, in case throw-distance constraints change
+        again (e.g. if the light fixture location changes).</p>
+    </div>
     </div>
   </section>
 
   <section id="sec-gaps">
     <button type="button" class="sec-toggle" data-target="body-gaps" aria-expanded="false">
-      <span class="chevron">▸</span><span class="sec-title">Gaps &amp; Open Questions</span>
+      <span class="chevron">▸</span><span class="sec-title">Remaining Gaps Before This Ships</span>
       <span class="sec-hint"></span>
     </button>
     <div class="sec-body collapsed" id="body-gaps">
@@ -511,91 +357,249 @@
     <div class="rp-finding gap">
       <div class="rp-finding-head">
         <span class="rp-finding-badge">Gap</span>
-        <span class="rp-finding-title">No real trade/dealer pricing for any alternative candidate</span>
+        <span class="rp-finding-title">Real ADI/trade pricing — BenQ TK710STi and the TecVision XH900X ALR upgrade</span>
       </div>
-      <p>Every figure for the Hisense L9Q, AWOL Vision Aetherion Max, XGIMI Aura, Dragonfly screen, and
-        Elite Screens Evanesce/Aeon/Kestrel lines is retail/MSRP or dealer-gated (Snap One/ADI login
-        required). This is the core sourcing requirement from the original brief and it's still open —
-        closing it means pulling actual ADI/Snap One dealer quotes for these specific SKUs, the same way
-        Quote #16708070 was obtained.</p>
+      <p>Both are retail/list today ($1,899 BenQ; ~$5,051 Draper plain matte-white, ALR upcharge unknown).
+        This is the same sourcing requirement the original brief called out — still the core open item.</p>
     </div>
 
     <div class="rp-finding gap">
       <div class="rp-finding-head">
         <span class="rp-finding-badge">Gap</span>
-        <span class="rp-finding-title">Integration/comfort specs unaddressed for the new candidates</span>
+        <span class="rp-finding-title">Is 3,200 ANSI + ALR actually bright enough for this room?</span>
       </div>
-      <p>None of the verified findings address eARC/Sonos Arc Ultra pass-through compatibility,
-        unified-remote/control integration, white/light-housing availability, fan noise, input lag, HDR
-        handling, or warranty/dealer-support terms for the Hisense L9Q, AWOL Vision Aetherion Max, or
-        XGIMI Aura. All were explicitly requested and are unaddressed — a real gap before recommending any
-        of them over the incumbent ZK420UST, which the team already has direct answers on.</p>
+      <p>No source in either pass verified this for BenQ specifically. Worth a direct check before the
+        client sees a final number, not an assumption carried over from UST-candidate research.</p>
     </div>
 
     <div class="rp-finding gap">
       <div class="rp-finding-head">
         <span class="rp-finding-badge">Gap</span>
-        <span class="rp-finding-title">ALR "% ambient light rejected" figures are marketing specs, not lab-tested</span>
+        <span class="rp-finding-title">Keystone/lens-shift correction capability</span>
       </div>
-      <p>Dragonfly's 95%, Kestrel/Aeon's 80% — manufacturer numbers, not independently lab-tested the way
-        ANSI lumens are for projectors. Treat with more skepticism than the brightness figures.</p>
+      <p>Raised on the first Claudio call ("we need to check on the Keystone corrections"), never resolved.
+        More relevant now than when raised — a ceiling-mount, non-UST ~4–5 ft install is more likely to
+        need off-axis correction than a UST unit sitting dead-center below the screen would have been.</p>
     </div>
 
     <div class="rp-finding gap">
       <div class="rp-finding-head">
         <span class="rp-finding-badge">Gap</span>
-        <span class="rp-finding-title">Pricing and rankings are time-sensitive as of July 2026</span>
+        <span class="rp-finding-title">eARC pass-through to Sonos Arc Ultra, unified control</span>
       </div>
-      <p>Should be re-confirmed close to purchase — MSRPs and "top 10" lists move.</p>
+      <p>Never verified for the BenQ specifically in either research pass. The site's C2 line item budgets
+        labor for AV-closet/HDMI-switching integration, but that's not the same as confirming the unit
+        itself does clean eARC pass-through without extra remotes.</p>
     </div>
 
     <div class="rp-finding gap">
       <div class="rp-finding-head">
         <span class="rp-finding-badge">Gap</span>
-        <span class="rp-finding-title">The incumbent's own measured brightness was never verified</span>
+        <span class="rp-finding-title">No visible cables/conduit — flush aesthetic</span>
       </div>
-      <p>The Optoma ZK420UST's own independently lab-measured ANSI output was never verified in this pass
-        — needed to know whether the Hisense L9Q's measured 5,185 ANSI is actually a meaningful upgrade in
-        this specific daylight room, or a spec-sheet-only difference.</p>
+      <p>Never addressed by either research pass for any candidate, including the current one.</p>
     </div>
 
     <div class="rp-finding gap">
       <div class="rp-finding-head">
-        <span class="rp-finding-badge">Not researched</span>
-        <span class="rp-finding-title">Art-wall accent light position vs. equipment footprint</span>
+        <span class="rp-finding-badge">Gap</span>
+        <span class="rp-finding-title">Exact on-site throw distance and art-wall accent light clearance</span>
       </div>
-      <p>Not in this research's inputs — walk any floor-riser footprint (~114.7"W × 8.3"D at the base of
-        the screen wall) or soffit build-out against the accent light fixture's actual on-site location
-        before ordering.</p>
+      <p>BenQ recommends confirming exact lens-to-screen throw distance on-site before ordering. The
+        art-wall accent light's exact position vs. the recessed screen pocket has also never been walked —
+        lower priority now that floor-rising (the main footprint conflict) is excluded, but still unconfirmed.</p>
     </div>
     </div>
   </section>
 
-  <section id="sec-reco">
-    <button type="button" class="sec-toggle" data-target="body-reco" aria-expanded="false">
-      <span class="chevron">▸</span><span class="sec-title">🎯 Recommended Next Step</span>
+  <section id="sec-history">
+    <button type="button" class="sec-toggle" data-target="body-history" aria-expanded="false">
+      <span class="chevron">▸</span><span class="sec-title">Decision History (Append-Only)</span>
       <span class="sec-hint"></span>
     </button>
-    <div class="sec-body collapsed" id="body-reco">
-    <div class="rp-reco">
-      <div class="rp-reco-label">🎯 Recommended Next Step</div>
-      <p><b>Not a research re-run — a targeted trade-pricing pull</b>, the same way Quote #16708070 was
-        obtained: request ADI/Snap One dealer quotes for the Hisense L9Q, the Elite Screens Evanesce
-        recessed line (sized to 110"–120"), and the Dragonfly DFM-NTT-120-ALR, so they can sit next to the
-        existing $4,861.74 ADI quote on a real cost basis.</p>
-      <p>Until that lands, the honest read from the verified pass: <b>the incumbent ADI quote (Optoma
-        ZK420UST + Elite Screens recessed) is directionally validated as the right category of solution,
-        and nothing surfaced here is yet proven to beat it</b> — only plausibly could, pending real
-        pricing and the control/housing/HDR gaps above.</p>
-      <div class="rp-reco-caveat">
-        <b>Single-pass agent's take (less rigorous, included for reference):</b> keep the Optoma ZK420UST
-        from the existing quote, but swap the screen from the plain recessed unit to Elite Screens' Kestrel
-        Tab-Tension 2 CLR3 121" floor-rising ALR screen — same projector, same trade relationship, zero
-        ceiling/joist dependency, and a screen actually engineered for this room's daylight problem.
-        Presented as directional, not decided — the verified pass above is the higher-confidence read
-        where the two disagree.
+    <div class="sec-body collapsed" id="body-history">
+    <p style="font-size:13px;color:var(--grey);margin:-4px 0 14px;">Nothing below is deleted when a later
+      call changes the answer — each entry stands, superseded entries say so explicitly. This page's
+      Recommendation/Criteria/Unified Findings sections above always reflect the <i>current</i> state; this
+      log is the trail of how it got there.</p>
+    <div class="rp-finding gap">
+      <div class="rp-finding-head"><span class="rp-finding-badge">2026-07-18, call 1</span>
+        <span class="rp-finding-title">Floor-rising disregarded; white housing + shortest-throw elevated to hard requirements</span></div>
+      <p>Per Tunde, post-Claudio call. Floor-rising ruled out for structural-change conflict. White housing
+        and "shortest throw" set as hard requirements.</p>
+    </div>
+    <div class="rp-finding gap">
+      <div class="rp-finding-head"><span class="rp-finding-badge">2026-07-18, call 2 — supersedes "shortest throw"</span>
+        <span class="rp-finding-title">UST ruled out entirely; regular short-throw ~3–4 ft confirmed instead</span></div>
+      <p>Claudio caught that throw <i>distance</i> was being confused with the projector's physical body
+        length — a UST unit would collide with an existing ceiling light fixture ~4 ft from the wall.
+        "Shortest throw is a hard requirement" (call 1) is corrected, not deleted: the actual requirement is
+        a regular short-throw projector, not the shortest available throw distance.</p>
+    </div>
+    <div class="rp-finding gap">
+      <div class="rp-finding-head"><span class="rp-finding-badge">2026-07-18, call 3 — refines call 2</span>
+        <span class="rp-finding-title">Throw distance refined to ~4–5 ft (from ~3–4 ft)</span></div>
+      <p>Follow-up AI research read live on the call confirmed BenQ TK710STi needs ~4–5 ft from the wall
+        for a clean 120" image — a tighter number than call 2's initial ~3–4 ft estimate, same direction.</p>
+    </div>
+    <div class="rp-finding gap">
+      <div class="rp-finding-head"><span class="rp-finding-badge">2026-07-18, call 3 — this rewrite</span>
+        <span class="rp-finding-title">Two research passes merged into one unified, structured recommendation</span></div>
+      <p>Per Tunde's explicit instruction: capture criteria from Tunde/Claudio, do the technical synthesis
+        as SME. No standing AV/home-theater SME team exists in the org today — this was done directly, ad
+        hoc, as it has been for this project so far.</p>
+    </div>
+    </div>
+  </section>
+
+  <section id="sec-archive">
+    <button type="button" class="sec-toggle" data-target="body-archive" aria-expanded="false">
+      <span class="chevron">▸</span><span class="sec-title">Original Two-Pass Research (Archived Detail)</span>
+      <span class="sec-hint"></span>
+    </button>
+    <div class="sec-body collapsed" id="body-archive">
+    <p style="font-size:13px;color:var(--grey);margin:-4px 0 14px;">Full original writeups, unedited, for
+      audit trail — every candidate below is UST or floor-rising and is <b>moot</b> under current criteria
+      (see Unified Findings above). Kept here, not deleted, per this page's append-and-supersede convention.</p>
+
+    <div class="rp-pass-grid" style="margin-bottom:14px;">
+      <div class="rp-pass-card verified">
+        <div class="rp-pass-badge">✔ Adversarially Verified</div>
+        <div class="rp-pass-stats">93 subagents · 3 search angles · 13 sources fetched · 48 claims
+          extracted · 25 cross-verified 3-vote each · <b>16 confirmed / 9 refuted</b></div>
+        <p>Run 2026-07-18 against a UST+ALR framing that has since been superseded by the throw-distance
+          correction. Still the higher-confidence methodology where its findings do carry forward (see
+          Unified Findings).</p>
+      </div>
+      <div class="rp-pass-card singlepass">
+        <div class="rp-pass-badge">◐ Single-Pass</div>
+        <div class="rp-pass-stats">1 general-purpose agent · WebSearch + WebFetch · no adversarial
+          verification pass</div>
+        <p>Evaluated 5 pairings spanning both UST and regular short-throw. Pairing C (BenQ + Draper ALR
+          upgrade) is the one pairing that survives — see Recommendation above.</p>
       </div>
     </div>
+
+    <div class="rp-table-wrap" style="margin-bottom:14px;">
+      <table class="rp-table">
+        <tr><th>Rank (as originally scored)</th><th>#</th><th>Projector</th><th>Screen</th><th>Est. cost</th><th>Status now</th></tr>
+        <tr class="rank-moot">
+          <td><span class="rp-rank-pill">Was Best</span></td><td>A</td>
+          <td>Optoma ZK420UST <span class="rp-type-tag">UST</span></td>
+          <td>Kestrel Tab-Tension 2 CLR3 121" floor-rising</td><td>~$6,600–$7,000</td>
+          <td><b>Moot</b> — UST + floor-rising, both excluded</td>
+        </tr>
+        <tr class="rank-moot">
+          <td><span class="rp-rank-pill">Was Best</span></td><td>E</td>
+          <td>Hisense PX3-Pro <span class="rp-type-tag">UST</span></td>
+          <td>Kestrel/VIVIDSTORM floor-rising</td><td>~$5,500–$6,400</td>
+          <td><b>Moot</b> — UST + floor-rising, both excluded</td>
+        </tr>
+        <tr class="rank-moot">
+          <td><span class="rp-rank-pill">Was Good</span></td><td>D</td>
+          <td>Epson EpiqVision Ultra LS800 <span class="rp-type-tag">UST</span></td>
+          <td>Aeon CLR3 123" fixed frame</td><td>~$3,500–$4,800</td>
+          <td><b>Moot</b> — UST excluded; brightness figure also separately refuted</td>
+        </tr>
+        <tr class="rank-good">
+          <td><span class="rp-rank-pill">Now the pick</span></td><td>C</td>
+          <td>BenQ TK710STi <span class="rp-type-tag">Regular short-throw</span></td>
+          <td>Draper Access V-Class recessed, <b>if</b> upgraded to TecVision XH900X ALR</td>
+          <td>Trade pricing not yet pulled</td>
+          <td><b>Recommended</b> — see above</td>
+        </tr>
+        <tr class="rank-moot">
+          <td><span class="rp-rank-pill">Was Weakest</span></td><td>B</td>
+          <td>Optoma ZK420UST <span class="rp-type-tag">UST</span></td>
+          <td>Elite Screens 120" recessed — ADI quote #16708070</td>
+          <td>$4,861.74 real dealer total</td>
+          <td><b>Moot</b> — UST excluded (real pricing, but wrong projector class)</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="rp-finding moot">
+      <div class="rp-finding-head"><span class="rp-finding-badge">Moot</span>
+        <span class="rp-finding-title">UST + ALR/CLR is the established answer for ambient light (original framing)</span></div>
+      <p>The general principle survives (see Unified Findings), but this finding's original framing assumed
+        UST was in scope. High confidence, well-corroborated at the time.
+        <i>Sources: elitescreens.com, ecoustics.com, projectorscreen.com</i></p>
+    </div>
+    <div class="rp-finding moot">
+      <div class="rp-finding-head"><span class="rp-finding-badge">Moot</span>
+        <span class="rp-finding-title">Elite Screens Evanesce in-ceiling recessed UST line — real, no pricing published</span></div>
+      <p>The "Evanesce" series is real, named SKUs, disappears into the ceiling — but is a UST-specific
+        recessed line and wasn't verified for regular-short-throw compatibility.
+        <i>Source: elitescreens.com product category pages</i></p>
+    </div>
+    <div class="rp-finding moot">
+      <div class="rp-finding-head"><span class="rp-finding-badge">Moot</span>
+        <span class="rp-finding-title">Snap One Dragonfly Ultra Black ALR screen — size-matched, not recessed</span></div>
+      <p>DFM-NTT-110/120-ALR, up to 95% ambient-light rejection (manufacturer spec, not lab-tested). Wall
+        canister stays visible unless boxed into a soffit — real build-out, conflicts with no-structural-
+        changes unless trivial. Snap One is now part of ADI/Resideo; no public price.
+        <i>Sources: snapav.com Dragonfly DFM/DFRM pages, owner's manual</i></p>
+    </div>
+    <div class="rp-finding moot">
+      <div class="rp-finding-head"><span class="rp-finding-badge">Moot</span>
+        <span class="rp-finding-title">Kestrel Tab-Tension CLR 5 and Aeon CLR 5 — both trade something away</span></div>
+      <p>Kestrel is UST-only and its smallest diagonal (126") exceeds the 110"–120" target. Aeon is fixed/
+        non-retractable, sacrificing invisible-when-not-in-use.
+        <i>Sources: elitescreens.com, Aeon CLR 5 spec page, Neobits/B&amp;H retailer listings for FTE126H3-CLR5</i></p>
+    </div>
+    <div class="rp-finding moot">
+      <div class="rp-finding-head"><span class="rp-finding-badge">Moot</span>
+        <span class="rp-finding-title">Three UST projectors brighter than the Optoma ZK420UST</span></div>
+      <div class="rp-table-wrap" style="margin:8px 0;">
+        <table class="rp-table">
+          <tr><th>Model</th><th>Brightness</th><th>Price</th><th>Notes</th></tr>
+          <tr><td><b>Hisense L9Q</b></td><td>5,000 ANSI rated, 5,185 ANSI measured (ProjectorCentral)</td><td>$5,997</td><td>One of the brightest USTs on the market</td></tr>
+          <tr><td><b>AWOL Vision Aetherion Max</b></td><td>3,300 ISO / ~3,031 ANSI measured</td><td>$4,499</td><td>#2 on ProjectorCentral's Jul-2026 top-10 UST ranking</td></tr>
+          <tr><td><b>XGIMI Aura</b></td><td>2,400 ANSI, laser, 4K UHD</td><td>— (not verified)</td><td>11.7" throw to 120" screens; Android TV built-in</td></tr>
+        </table>
+      </div>
+      <p><i>Sources: projectorcentral.com Top 10 UST July 2026, theaudioinsights.com</i></p>
+    </div>
+    <div class="rp-finding moot">
+      <div class="rp-finding-head"><span class="rp-finding-badge">Moot</span>
+        <span class="rp-finding-title">Optoma ZK420UST doesn't appear on ProjectorCentral's current top-10 UST ranking</span></div>
+      <p>Confirmed by direct fetch — one outlet's methodology signal, not proof of a shortfall.
+        <i>Source: projectorcentral.com</i></p>
+    </div>
+    <div class="rp-finding moot">
+      <div class="rp-finding-head"><span class="rp-finding-badge">Moot</span>
+        <span class="rp-finding-title">Optoma ZK420UST's laser life (30,000 hrs) beat the brighter UST alternatives (~20,000 hrs)</span></div>
+      <p>Was a genuine win for the incumbent UST pick on the laser-life axis; irrelevant now that the
+        incumbent itself (UST) is excluded. BenQ's own laser life (20,000+ hrs, self-reported) hasn't been
+        independently verified the way this comparison was.
+        <i>Source: projectorcentral.com UST-TV Buyer's Guide, corroborated by AWOL Vision, XGIMI, Sony Pro, Dangbei</i></p>
+    </div>
+    <div class="rp-finding refuted">
+      <div class="rp-finding-head"><span class="rp-finding-badge">Refuted 0–3</span>
+        <span class="rp-finding-title">Ricoh UHL3660 rated 6,500 ANSI / $6,695</span></div>
+      <p>Refuted 0-3 in the adversarial pass — and moot regardless (UST). Needs from-scratch re-verification
+        if ever reconsidered.</p>
+    </div>
+    <div class="rp-finding refuted">
+      <div class="rp-finding-head"><span class="rp-finding-badge">Refuted (twice)</span>
+        <span class="rp-finding-title">Epson LS800 / EpiqVision Ultra rated 4,000 ANSI lumens</span></div>
+      <p>Refuted twice (0-3, 1-2) — and moot regardless (UST, and it's Pairing D above).</p>
+    </div>
+    <div class="rp-finding refuted">
+      <div class="rp-finding-head"><span class="rp-finding-badge">Refuted at citation level</span>
+        <span class="rp-finding-title">"UST+ALR solves ambient light" — projectorscreen.com, compareprojector.com, projectorreviews.com</span></div>
+      <p>The general principle is separately confirmed elsewhere; don't re-cite these three sources for
+        that specific claim.</p>
+    </div>
+    <div class="rp-finding refuted">
+      <div class="rp-finding-head"><span class="rp-finding-badge">Refuted 1–2</span>
+        <span class="rp-finding-title">Dragonfly screen's "gain 0.8" figure</span></div>
+      <p>Unconfirmed, not disproven — and moot regardless (Dragonfly isn't the current pick).</p>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--grey);margin-top:10px;">Full unedited writeups:
+      <code>Research_Findings_Projector_Screen_ADR-2026-WRIGHT_v1.0.0i.md</code> (verified pass) and
+      <code>..._SinglePass_...md</code> (single-pass), in the Adroit brain.</p>
     </div>
   </section>
 
@@ -623,6 +627,9 @@
         <tr><td>hometheaterreview.com</td><td><span class="rp-qual unreliable">Unreliable</span></td><td>0 (no verifiable claims survived)</td></tr>
       </table>
     </div>
+    <p style="font-size:12px;color:var(--grey);margin-top:10px;">All 13 sources fed the archived UST-era
+      research above. Nothing has yet been separately sourced for the BenQ TK710STi + TecVision XH900X ALR
+      pairing itself — see Remaining Gaps.</p>
     </div>
   </section>
 
@@ -633,46 +640,46 @@
         <span class="sec-count">13</span><span class="sec-hint"></span>
       </button>
       <div class="sec-body collapsed" id="body-glossary">
-      <div class="gloss-intro">Reference for every term used in the research findings above, in the order they matter most to reading the verdicts and the pairings table.</div>
+      <div class="gloss-intro">Reference for every term used above, in the order they matter most to reading the recommendation and the archived pairings table.</div>
       <dl class="gterms">
-        <dt>Confirmed / Refuted / Gap</dt>
-        <dd>The three verdict badges used throughout the Verified Pass sections above. <b>Confirmed</b> survived independent 3-vote adversarial fact-checking. <b>Refuted</b> failed that same check — do not cite. <b>Gap</b> means the question hasn't been answered yet either way, not that it was checked and found wanting.</dd>
+        <dt>Confirmed / Refuted / Gap / Moot</dt>
+        <dd>The verdict badges used throughout. <b>Confirmed</b> survived independent 3-vote adversarial fact-checking. <b>Refuted</b> failed that check — do not cite. <b>Gap</b> means unanswered either way. <b>Moot</b> means the finding was solid but no longer applies now that UST/floor-rising are excluded.</dd>
 
         <dt>Adversarially Verified vs. Single-Pass</dt>
-        <dd>The two research methodologies compared on this page. <b>Adversarially Verified:</b> every claim was independently reviewed 3 times before being reported as fact — the higher-confidence pass, weighted more heavily where the two disagree. <b>Single-Pass:</b> one research run with no independent fact-check — treat as directional only.</dd>
+        <dd><b>Adversarially Verified:</b> every claim independently reviewed 3 times before being reported as fact — the higher-confidence methodology. <b>Single-Pass:</b> one research run, no independent fact-check — directional only.</dd>
 
-        <dt>UST (Ultra-Short-Throw) projector</dt>
-        <dd>A projector designed to sit just inches from the screen — versus several feet for a standard short-throw unit — and still fill it, letting it mount low near a credenza instead of in the ceiling.</dd>
+        <dt>UST (Ultra-Short-Throw) vs. regular short-throw</dt>
+        <dd>UST projectors sit inches from the screen. Regular short-throw units sit a few feet back — the current pick, BenQ TK710STi, is regular short-throw, not UST.</dd>
+
+        <dt>Throw distance vs. projector body length</dt>
+        <dd>Two different things that got conflated on the first Claudio call: throw distance is how far the lens must be from the screen to fill it; body length is the physical depth of the unit itself, which determines clearance from obstacles like the ceiling light fixture in this room.</dd>
 
         <dt>ALR / CLR screen (Ambient-Light-Rejecting / Ceiling-Light-Rejecting)</dt>
-        <dd>A screen surface engineered to reflect light arriving from a UST projector's low, steep angle while absorbing ambient light coming from overhead room lighting or windows — what lets a projector perform without blackout curtains.</dd>
+        <dd>A screen surface engineered to reflect a projector's light while absorbing ambient room/window light — what lets a projector perform without blackout curtains. The current pick needs the Draper's plain matte-white surface upgraded to Draper's TecVision XH900X ALR surface to qualify.</dd>
 
         <dt>ANSI lumens vs. ISO lumens</dt>
-        <dd>Two different projector-brightness measurement standards; figures from each aren't directly comparable. ANSI lumens is the industry's older, more rigorous standard; some newer projectors are rated in ISO lumens instead, which tends to read higher for similar real-world brightness.</dd>
+        <dd>Two different projector-brightness measurement standards; figures from each aren't directly comparable. ANSI is the older, more rigorous standard.</dd>
 
-        <dt>Gain</dt>
-        <dd>A screen's brightness multiplier versus a flat white reference surface (1.0 gain). Higher gain reflects more light back at the viewer but narrows the usable viewing angle.</dd>
-
-        <dt>Viewing angle</dt>
-        <dd>The horizontal range within which the image stays bright and color-accurate. Higher-gain ALR screens typically trade a wider room away for extra brightness.</dd>
-
-        <dt>Throw distance / throw ratio</dt>
-        <dd>How far a projector must sit from the screen to fill it at a given size. UST models have a very short throw ratio — a few feet or less — letting them sit near the screen wall instead of at the back of the room.</dd>
+        <dt>Gain / Viewing angle</dt>
+        <dd>Gain is a screen's brightness multiplier vs. a flat white reference (1.0). Higher gain reflects more light but narrows the usable viewing angle.</dd>
 
         <dt>Trade / dealer pricing vs. retail (MSRP)</dt>
-        <dd>Trade pricing is what an AV integrator like Adroit actually pays through a distributor (e.g., ADI, Snap One) — usually well below the publicly listed retail/MSRP price consumers see. This page flags which figure is being cited for every candidate, since only trade pricing is a real cost basis for a client estimate.</dd>
+        <dd>Trade pricing is what an AV integrator like Adroit actually pays through a distributor (e.g., ADI, Snap One) — usually well below retail. Everything priced for the BenQ/Draper pairing today is still retail/list, not trade.</dd>
 
         <dt>Recessed vs. floor-rising vs. fixed-frame screen</dt>
-        <dd>Three screen mounting styles: <b>recessed</b> disappears into the ceiling when not in use (most "invisible," most build-out); <b>floor-rising</b> motorizes up from a canister at floor level; <b>fixed-frame</b> stays permanently visible on the wall (cheapest, least flexible).</dd>
+        <dd><b>Recessed</b> disappears into the ceiling when not in use (the locked-scope choice here — Draper Access V-Class); <b>floor-rising</b> motorizes up from a floor canister (excluded, 2026-07-18); <b>fixed-frame</b> stays permanently visible (cheapest, least flexible).</dd>
 
         <dt>Laser light source</dt>
-        <dd>A projector illumination technology (versus a traditional lamp bulb) rated for a much longer service life — 20,000-30,000+ hours — with more consistent brightness over time and no bulb replacements.</dd>
+        <dd>Projector illumination technology (vs. a lamp bulb) rated for a much longer service life — 20,000-30,000+ hours — with no bulb replacements. BenQ TK710STi is laser-rated at 20,000+ hrs (self-reported, not independently verified).</dd>
 
         <dt>eARC (Enhanced Audio Return Channel)</dt>
-        <dd>The HDMI feature carrying high-quality audio from the projector back to the existing Sonos Arc Ultra soundbar over a single cable, avoiding a separate audio run.</dd>
+        <dd>The HDMI feature carrying high-quality audio back to the existing Sonos Arc Ultra soundbar over a single cable — not yet confirmed for the BenQ specifically.</dd>
+
+        <dt>Keystone / lens-shift correction</dt>
+        <dd>Digital or optical correction for a distorted (trapezoidal) image when a projector can't be mounted dead-center to the screen. Raised on the first Claudio call, never resolved — a live gap now that the pick is ceiling-mount rather than UST.</dd>
 
         <dt>Dolby Vision</dt>
-        <dd>A dynamic HDR (high-dynamic-range) format that adjusts brightness and color scene-by-scene rather than using one fixed setting for the whole source — noted here as a differentiator on the Hisense PX3-Pro pairing, not a requirement from the original brief.</dd>
+        <dd>A dynamic HDR format that adjusts brightness/color scene-by-scene — noted on the now-moot Hisense PX3-Pro pairing, not a requirement from the original brief.</dd>
       </dl>
       </div>
     </div>
@@ -684,6 +691,9 @@
       <span class="sec-hint"></span>
     </button>
     <div class="sec-body collapsed" id="body-prompt">
+      <p style="font-size:12.5px;color:var(--grey);margin:-4px 0 10px;">Historical — written before the
+        floor-rising and UST exclusions below existed as constraints. Kept verbatim for the audit trail;
+        the Client-Locked Criteria section above is the current source of truth.</p>
       <div class="rp-prompt">I'm sourcing a projector + projection screen pairing for a home theater installation for a high-end residential client in Georgetown, Washington DC. Budget is not the primary constraint — picture quality, reliability, and a genuinely premium, invisible-technology aesthetic matter more than shaving cost, but I do need real trade/dealer pricing (not consumer retail) wherever it can be found, since this feeds a contractor's cost basis. Evaluate candidates against the criteria below and do not assume the answer is a projector or screen brand I haven't mentioned — canvas broadly.
 
 Non-negotiable constraints:
@@ -758,7 +768,9 @@ What I need back:
     var targetId = btn.getAttribute("data-target");
     var body = document.getElementById(targetId);
     if(!body) return;
-    collapse(btn, body); // every section starts collapsed
+    var startExpanded = btn.getAttribute("aria-expanded") === "true";
+    if(startExpanded){ body.classList.remove("collapsed"); setToggleUI(btn, true); }
+    else { collapse(btn, body); }
     btn.addEventListener("click", function(){
       if(body.classList.contains("collapsed")){
         expand(btn, body);
