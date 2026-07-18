@@ -364,7 +364,7 @@
 </header>
 <div class="amberline"></div>
 <div class="top-nav"><a href="research.html" target="_blank" rel="noopener">📊 View Research — Projector &amp; Screen Sourcing →</a></div>
-<div class="updated">Living project page — edit directly on GitHub · Last updated <b>July 18, 2026</b> (Hank Delgado / Julian Pryce, av-hometheater-sourcing SME — BenQ vs. Optoma ZK430ST closed out, TecVision XH900X ALR screen surface locked in) · <b style="color:var(--red);">⚠ One real ADI dealer quote on file for a different rig than currently priced, and the ALR screen upgrade is still unpriced ($0.00 placeholder) — see the top of Open Items before sending anything</b></div>
+<div class="updated">Living project page — edit directly on GitHub · Last updated <b>July 18, 2026</b> (Hank Delgado / Julian Pryce, av-hometheater-sourcing SME — BenQ vs. Optoma ZK430ST closed out, TecVision XH900X ALR screen surface locked in; print/PDF flow hardened so any print action defaults to the client-safe document) · <b style="color:var(--red);">⚠ One real ADI dealer quote on file for a different rig than currently priced, and the ALR screen upgrade is still unpriced ($0.00 placeholder) — see the top of Open Items before sending anything</b></div>
 
 <div class="wrap">
 
@@ -498,16 +498,16 @@
     <div class="sec-body collapsed" id="body-estimate">
 
     <div class="tool-banner">INTERNAL — WORKING ESTIMATE · NOT CLIENT-FACING
-      <span class="sub">Exposes internal cost levers (margin %, raw cost, profit split). Use "Generate Client PDF" below to produce anything client-safe.</span>
+      <span class="sub">Exposes internal cost levers (margin %, raw cost, profit split). Any print action — this page's buttons, the browser's Print menu, or Cmd/Ctrl+P — defaults to the client-safe document; use "Internal Print" only if you deliberately need this raw view.</span>
     </div>
 
     <div class="toolbar">
       <button type="button" class="btn-primary" id="btn-add">+ Add line item</button>
       <button type="button" class="btn-history" id="btn-history">🕘 Version History</button>
-      <button type="button" class="btn-amber" id="btn-client-pdf">🖨 Generate Client PDF</button>
+      <button type="button" class="btn-amber" id="btn-client-pdf">🖨 Print Client Estimate (PDF)</button>
       <button type="button" class="btn-ghost" id="btn-research">📊 View Research</button>
       <button type="button" class="btn-ghost" id="btn-export">⭳ Export JSON</button>
-      <button type="button" class="btn-ghost" id="btn-print">⎙ Print working copy</button>
+      <button type="button" class="btn-danger-ghost" id="btn-print">⚠ Internal Print (exposes margin)</button>
       <button type="button" class="btn-danger-ghost" id="btn-reset">↺ Reset to original</button>
       <span class="saved-indicator" id="saved-indicator"><span class="dot2"></span><span id="saved-text">Saved</span></span>
       <span class="sync-indicator" id="sync-indicator"><span class="dot3"></span><span id="sync-text">Sync: connecting…</span></span>
@@ -526,9 +526,12 @@
       <br><br><b>Version history:</b> a checkpoint auto-captures a few seconds after you stop editing. Open
       <b>🕘 Version History</b> to browse past checkpoints or revert to any of them — reverting itself is undoable.
       For the durable, permanent history — every version actually pushed to GitHub — see the link inside that panel.
-      <br><br><b>🖨 Generate Client PDF</b> builds a polished, client-safe document from whatever is currently in the
-      tool — both pricing options side by side, no margin/split/internal notes exposed — and stamps the footer with
-      a version fingerprint tying the printout back to the exact numbers that produced it.</div>
+      <br><br><b>🖨 Print Client Estimate (PDF):</b> builds a polished, client-safe document from whatever is
+      currently in the tool — the single confirmed ceiling-mount system, no margin/split/internal notes exposed —
+      and stamps the footer with a version fingerprint tying the printout back to the exact numbers that produced
+      it. <b>Any print action on this page — this button, the browser's own Print menu, or Cmd/Ctrl+P — defaults
+      to this client-safe document.</b> The separate <b>Internal Print</b> button is gated behind a confirmation
+      because it exposes margin %, raw cost, and profit-split numbers that must never reach a client.</div>
 
     <div class="callout">
       <b>Section B — Projector (Ceiling-Mount, the sole confirmed direction).</b>
@@ -640,7 +643,7 @@
   <section>
     <button type="button" class="sec-toggle" data-target="body-timeline" aria-expanded="false">
       <span class="chevron">▸</span><span class="sec-title">Timeline</span>
-      <span class="sec-count">14</span><span class="sec-hint"></span>
+      <span class="sec-count">15</span><span class="sec-hint"></span>
     </button>
     <div class="sec-body collapsed" id="body-timeline">
     <div class="timeline">
@@ -658,6 +661,7 @@
       <div class="tl-item"><div class="tl-date">Jul 18</div><div class="tl-body">Julian Pryce (newly onboarded AV/home-theater sourcing SME) searches O365 for ADI correspondence per Tunde's direct tasking to reconcile all research + O365/ADI mail into one page. Confirms Quote #16708070 is already known/reflected as moot (UST, excluded 07-18). Finds a second, previously-unreconciled real ADI quote (#16599923, 07/13/2026): Draper AeroLift 35 lift real cost $2,720.31, paired with an Optoma ZK430ST projector (not the BenQ) — applied to Option 2's placeholder lift line below; flagged as an open strategic question, not a resolved pick. Research page rewritten to fold in the full reconciliation.</div></div>
       <div class="tl-item"><div class="tl-date">Jul 18</div><div class="tl-body">Tunde rejects the recessed-lift option outright — BenQ TK710STi ceiling-mount confirmed as the sole live projector direction. Option 2 removed everywhere (this page, research.html, the master itemization JSON, the draft estimate); full record preserved in <code>archive/ARCHIVED_lift_option_2026-07-18.md</code>.</div></div>
       <div class="tl-item"><div class="tl-date">Jul 18</div><div class="tl-body">BenQ TK710STi evaluated head-to-head against the one real remaining non-UST challenger, Optoma ZK430ST (pricing explicitly excluded from the call per Tunde) — closed out in BenQ's favor on built-in smart-TV platform (confirmed vs. Optoma's external-dongle-only spec) and confirmed white housing (vs. Optoma's unconfirmed/likely-dark finish). Screen's locked configuration also confirmed as the Draper Access V-Class upgraded to a TecVision XH900X ALR surface (not plain matte-white) — added to the estimate below as an unpriced-but-required line (A1-ALR). Full reasoning and sourcing on the <a href="research.html" target="_blank" rel="noopener">📊 Research page</a> Decision History.</div></div>
+      <div class="tl-item"><div class="tl-date">Jul 18</div><div class="tl-body">Hank Delgado (Job Site) audits the print flow per Tunde's direct instruction that "the print button must generate an official client-facing Adroit Communications styled client estimate." Root cause: the button literally labeled "Print" produced the INTERNAL margin-exposing view, and neither it nor the browser's own Print menu / Cmd+Ctrl+P routed through the client-safe document — any generic print action on the raw page risked leaking margin %, raw cost, and profit-split numbers. Confirmed the client-PDF generator itself (single-option layout, BenQ + Draper/TecVision ALR equipment, client-signature-only, System Assurance &amp; Warranty Package fee line, zero internal numbers) was already correct and current — recomputed live and matched the page's own $12,975.00 raw / $13,623.75 total reconciliation exactly. Fixed: the client-safe action is now literally "🖨 Print Client Estimate (PDF)"; the internal button is relabeled "⚠ Internal Print (exposes margin)," restyled as a warning action, and gated behind a confirm dialog; any OTHER print trigger auto-opens the client-safe view via a beforeprint/afterprint listener and restores the working view after. Also added a plain-language note on the client PDF that the ALR surface upgrade's final pricing is still being confirmed (previously a $0.00 placeholder silently folded into the Screen subtotal with no client-visible flag). No margin %, distribution-split, or pricing math was changed — print-routing and disclosure-wording only.</div></div>
     </div>
     </div>
   </section>
@@ -1230,7 +1234,37 @@
       state = freshState(); touch(); persist(); render();
     }
   });
-  document.getElementById("btn-print").addEventListener("click", function(){ window.print(); });
+  // ── Print safety net (2026-07-18, Hank Delgado / Job Site) ───────────────────────────────
+  // Tunde's instruction: "the print button must generate an official client-facing Adroit
+  // Communications styled client estimate." Root cause found: two buttons existed — "Print
+  // working copy" (internal, margin-exposing) and "Generate Client PDF" (client-safe) — and the
+  // literal word PRINT was on the internal one. Worse, neither that button nor the browser's own
+  // Print menu / Cmd+Ctrl+P was routed through the client-safe view, so ANY generic print action
+  // on the raw page would have exposed margin %, raw cost, and profit-split numbers. Fix: the
+  // internal path is relabeled "Internal Print" and gated behind an explicit confirm(); every
+  // OTHER print trigger (native browser Print, Cmd/Ctrl+P) auto-opens the client-safe view first,
+  // then restores the working view after printing completes. Print-routing/UI fix only — does not
+  // touch margin %, distribution split, or any pricing math.
+  var intentionalInternalPrint = false;
+  document.getElementById("btn-print").addEventListener("click", function(){
+    var ok = confirm("This prints the INTERNAL working copy — margin %, raw cost, and profit-split "
+      + "numbers will be visible on the page/PDF. It is NOT client-safe.\n\nUse “Print Client Estimate "
+      + "(PDF)” instead for anything going to Oliver or Allison.\n\nContinue with the internal print?");
+    if(!ok) return;
+    intentionalInternalPrint = true;
+    window.print();
+  });
+  var autoOpenedForPrint = false;
+  window.addEventListener("beforeprint", function(){
+    if(!document.body.classList.contains("client-view") && !intentionalInternalPrint){
+      openClientPdf();
+      autoOpenedForPrint = true;
+    }
+  });
+  window.addEventListener("afterprint", function(){
+    if(autoOpenedForPrint){ closeClientPdf(); autoOpenedForPrint = false; }
+    intentionalInternalPrint = false;
+  });
   document.getElementById("btn-history").addEventListener("click", openHistoryPanel);
   document.getElementById("history-close").addEventListener("click", closeHistoryPanel);
   document.getElementById("history-overlay").addEventListener("click", function(e){
@@ -1390,6 +1424,10 @@
       + '          </table></div>'
       + '      </div>'
       + '    </div>'
+      + '    <div style="font-size:12.5px;color:var(--grey);margin:-10px 0 22px;line-height:1.6;">Note: the '
+      + '      Projection Screen figure above reflects the base screen unit; final pricing for the required '
+      + '      TecVision XH900X ambient-light-rejecting (ALR) surface upgrade is still being confirmed with our '
+      + '      supplier and will be added to this total before the estimate is finalized for signature.</div>'
       + '    <div class="cpv-terms"><b>Payment terms:</b> ' + t.depositPct + '% deposit to commence (' + money(dep) + '), '
       + 'balance due on completion. Equipment costs reflect our current sourcing basis and are '
       + 'subject to confirmation prior to order.</div>'
