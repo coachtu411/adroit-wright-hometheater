@@ -146,10 +146,22 @@
   .sec-toggle .sec-hint{flex:0 0 auto;font-size:10.5px;font-weight:700;color:var(--teal-dark);
     text-transform:none;letter-spacing:0;white-space:nowrap;background:var(--teal-wash);
     border-radius:20px;padding:4px 10px;}
+  .sec-toggle .sec-count{flex:0 0 auto;background:var(--navy-wash);color:var(--navy);font-size:10.5px;
+    font-weight:800;border-radius:20px;padding:3px 9px;}
   .sec-body{overflow:hidden;}
   .sec-body.collapsed{display:none;}
   .rp-prompt{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;
     font-size:13px;line-height:1.65;white-space:pre-wrap;}
+
+  /* Glossary (reused pattern from index.html) */
+  .glossary{margin:26px 0 8px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px 0 8px;}
+  .glossary .glossary-toggle{background:var(--teal-wash);border-radius:14px 14px 0 0;border-bottom:0;
+    padding:12px 16px;margin:0;min-height:44px;}
+  .glossary .glossary-toggle[aria-expanded="false"]{border-radius:14px;}
+  .glossary .gloss-intro{font-size:12.5px;color:var(--grey);padding:12px 16px 0;}
+  dl.gterms{margin:6px 16px 10px;}
+  dl.gterms dt{font-weight:800;color:var(--navy);font-size:13.5px;margin-top:12px;}
+  dl.gterms dd{margin:3px 0 0;font-size:13px;color:var(--ink);line-height:1.5;}
 
   footer{text-align:center;color:var(--grey);font-size:11.5px;padding:22px 16px 8px;line-height:1.6;}
   footer a{color:var(--teal-dark);}
@@ -185,6 +197,7 @@
       <li><a href="#sec-gaps">Gaps &amp; Open Questions</a></li>
       <li><a href="#sec-reco">Recommended Next Step</a></li>
       <li><a href="#sec-sources">Sources Consulted</a></li>
+      <li><a href="#sec-glossary">Glossary — Terms, Jargon &amp; Acronyms</a></li>
       <li><a href="#sec-prompt">Original Research Prompt (full text)</a></li>
     </ol>
   </nav>
@@ -573,6 +586,58 @@
         <tr><td>hometheaterreview.com</td><td><span class="rp-qual unreliable">Unreliable</span></td><td>0 (no verifiable claims survived)</td></tr>
       </table>
     </div>
+    </div>
+  </section>
+
+  <section id="sec-glossary">
+    <div class="glossary">
+      <button type="button" class="sec-toggle glossary-toggle" data-target="body-glossary" aria-expanded="false">
+        <span class="chevron">▸</span><span class="sec-title">Glossary — Terms, Jargon &amp; Acronyms</span>
+        <span class="sec-count">13</span><span class="sec-hint"></span>
+      </button>
+      <div class="sec-body collapsed" id="body-glossary">
+      <div class="gloss-intro">Reference for every term used in the research findings above, in the order they matter most to reading the verdicts and the pairings table.</div>
+      <dl class="gterms">
+        <dt>Confirmed / Refuted / Gap</dt>
+        <dd>The three verdict badges used throughout the Verified Pass sections above. <b>Confirmed</b> survived independent 3-vote adversarial fact-checking. <b>Refuted</b> failed that same check — do not cite. <b>Gap</b> means the question hasn't been answered yet either way, not that it was checked and found wanting.</dd>
+
+        <dt>Adversarially Verified vs. Single-Pass</dt>
+        <dd>The two research methodologies compared on this page. <b>Adversarially Verified:</b> every claim was independently reviewed 3 times before being reported as fact — the higher-confidence pass, weighted more heavily where the two disagree. <b>Single-Pass:</b> one research run with no independent fact-check — treat as directional only.</dd>
+
+        <dt>UST (Ultra-Short-Throw) projector</dt>
+        <dd>A projector designed to sit just inches from the screen — versus several feet for a standard short-throw unit — and still fill it, letting it mount low near a credenza instead of in the ceiling.</dd>
+
+        <dt>ALR / CLR screen (Ambient-Light-Rejecting / Ceiling-Light-Rejecting)</dt>
+        <dd>A screen surface engineered to reflect light arriving from a UST projector's low, steep angle while absorbing ambient light coming from overhead room lighting or windows — what lets a projector perform without blackout curtains.</dd>
+
+        <dt>ANSI lumens vs. ISO lumens</dt>
+        <dd>Two different projector-brightness measurement standards; figures from each aren't directly comparable. ANSI lumens is the industry's older, more rigorous standard; some newer projectors are rated in ISO lumens instead, which tends to read higher for similar real-world brightness.</dd>
+
+        <dt>Gain</dt>
+        <dd>A screen's brightness multiplier versus a flat white reference surface (1.0 gain). Higher gain reflects more light back at the viewer but narrows the usable viewing angle.</dd>
+
+        <dt>Viewing angle</dt>
+        <dd>The horizontal range within which the image stays bright and color-accurate. Higher-gain ALR screens typically trade a wider room away for extra brightness.</dd>
+
+        <dt>Throw distance / throw ratio</dt>
+        <dd>How far a projector must sit from the screen to fill it at a given size. UST models have a very short throw ratio — a few feet or less — letting them sit near the screen wall instead of at the back of the room.</dd>
+
+        <dt>Trade / dealer pricing vs. retail (MSRP)</dt>
+        <dd>Trade pricing is what an AV integrator like Adroit actually pays through a distributor (e.g., ADI, Snap One) — usually well below the publicly listed retail/MSRP price consumers see. This page flags which figure is being cited for every candidate, since only trade pricing is a real cost basis for a client estimate.</dd>
+
+        <dt>Recessed vs. floor-rising vs. fixed-frame screen</dt>
+        <dd>Three screen mounting styles: <b>recessed</b> disappears into the ceiling when not in use (most "invisible," most build-out); <b>floor-rising</b> motorizes up from a canister at floor level; <b>fixed-frame</b> stays permanently visible on the wall (cheapest, least flexible).</dd>
+
+        <dt>Laser light source</dt>
+        <dd>A projector illumination technology (versus a traditional lamp bulb) rated for a much longer service life — 20,000-30,000+ hours — with more consistent brightness over time and no bulb replacements.</dd>
+
+        <dt>eARC (Enhanced Audio Return Channel)</dt>
+        <dd>The HDMI feature carrying high-quality audio from the projector back to the existing Sonos Arc Ultra soundbar over a single cable, avoiding a separate audio run.</dd>
+
+        <dt>Dolby Vision</dt>
+        <dd>A dynamic HDR (high-dynamic-range) format that adjusts brightness and color scene-by-scene rather than using one fixed setting for the whole source — noted here as a differentiator on the Hisense PX3-Pro pairing, not a requirement from the original brief.</dd>
+      </dl>
+      </div>
     </div>
   </section>
 
