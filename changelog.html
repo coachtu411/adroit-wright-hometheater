@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1F2D4D">
+<title>Changelog — Site Edit History | Oliver Wright Project Hub</title>
+<style>
+  :root{
+    --teal:#0E7C7B; --teal-dark:#0A5E5D; --teal-wash:#E6F2F1;
+    --navy:#1F2D4D; --navy-wash:#EAEEF5;
+    --amber:#C77F1A; --amber-wash:#FBF1DF;
+    --red:#B23A3A; --red-wash:#FBEAEA;
+    --green:#3F8F5F; --green-wash:#E9F5EE;
+    --purple:#6B4E9E; --purple-wash:#EFEAF7;
+    --ink:#23282E; --grey:#6B7480; --line:#DCE1E6; --bg:#F4F6F8;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;overflow-x:hidden;}
+  body{margin:0;background:var(--bg);color:var(--ink);overflow-x:hidden;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:60px;}
+  a{color:var(--teal-dark);}
+  .wrap{max-width:900px;margin:0 auto;padding:0 16px 40px;}
+  header.masthead{background:linear-gradient(135deg,var(--navy) 0%,#16223b 100%);color:#fff;
+    padding:22px 16px 20px;}
+  header.masthead .inner{max-width:900px;margin:0 auto;}
+  .brand{font-weight:800;letter-spacing:3px;font-size:11.5px;color:#8fd3d2;text-transform:uppercase;}
+  header.masthead h1{margin:8px 0 6px;font-size:21px;line-height:1.3;font-weight:700;}
+  header.masthead .sub{color:#cdd6e6;font-size:13px;}
+  .amberline{height:4px;background:linear-gradient(90deg,var(--teal),var(--navy),var(--purple),var(--amber));}
+  .cl-back-bar{background:#fff;border-bottom:1px solid var(--line);padding:10px 16px;text-align:center;}
+  .cl-back-bar a{font-weight:700;font-size:13px;text-decoration:none;}
+  .cl-back-bar a:hover{text-decoration:underline;}
+  .cl-tldr{margin:22px 0;background:var(--navy-wash);border:1px solid #c8d2e6;border-left:6px solid var(--navy);
+    border-radius:14px;padding:16px 18px;font-size:13.5px;line-height:1.65;color:var(--navy);}
+  .cl-tldr b{color:var(--navy);}
+  .cl-tldr .cl-warn{margin-top:10px;padding:10px 12px;background:var(--amber-wash);border-radius:8px;
+    border-left:4px solid var(--amber);font-size:12.5px;color:#5a4419;}
+  .cl-day{margin:28px 0;}
+  .cl-day h2{font-size:12px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--teal-dark);
+    border-bottom:2px solid var(--teal);padding-bottom:8px;margin:0 0 14px;}
+  .cl-entry{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;
+    box-shadow:0 1px 2px rgba(31,45,77,.05);}
+  .cl-entry-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;}
+  .cl-time{font-size:11px;font-weight:800;color:var(--grey);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+  .cl-author{font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;border-radius:20px;
+    padding:2px 9px;}
+  .cl-author.amos{background:var(--teal-wash);color:var(--teal-dark);}
+  .cl-author.human{background:var(--purple-wash);color:var(--purple);}
+  .cl-files{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto;}
+  .cl-file{font-size:10px;font-weight:700;background:var(--navy-wash);color:var(--navy);border-radius:6px;
+    padding:2px 7px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+  .cl-subject{font-weight:700;color:var(--navy);font-size:14px;line-height:1.4;}
+  .cl-entry p{font-size:13px;line-height:1.6;color:var(--ink);margin:6px 0 0;}
+  .cl-body-list{margin:6px 0 0;padding-left:18px;}
+  .cl-body-list li{font-size:13px;line-height:1.6;color:var(--ink);margin:4px 0;}
+  .cl-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px;padding-top:10px;
+    border-top:1px solid var(--line);font-size:11.5px;}
+  .cl-meta a{font-weight:700;text-decoration:none;}
+  .cl-meta a:hover{text-decoration:underline;}
+  .cl-meta code{background:var(--navy-wash);color:var(--navy);border-radius:4px;padding:2px 6px;
+    font-size:10.5px;}
+  .cl-rollback{color:var(--grey);}
+  .cl-rollback code{background:var(--amber-wash);color:#8a5c0f;}
+  footer{text-align:center;color:var(--grey);font-size:11.5px;padding:22px 16px 8px;line-height:1.6;}
+  footer a{color:var(--teal-dark);}
+  @media (max-width:640px){
+    header.masthead h1{font-size:19px;}
+    .cl-files{margin-left:0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="inner">
+    <div class="brand">ADROIT COMMUNICATIONS</div>
+    <h1>Changelog — Site Edit History</h1>
+    <div class="sub">Oliver Wright Residence · ADR-2026-WRIGHT · Georgetown, Washington DC</div>
+  </div>
+</header>
+<div class="amberline"></div>
+<div class="cl-back-bar"><a href="index.html">← Back to project hub</a></div>
+
+<div class="wrap">
+  <div class="cl-tldr">
+    <b>Structural/architectural site changes only</b> — every edit to <code>index.html</code> and
+    <code>research.html</code> (new pages, layout, features, sections), newest first. This is generated
+    directly from git history, not hand-maintained — regenerate with <code>python3 gen_changelog.py</code>
+    after any future edit. <b>25 commits</b> so far, from: AMOS, Tony Lann.
+    <div class="cl-warn">
+      <b>Not the same as pricing/line-item versioning</b> — editing the estimate itself (quantities, rates,
+      active toggles, notes) is tracked separately by the in-tool <b>🕘 Version History</b> button on the
+      project hub (browser-local, auto-snapshots + one-click revert). This page is for structural changes
+      to the page itself. To roll back a structural change: click "View diff" below to see exactly what
+      changed on GitHub, or run the <code>git checkout</code> command shown under any entry, or use GitHub's
+      own revert-commit button on the <a href="https://github.com/coachtu411/adroit-wright-hometheater/commits/main" target="_blank" rel="noopener">full commit history</a>.
+    </div>
+  </div>
+
+  
+  <section class="cl-day">
+    <h2>2026-07-18</h2>
+    
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">10:28</span>
+        <span class="cl-author human">Tony Lann</span>
+        <span class="cl-files"><span class="cl-file">research.html</span></span>
+      </div>
+      <div class="cl-subject">Add client decision banner: floor-rising disregarded, white housing + shortest throw now hard requirements</div>
+      <p>Per Tunde&#x27;s 2026-07-18 directive following the Claudio call: floor-rising screens (the single-pass research&#x27;s headline Kestrel Tab-Tension 2 CLR3 recommendation) conflict with the client&#x27;s no-structural-changes non-negotiable and are ruled out. White housing and shortest throw distance move from soft preferences to hard requirements for the still-open UST candidate evaluation (Hisense L9Q / AWOL Vision Aetherion Max / XGIMI Aura) against the ADI quote #16708070 baseline.</p>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/852ed772c8e22a4787316bf729a0bc57fdb16d43" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>852ed77</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 852ed77 -- research.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">10:11</span>
+        <span class="cl-author human">Tony Lann</span>
+        <span class="cl-files"><span class="cl-file">research.html</span></span>
+      </div>
+      <div class="cl-subject">Add a Glossary section to the research page</div>
+      <p>New 10th accordion section (Confirmed/Refuted/Gap verdicts, the two research-pass methodologies, UST/ALR/CLR, ANSI vs ISO lumens, gain, throw distance, trade vs retail pricing, screen mounting styles, laser light source, eARC, Dolby Vision) — terms drawn specifically from this page&#x27;s own findings, not the generic estimate-tool glossary on index.html. Collapsed by default, listed in the TOC between Sources Consulted and the Original Research Prompt.</p>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/40ae69ef579e2f332589fc3d5adc4cb36f131194" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>40ae69e</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 40ae69e -- research.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">10:01</span>
+        <span class="cl-author human">Tony Lann</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Make the Equipment Only appendix independently collapsible</div>
+      <p>Same sec-toggle/sec-body pattern as the Glossary widget: collapsed by default, its own state, and — since it&#x27;s nested inside Current Estimate rather than a direct child of .wrap &gt; section — outside the top-level accordion group, so it doesn&#x27;t collapse or get collapsed by the page&#x27;s six main sections.</p>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/4692d314c84fecfedb993e714dcdd85c8b47ec38" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>4692d31</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 4692d31 -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">09:51</span>
+        <span class="cl-author human">Tony Lann</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Remove Internal Distribution panel from the estimate tool</div>
+      <p>Drops the Tunde/Claudio/Business split UI (inputs, computed amounts, glossary entry) from the page along with its DOM wiring in render() and recompute(). The state fields and JSON export still carry the last-known split as internal metadata; there&#x27;s just no on-page editor for it anymore.</p>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/98f22420bc3c64ed8670a087339b7219f6f26a26" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>98f2242</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 98f2242 -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">09:41</span>
+        <span class="cl-author human">Tony Lann</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Accordion the main hub&#x27;s top-level sections</div>
+      <p>Contacts, Scope Summary, Client Specs, Current Estimate, Timeline, and Open Items now behave as an accordion: expanding one auto-collapses whichever other top-level section was open, matching research.html. Sections were already collapsed by default. Glossary and the per- category pricing groups inside Current Estimate stay independent.</p>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/f03f02e14d32902d4754a7ef0fe2d681a769f68a" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>f03f02e</code>
+        <span class="cl-rollback">Rollback: <code>git checkout f03f02e -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">09:28</span>
+        <span class="cl-author human">Tony Lann</span>
+        <span class="cl-files"><span class="cl-file">research.html</span></span>
+      </div>
+      <div class="cl-subject">Add table of contents + collapsible accordion sections to research page</div>
+      <p>Sections collapse by default; expanding one auto-collapses any other open section. TOC links jump to and expand the target section.</p>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/e111c4573cb9e8bfe1cb1e2fa35b54b301ddb8c3" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>e111c45</code>
+        <span class="cl-rollback">Rollback: <code>git checkout e111c45 -- research.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">08:53</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Make each pricing category collapsible in Current Estimate</div>
+      <p>Each of the six category groups (A screen, B-Option1 ceiling-mount, B-Option2 recessed lift, C Sonos, D mobilization, E additional scope) now collapses independently, same visual/interaction pattern as the page&#x27;s top-level sections: chevron toggle, item-count badge, running sum always visible in the header even when collapsed.</p><ul class='cl-body-list'><li>Collapsed by default (site-wide convention)</li><li>State persisted per-category in localStorage, survives render() rebuilding #groups on every edit</li><li>&quot;+ Add item to X&quot; (per-group and the global &quot;+ Add line item&quot; button) auto-expands the target group so a newly added row is immediately visible</li><li>Collapsed groups still print in full on &quot;Print working copy&quot; (same override already used for top-level sections)</li></ul><p>Verified by actually executing render() in a headless Node harness (not just syntax-checking): confirmed all 6 groups render with correct item counts, click-to-expand toggles and persists correctly, and adding an item auto-expands its group.</p>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/798e24198def1369f589b0854613ce91316b63ee" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>798e241</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 798e241 -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">08:23</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Add always-visible top-nav link to the Research page</div>
+      <p>The &quot;View Research&quot; button added earlier only lived inside the Current Estimate toolbar, which is collapsed by default -- invisible without expanding that section first. Added a persistent teal nav bar directly under the masthead, above every collapsible section, so the research page is reachable from the top of the page on load. Excluded from print output same as the other top-of-page chrome.</p>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/b3f924f3c6d065ff4d1ce615f1f188da59f4d1ce" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>b3f924f</code>
+        <span class="cl-rollback">Rollback: <code>git checkout b3f924f -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">08:10</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span><span class="cl-file">research.html</span></span>
+      </div>
+      <div class="cl-subject">Add colorful Research page for projector/screen sourcing</div>
+      <p>New research.html: a self-contained, color-coded, mobile-friendly page presenting both research passes on the projector/screen sourcing question (adversarially-verified + single-pass) for fast scanning:</p><ul class='cl-body-list'><li>TL;DR callout up top</li><li>Side-by-side pass comparison cards (verified vs single-pass)</li><li>Confirmed findings (green cards) / refuted claims (red cards)</li><li>5-pairing comparison table, rows tinted by ambient-light rank</li><li>Gaps/open-questions cards (amber)</li><li>Recommendation callout with both passes&#x27; takes shown distinctly</li><li>Sources-consulted table with quality tags</li><li>Full original research prompt in a collapsible section</li></ul><p>Wired into the main hub: a &quot;View Research&quot; toolbar button, and the existing ADI-quote Open Item now links directly to the page instead of citing raw filenames. Internal-only — sits outside the client PDF view same as the rest of the internal toolbar/Open Items.</p>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/5cfb7648028f791a7f3dc9299c165879339c9b39" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>5cfb764</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 5cfb764 -- index.html research.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">07:50</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Point Open Items at the completed projector/screen research</div>
+      <p>Two independent research passes ran on the projector+screen sourcing question (one adversarially fact-checked, one single-pass). Both flag that the recessed screen in the existing $4,861.74 ADI quote is likely a plain non-ALR surface, possibly the weak link against the room&#x27;s ambient-light requirement -- while the Optoma ZK420UST projector checks out well. Neither pass confirms a proven better alternative yet (real trade pricing on alternatives is still missing). Added a pointer to both findings files; pricing intentionally left untouched pending a Tunde/Claudio decision.</p>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/3b5225165a2299b214caffc27fd557521dd67422" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>3b52251</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 3b52251 -- index.html</code></span>
+      </div>
+    </div>
+  </section>
+  <section class="cl-day">
+    <h2>2026-07-17</h2>
+    
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">20:19</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Flag real ADI dealer quote — different rig than currently priced</div>
+      <p>Claudio pulled a real ADI Global Distribution quote (#16708070, 2026-07-17, expires 09/15/2026) answering the standing &quot;pull real dealer cost&quot; open item — but it prices an Optoma ZK420UST 4K ultra-short-throw laser projector + wall mount paired with a 120&quot; Elite Screens recessed in-ceiling screen ($4,861.74 total incl. tax), not the BenQ/Draper combo currently on this page. UST sidesteps the tight ~9.25&quot; ceiling-joist problem entirely since it mounts low near the credenza instead of in the ceiling.</p><ul class='cl-body-list'><li>New top-of-list Open Item, marked ACTION NEEDED BEFORE SENDING</li><li>Cross-referenced from the projector-lift-suitability item</li><li>Timeline entry logging the quote&#x27;s arrival</li><li>Red warning line added to the top &quot;last updated&quot; banner Not reflected in any Option 1/2 line item pricing — needs a Tunde/ Claudio decision first.</li></ul>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/8def28a9b2e432729d6228d0673aaa89df3d5af9" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>8def28a</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 8def28a -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">19:59</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Harden mobile Print/Save-as-PDF path in the Client PDF view</div>
+      <p>Investigated a report that &quot;Print / Save as PDF&quot; does nothing on mobile Safari/Chrome (not an in-app browser). Ran the page&#x27;s actual JS in a headless Node harness (simulating a real click on Generate Client PDF) to rule out a code bug: the button&#x27;s click listener attaches correctly and the rendered HTML fragment is well-formed — no crash, no malformed markup, no missing element. The prior tag-balance validator only checked the static document and never actually executed the JS, so this is a stronger check than before.</p><ul class='cl-body-list'><li>&quot;Open in browser tab&quot; button — one-tap fix if standalone mode is the cause, since it forces a fresh regular Safari/Chrome tab.</li><li>Persistent on-screen tip: manual Share (Safari) / ⋮ menu (Chrome) → Print → Save as PDF path, always visible (hidden from the actual print output via the existing @media print rule).</li><li>Fixed a CSS specificity bug found along the way: &quot;.cpv-back button&quot; was silently overriding &quot;.btn-amber&quot;, so the print button was rendering navy instead of amber — harmless to function but made it look like a secondary action instead of the primary one.</li><li>Added type=&quot;button&quot; to every &lt;button&gt; on the page (18 total) as defensive hygiene.</li></ul>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/16f1601cc6d33482859b5df27dca6916afe4dfed" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>16f1601</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 16f1601 -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">17:19</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Incorporate Claudio&#x27;s site-survey dimension worksheet</div>
+      <ul class='cl-body-list'><li>Client Specifications: confirmed projector/screen wall (117⅞&quot;×80⅛&quot;, clears to 75⅛&quot;) against the earlier best-effort notebook read (exact match), added full room dimensions (236&quot;×189&quot;, ceiling 117½&quot;) and seating/viewing-distance figures — all new from Claudio&#x27;s worksheet.</li><li>Open Items: resolved the &quot;Claudio owes room dimensions&quot; item with the actual figures; added a new open item for the projector-lift suitability question, which Claudio&#x27;s worksheet explicitly flagged &quot;Need more info&quot; — directly relevant to the live Option 1/2 pricing choice already on this page.</li><li>Timeline: logged the worksheet&#x27;s arrival (Jul 17).</li><li>sec-count badges bumped (Open Items 9→10, Timeline 9→10) to match.</li></ul>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/b4d005f31821beda32ff717ac01d24af0e645fae" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>b4d005f</code>
+        <span class="cl-rollback">Rollback: <code>git checkout b4d005f -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">17:02</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Add equipment-only appendix (internal + client-facing)</div>
+      <ul class='cl-body-list'><li>Internal &quot;Current Estimate&quot; section now renders a live Equipment Appendix filtered to unit === &quot;unit&quot; line items (screen, projector, mount, lift, Apple TV), grouped by category, showing name/price/ product link/active-status — stays in sync via render().</li><li>Client PDF gets a matching Appendix A with hand-written, client-safe hardware copy (not raw internal descriptions with sourcing/pricing caveats) grouped by Shared/Option 1/Option 2/Optional/Client-furnished Sonos gear, page-breaks onto its own printed page.</li><li>Fixed a bug found while building this: computeOptionTotals() (backs the Client PDF&#x27;s two-option comparison) was gating Option 1/2 items on the Active toggle, so Option 2&#x27;s projector/lift cost was silently dropped from its total whenever Option 1 was the live default. Verified corrected totals: Option 1 $13,623.75, Option 2 $17,535.00.</li></ul>
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/c2f2ead94adde29d891115d4d2d320330b4b55bf" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>c2f2ead</code>
+        <span class="cl-rollback">Rollback: <code>git checkout c2f2ead -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">16:41</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Incorporate the 7/17 live call with Oliver (Mac Voice Memo, 42min): added $2,750 Additional Scope line per Claudio&#x27;s under-scoping call-out (totals now $13,623.75 / $17,535.00), confirmed gray-face/white-body OK with Oliver, deliberately dropped the Apple TV pitch, flagged Epson/Optoma as Oliver&#x27;s own research, room dimensions still owed by Claudio, proposal going out today CC Jordan</div>
+      
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/89015aa15fdaef89577847b8e175cd78d1b0a736" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>89015aa</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 89015aa -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">16:25</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Default all sections collapsed on page open (bumped storage version so it applies universally); ingest team-inbox site-survey video + 43 photos: confirms existing projector (Anker Nebula Cosmos Laser 4K D2350), Era 300 wall-mount, existing crawlspace cable path near chimney, and 7/10 field-measurement notebook page</div>
+      
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/9a1989dbc95e5a775fdf457470185b021cf3900c" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>9a1989d</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 9a1989d -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">15:54</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Incorporate Claudio&#x27;s projector research (team inbox): BenQ TK710STi selected ($1,899, replaces $3,499 placeholder), Chief mount noted, Apple TV 4K optional line added, lift de-prioritized further, totals recomputed, timeline/open-items updated</div>
+      
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/95bb5a036acc56dd521cddd869659777530ed59a" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>95bb5a0</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 95bb5a0 -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">15:38</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Make sections collapsible — chevron + always-visible &#x27;Tap to collapse/expand&#x27; label for mobile discoverability, per-section state remembered locally. All sections default open except the Glossary (static reference, defaults closed).</div>
+      
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/914224d48dd3c2b383ed21ce441ab104be414b4c" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>914224d</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 914224d -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">15:28</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span><span class="cl-file">itemizer.html</span></span>
+      </div>
+      <div class="cl-subject">Merge itemizer.html into index.html — single unified page per Tunde&#x27;s direction; wire in server-side sync client pointing at a Netlify Function backend</div>
+      
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/85248f7e5b32c732ac1a4cb8b45456dd103e2391" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>85248f7</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 85248f7 -- index.html itemizer.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">14:50</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">itemizer.html</span></span>
+      </div>
+      <div class="cl-subject">Add auto-save version history (browser-local checkpoints + revert) and a Generate Client PDF button producing a premium, margin-free, version-stamped estimate</div>
+      
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/f3f57753a459dc10f3a02836be03b4b56f92d015" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>f3f5775</code>
+        <span class="cl-rollback">Rollback: <code>git checkout f3f5775 -- itemizer.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">14:38</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">itemizer.html</span></span>
+      </div>
+      <div class="cl-subject">Add per-item Product URL (click to open specs/pricing) and Notes (Tunde/Claudio) fields to the itemizer; seed real ADI Global Distribution links for the screen and lift</div>
+      
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/3f1e83926d58713df8c3420e6c475b2d829e708c" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>3f1e839</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 3f1e839 -- itemizer.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">14:32</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Add client specifications/requirements/concessions/hardline-requirements callout to the hub</div>
+      
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/47e0873caae8b973b7f1a24ac29eae5d54d27070" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>47e0873</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 47e0873 -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">14:30</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span><span class="cl-file">itemizer.html</span></span>
+      </div>
+      <div class="cl-subject">Consolidate editable itemizer onto the GitHub Pages hub (was on separate Netlify site); add 7/14 ceiling-drop mitigation note from transcript sweep</div>
+      
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/4a487848b18f2734242abff6fc01dbc82fb1e281" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>4a48784</code>
+        <span class="cl-rollback">Rollback: <code>git checkout 4a48784 -- index.html itemizer.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">14:22</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">index.html</span></span>
+      </div>
+      <div class="cl-subject">Mobile-friendly pass (iOS/Android): scrollable pricing table, tap targets, no horizontal overflow</div>
+      
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/cc410748394e2d13ba361c7350636b789b8dc0ad" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>cc41074</code>
+        <span class="cl-rollback">Rollback: <code>git checkout cc41074 -- index.html</code></span>
+      </div>
+    </div>
+    <div class="cl-entry">
+      <div class="cl-entry-head">
+        <span class="cl-time">14:12</span>
+        <span class="cl-author amos">AMOS</span>
+        <span class="cl-files"><span class="cl-file">README.md</span><span class="cl-file">index.html</span><span class="cl-file">robots.txt</span></span>
+      </div>
+      <div class="cl-subject">Initial Wright project hub page</div>
+      
+      <div class="cl-meta">
+        <a href="https://github.com/coachtu411/adroit-wright-hometheater/commit/b9cd152f0cf526c2dcb7ac154424169f37aa90dd" target="_blank" rel="noopener">View diff on GitHub ↗</a>
+        <code>b9cd152</code>
+        <span class="cl-rollback">Rollback: <code>git checkout b9cd152 -- README.md index.html robots.txt</code></span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  Adroit Communications LLC · Living project hub &amp; edit history · ADR-2026-WRIGHT · not for client
+  distribution. Generated from <code>git log</code> in
+  <code>data/project_records/ADR-2026-WRIGHT/site/</code>.
+</footer>
+
+</body>
+</html>
