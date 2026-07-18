@@ -193,7 +193,6 @@
   .option-flag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;
     border-radius:20px;padding:2px 9px;margin-left:8px;vertical-align:middle;}
   .option-flag.opt1{background:var(--teal-wash);color:var(--teal-dark);}
-  .option-flag.opt2{background:var(--amber-wash);color:#8a5c0f;}
   .summary{margin:18px 0 8px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
   .summary .s-title{background:var(--teal-wash);color:var(--teal-dark);font-weight:800;font-size:12px;
     letter-spacing:1px;text-transform:uppercase;padding:10px 16px;}
@@ -296,6 +295,7 @@
   .cpv-scope ul{margin:0 0 26px;padding-left:20px;}
   .cpv-scope li{font-size:14px;line-height:1.7;margin:8px 0;color:var(--ink);}
   .cpv-options{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px;}
+  .cpv-options.single{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto;}
   .cpv-opt{border:1px solid var(--line);border-radius:12px;overflow:hidden;}
   .cpv-opt-head{background:var(--teal-wash);color:var(--teal-dark);font-weight:800;font-size:12.5px;
     letter-spacing:.4px;text-transform:uppercase;padding:10px 14px;}
@@ -364,7 +364,7 @@
 </header>
 <div class="amberline"></div>
 <div class="top-nav"><a href="research.html" target="_blank" rel="noopener">📊 View Research — Projector &amp; Screen Sourcing →</a></div>
-<div class="updated">Living project page — edit directly on GitHub · Last updated <b>July 18, 2026</b> (Julian Pryce, av-hometheater-sourcing SME — O365 ADI correspondence reconciled into the Research page) · <b style="color:var(--red);">⚠ Two real ADI dealer quotes on file, both for different rigs than currently priced — see the top of Open Items before sending anything</b></div>
+<div class="updated">Living project page — edit directly on GitHub · Last updated <b>July 18, 2026</b> (Hank Delgado / Julian Pryce, av-hometheater-sourcing SME — recessed-lift option removed per Tunde's directive, archived) · <b style="color:var(--red);">⚠ One real ADI dealer quote on file for a different rig than currently priced — see the top of Open Items before sending anything</b></div>
 
 <div class="wrap">
 
@@ -426,9 +426,8 @@
     <div class="card">
       <ul class="scope">
         <li><b>Projection screen (locked scope, top priority):</b> ~110–120" ceiling-recessed motorized screen, bright enough for ambient light — no blackout curtains needed.</li>
-        <li><b>Projector — open decision, two options priced:</b>
-          Option 1: ceiling-mounted short-throw, white, flush finish, no structural changes (Oliver's stated preference, 7/15).
-          Option 2: fully recessed motorized lift — the original vision; engineering review found the lowest-profile lift on the market barely fits the existing ceiling framing.
+        <li><b>Projector — confirmed direction:</b>
+          ceiling-mounted short-throw, white, flush finish, no structural changes (BenQ TK710STi; Oliver's stated preference, 7/15). A fully recessed motorized lift was evaluated as the original vision but was rejected outright by Tunde on 7/18 — permanently archived, not a live option (see <code>archive/</code>).
         </li>
         <li><b>Sonos integration:</b> existing Arc Ultra soundbar, Sub 4, and Era 300 surround pair, unified into one control experience via a single eARC HDMI run. No in-wall speakers (client rejected).</li>
         <li><b>Design constraints:</b> preserve the art-wall accent light, precision flush finish matching the home's no-baseboard lines, full construction dust protection during install.</li>
@@ -453,7 +452,7 @@
           <li>Existing projector, confirmed via site-survey video: Anker Nebula Cosmos Laser 4K (Model D2350), currently on a temporary tripod stand facing the art wall — being replaced</li>
           <li>Projector/screen wall: 117⅞" wide × 80⅛" tall — confirmed by Claudio's formal site-survey dimension worksheet (2026-07-17), matching the 7/10 field-notebook read exactly. Projector needs to clear down to 75⅛" (the Sonos soundbar sits just below).</li>
           <li>Full room: 236" long (back wall to projector wall) × 189" wide, ceiling height 117½". Single-row seating — no front row; back row sits 201" from the back wall toward the projector wall.</li>
-          <li>Ceiling joist depth ~9¼" — the constraint driving the lift-vs-mount decision</li>
+          <li>Ceiling joist depth ~9¼" — informed the now-closed lift-vs-mount decision (mount confirmed 2026-07-18; lift evaluated and archived, see <code>archive/</code>)</li>
           <li>Entertainment cabinet / chimney feature already built into the room</li>
         </ul>
       </div>
@@ -532,12 +531,13 @@
       a version fingerprint tying the printout back to the exact numbers that produced it.</div>
 
     <div class="callout">
-      <b>Section B is two mutually exclusive projector options</b> — toggle ON only the option you're quoting and OFF
-      the other, so the total reflects one coherent scope:
-      <ul>
-        <li><b>Option 1 (Ceiling-Mount)</b> — Oliver's stated preference (2026-07-15): no structural/framing changes. Active by default below. <b>Now also the technical recommendation</b> — Claudio's projector research (2026-07-16) independently concluded the lift should be dropped entirely given the tight ~9.5" ceiling cavity: fewer moving parts, lower cost, easier long-term service.</li>
-        <li><b>Option 2 (Recessed Lift)</b> — the original vision; engineering review found the lowest-profile lift barely fits the existing ceiling framing. Inactive by default below.</li>
-      </ul>
+      <b>Section B — Projector (Ceiling-Mount, the sole confirmed direction).</b>
+      Oliver's stated preference (2026-07-15): no structural/framing changes. Claudio's projector research
+      (2026-07-16) independently concluded a lift should be dropped entirely given the tight ~9.5" ceiling
+      cavity — fewer moving parts, lower cost, easier long-term service. <b>Tunde rejected the recessed-lift
+      alternative outright on 2026-07-18</b> — it is permanently archived (see <code>archive/</code>), not a
+      live pricing option. (Rows below are still internally labeled "Option 1" for continuity with saved
+      history/exports — there is no Option 2 anymore.)
     </div>
 
     <div id="groups"></div>
@@ -559,12 +559,12 @@
       <div class="s-row auto"><span class="lbl">Balance <small>due on completion</small></span><span class="amt" id="s-bal-amt">—</span></div>
     </div>
 
-    <div class="recon">Baseline reconciliation (Option 1 active, Option 2 inactive — as loaded): raw subtotal <b>$12,975.00</b> ·
-      + 5% margin <b>$648.75</b> · total <b>$13,623.75</b>. Switching to Option 2 (toggle its rows on, Option 1's off) moves
-      raw subtotal to <b>$16,700.00</b>, margin to <b>$835.00</b>, total to <b>$17,535.00</b>. Updated 2026-07-17 evening
+    <div class="recon">Baseline reconciliation (ceiling-mount, the sole live projector direction): raw subtotal <b>$12,975.00</b> ·
+      + 5% margin <b>$648.75</b> · total <b>$13,623.75</b>. Updated 2026-07-17 evening
       with the 7/17 client call: added a $2,750 "Additional Scope" line (cable pulls, screen power/remote wiring, behind-ceiling
       conduit labor) per Claudio's live call-out that the original itemization was under-scoped by roughly $2,500-3,000.
-      Screen/lift figures are still public-retail pricing pending real ADI dealer cost.</div>
+      Screen figures are still public-retail pricing pending real ADI dealer cost. (A recessed-lift alternative was evaluated
+      and rejected 2026-07-18 — archived, no longer priced on this page; see <code>archive/</code>.)</div>
 
     <div class="equip-appendix">
       <button type="button" class="sec-toggle equip-appendix-toggle" data-target="body-equip-appendix" aria-expanded="false">
@@ -598,22 +598,22 @@
         <dd>A projection screen that retracts up into a pocket built into the ceiling when not in use, appearing flush/invisible — the locked-scope Section A item.</dd>
 
         <dt>Short-throw projector</dt>
-        <dd>A projector designed to sit close to the screen (a few feet, not the back of the room) and still fill it — required here so the unit can be ceiling-mounted or lift-concealed near the screen wall rather than at the back of the room.</dd>
+        <dd>A projector designed to sit close to the screen (a few feet, not the back of the room) and still fill it — required here so the unit can be ceiling-mounted near the screen wall rather than at the back of the room.</dd>
 
         <dt>Projector lift (e.g. AeroLift-class)</dt>
-        <dd>A motorized mechanism that lowers a projector out of a ceiling recess for use and raises it back up out of sight afterward — Option 2's approach; requires more ceiling depth/tolerance than a fixed ceiling mount.</dd>
+        <dd>A motorized mechanism that lowers a projector out of a ceiling recess for use and raises it back up out of sight afterward. Evaluated for this project and rejected by Tunde 2026-07-18 in favor of a fixed ceiling mount — kept here only as vocabulary; see <code>archive/</code> for the full record.</dd>
 
         <dt>eARC (Enhanced Audio Return Channel)</dt>
         <dd>An HDMI feature carrying high-quality audio back from the display/projector to a soundbar over a single cable — how the existing Sonos Arc Ultra will connect, avoiding separate audio wiring.</dd>
 
         <dt>ADI Global Distribution</dt>
-        <dd>Adroit's AV/security equipment dealer — the source for actual (non-retail-list) screen and lift pricing; not yet quoted for this job.</dd>
+        <dd>Adroit's AV/security equipment dealer — the source for actual (non-retail-list) screen pricing; not yet quoted for this job.</dd>
 
         <dt>Mobilization</dt>
         <dd>Time and cost to get the crew, tools, and materials staged and the work area protected before productive install work begins — priced once per project, not per task.</dd>
 
         <dt>Turnkey scope</dt>
-        <dd>A pricing structure where Adroit supplies both labor and materials (screen, projector, mounting/lift hardware, conduit, AV cabinet). The client's existing Sonos system is the exception — integrated, not replaced or supplied.</dd>
+        <dd>A pricing structure where Adroit supplies both labor and materials (screen, projector, mounting hardware, conduit, AV cabinet). The client's existing Sonos system is the exception — integrated, not replaced or supplied.</dd>
 
         <dt>Fixed price</dt>
         <dd>A single agreed total price for the defined scope of work, as opposed to time-and-materials billing.</dd>
@@ -655,18 +655,16 @@
   <section>
     <button type="button" class="sec-toggle" data-target="body-openitems" aria-expanded="false">
       <span class="chevron">▸</span><span class="sec-title">Open Items</span>
-      <span class="sec-count">11</span><span class="sec-hint"></span>
+      <span class="sec-count">9</span><span class="sec-hint"></span>
     </button>
     <div class="sec-body collapsed" id="body-openitems">
     <ul class="open-items">
-      <li class="hardline"><b>⚠ ACTION NEEDED BEFORE SENDING — real ADI dealer quote received, but for a different rig (2026-07-17, Quote #16708070, requested by Claudio, expires 09/15/2026):</b> not the Draper screen / BenQ projector currently priced on this page. It quotes an <b>Optoma ZK420UST</b> 4K ultra-short-throw laser projector ($3,071.99) + a short-throw wall mount ($188.14), paired with a <b>120" Elite Screens recessed in-ceiling electric screen</b> ($1,326.41) + nominal shipping — real dealer subtotal $4,586.55, tax $275.19, <b>total $4,861.74</b>. A UST projector sits low near the credenza rather than in the ceiling, sidestepping the tight ~9¼" joist-depth problem entirely — genuinely different from both Option 1 (BenQ ceiling-mount) and Option 2 (recessed lift) as priced below, and the screen brand differs too (Elite vs. Draper). <b>Not yet reflected in any line item below</b> — needs a Tunde/Claudio call on whether this replaces/adds a third option before today's proposal goes out. May be exactly what resolves Oliver's own Epson/Optoma comparison. <b>Update 2026-07-18:</b> a market-wide deep-research pass (two independent runs, one adversarially fact-checked) flags that the recessed screen in this exact quote is likely a plain non-ALR surface — possibly the weak link against the room's own no-blackout-curtains requirement — while the Optoma ZK420UST projector itself checks out well. Neither research pass has confirmed a proven better alternative yet (real trade pricing on the alternatives is still missing) — see the full color-coded writeup on the <a href="research.html" target="_blank" rel="noopener"><b>📊 Research page</b></a> (also reachable via the toolbar above). Still not applied to pricing.</li>
-      <li><b>Second real ADI quote found (2026-07-18 O365 sweep, Quote #16599923, requested by Claudio, dated 07/13/2026, expires 09/11/2026):</b> real dealer pricing for the Draper AeroLift 35 recessed lift itself — <b>$2,720.31</b> (incl. tax), lower than the $3,500 placeholder previously in Option 2's B2-OPT2 line below (now updated to the real figure). The quote pairs the lift with an <b>Optoma ZK430ST</b> (regular short-throw, 3,700 lumens, real trade cost $2,057.22 — confirmed NOT ultra-short-throw, so not excluded by the UST ruling on the <a href="research.html" target="_blank" rel="noopener">Research page</a>), not the BenQ priced in Option 2 today. <b>Open decision for Hank/Tunde:</b> does this real pricing revive Option 2 (lift-concealed, now cheaper than assumed) as a real alternative to Option 1 (BenQ static ceiling-mount, still the client-approved pick), or does the still-unresolved "~9¼" joist depth / near-zero tolerance" engineering question keep it parked? Full detail on the <a href="research.html" target="_blank" rel="noopener"><b>📊 Research page</b></a> Decision History. Job attribution to Wright is inferred (same requester/account as the confirmed #16708070 quote, not explicitly labeled in the email) — confirm with Claudio if certainty matters before acting on it.</li>
+      <li class="hardline"><b>⚠ ACTION NEEDED BEFORE SENDING — real ADI dealer quote received, but for a different rig (2026-07-17, Quote #16708070, requested by Claudio, expires 09/15/2026):</b> not the Draper screen / BenQ projector currently priced on this page. It quotes an <b>Optoma ZK420UST</b> 4K ultra-short-throw laser projector ($3,071.99) + a short-throw wall mount ($188.14), paired with a <b>120" Elite Screens recessed in-ceiling electric screen</b> ($1,326.41) + nominal shipping — real dealer subtotal $4,586.55, tax $275.19, <b>total $4,861.74</b>. A UST projector sits low near the credenza rather than in the ceiling, sidestepping the tight ~9¼" joist-depth problem entirely — genuinely different from the BenQ ceiling-mount currently priced below (a recessed-lift alternative was evaluated separately and has since been rejected/archived, see <code>archive/</code>), and the screen brand differs too (Elite vs. Draper). <b>Not yet reflected in any line item below</b> — needs a Tunde/Claudio call on whether this replaces/adds a third option before today's proposal goes out. May be exactly what resolves Oliver's own Epson/Optoma comparison. <b>Update 2026-07-18:</b> a market-wide deep-research pass (two independent runs, one adversarially fact-checked) flags that the recessed screen in this exact quote is likely a plain non-ALR surface — possibly the weak link against the room's own no-blackout-curtains requirement — while the Optoma ZK420UST projector itself checks out well. Neither research pass has confirmed a proven better alternative yet (real trade pricing on the alternatives is still missing) — see the full color-coded writeup on the <a href="research.html" target="_blank" rel="noopener"><b>📊 Research page</b></a> (also reachable via the toolbar above). Still not applied to pricing.</li>
+      <li><b>Lift option evaluated and archived (2026-07-18):</b> a second real ADI dealer quote (Quote #16599923, dated 07/13/2026, requested by Claudio) priced a recessed-lift alternative — Draper AeroLift 35 lift ($2,720.31) + Optoma ZK430ST projector ($2,057.22) — as a possible revival of the originally-conceded recessed-lift approach. <b>Tunde rejected the lift option outright on 2026-07-18</b> — the BenQ ceiling-mount is the sole live projector direction; the lift is not to be factored back in as an option unless explicitly revived. Full detail preserved in <code>archive/ARCHIVED_lift_option_2026-07-18.md</code> and the <a href="research.html" target="_blank" rel="noopener"><b>📊 Research page</b></a> Decision History.</li>
       <li><b>Send the written proposal to Oliver today, CC Jordan</b> — confirmed live on the 7/17 call. Oliver is expecting it in his email "later on in the day." Adroit's and Link Construction's costs are presented separately (Jordan is a subcontractor, not marked up by Adroit).</li>
       <li><b>Room dimensions RESOLVED (2026-07-17)</b> — Claudio sent his formal site-survey dimension worksheet: room 236"×189", ceiling 117½", projector/screen wall 117⅞"×80⅛" (clears to 75⅛" past the soundbar). Confirms the 7/10 field-notebook read exactly.</li>
-      <li><b>Projector-lift suitability still unresolved</b> — Claudio's 7/17 dimension worksheet explicitly marks "Suitable for Projector Lift: Need more info," directly bearing on the live Option 1 (mount) vs Option 2 (lift) decision priced on this page. Engineering review already flags the ~9¼" ceiling joist depth as tight; this keeps that call open pending more detail — the new ADI quote above may make this moot if the UST route is chosen instead.</li>
       <li>Projector resolved (2026-07-17, Claudio's research, confirmed with Oliver on the call): BenQ TK710STi, $1,899 retail, gray face/white body — Oliver's OK with that. He's also comparing Epson and Optoma himself; both should be name-checked in the written proposal as considered alternatives. Field notes from the 7/10 survey (handwritten, best-effort read) gave a wall span of 117⅞" and a ceiling height figure of 80⅛" less 5" ≈ 75⅛" — now confirmed exactly by Claudio's 7/17 dimension worksheet.</li>
       <li>Confirm exact site street address (Georgetown, DC — not yet on file).</li>
-      <li>Third mitigation floated internally (7/14 team call, not yet raised with Jordan or the client): reframe/drop a section of ceiling to gain lift depth tolerance for Option 2 — not costed.</li>
       <li>Site-survey photos show an existing low-voltage cable path already run through the crawlspace up past the chimney chase — worth confirming with Jordan whether the new HDMI/Cat6 run can reuse that same path instead of opening new wall/ceiling sections.</li>
       <li>One site-survey photo shows a different room entirely — built-in bookshelves flanking a window, with what looks like a projected Netflix screen already on the wall. Unclear if that's another room in Oliver's house with an existing working install (useful reference) or an unrelated photo that landed in this album — worth a quick check with Claudio.</li>
       <li>Confirm the new $2,750 "Additional Scope" line (added 7/17 from the call) — Claudio's number was a $2,500-3,000 range; the page used the midpoint. Tighten it up once the actual cable-pull/conduit labor is scoped out.</li>
@@ -716,12 +714,6 @@
 {"id":"B3-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"Mount, align to screen, calibrate — no structural/framing changes required","url":"","qty":1,"unit":"project","unit_rate":450.00,"active":true,"notes":""},
 {"id":"B4-OPT1","category":"B - Projector — Option 1: Ceiling-Mount","description":"In-wall HDMI fiber cable + Cat6 conduit run — AV closet to ceiling projector location, plus a recessed power outlet at the projector mount so no cords are visible (per Claudio's research)","url":"","qty":1,"unit":"project","unit_rate":325.00,"active":true,"notes":"Recessed outlet is electrical scope — coordinate with Link Construction/Jordan. Site-survey photos (2026-07-17 ingest) show an existing low-voltage cable path already run through the crawlspace past the chimney chase — worth checking whether the new run can reuse it instead of opening new sections."},
 
-{"id":"B1-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"BenQ TK710STi 4K HDR Laser Short-Throw Projector (White) — same unit as Option 1","url":"https://www.bestbuy.com/product/benq-tk710sti-4k-hdr-laser-movie-and-gaming-short-throw-projector-3200-lumens-white/J39QZT53J5/sku/12563450","qty":1,"unit":"unit","unit_rate":1899.00,"active":false,"notes":"Same model as Option 1 — see B1-OPT1 notes. Claudio's research (2026-07-16) actually recommends dropping the lift entirely in favor of Option 1's fixed mount, given the ~9.5\" ceiling cavity — fewer moving parts, lower cost, easier long-term service."},
-{"id":"B2-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"Draper AeroLift 35 ceiling-recessed projector lift, model 300319 (35 lb cap., ~24.5\" max extension) — REAL ADI dealer cost $2,720.31 (Quote #16599923, 07/13/2026, ADI's Shawn McLaughlin), superseding the prior $2,419-$4,138 retail-range placeholder. Lowest-profile lift on the market, near-zero tolerance against existing ceiling framing per 7/14 engineering review","url":"https://www.adiglobaldistribution.us/Product/DF-300319","qty":1,"unit":"unit","unit_rate":2720.31,"active":false,"notes":"SUPERSEDES prior $3,500 placeholder (2026-07-18, Julian Pryce/av-hometheater-sourcing SME, found via O365 ADI correspondence sweep) — the $3,500 was a retail-range midpoint guess; real ADI trade cost is lower. NOTE: Quote #16599923 pairs this lift with an Optoma ZK430ST (real trade $2,057.22), NOT the BenQ priced in B1-OPT2 above — the BenQ itself has not been trade-quoted for the lift pairing. The ~9¼\" ceiling joist depth / near-zero-tolerance engineering concern per the 7/14 dealer review still stands — this real pricing doesn't resolve that question. Full detail: research.html Decision History, 2026-07-18."},
-{"id":"B3-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"Framing coordination with Link Construction (tight tolerance), lift mount, precision alignment, commissioning","url":"","qty":1,"unit":"project","unit_rate":850.00,"active":false,"notes":""},
-{"id":"B4-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"HDMI/Cat6 conduit run — AV closet to recessed lift location","url":"","qty":1,"unit":"project","unit_rate":325.00,"active":false,"notes":""},
-{"id":"B5-OPT2","category":"B - Projector — Option 2: Recessed Lift","description":"OPTIONAL mitigation (floated internally 7/14, not yet costed/discussed with Jordan or client): reframe/drop a section of ceiling to gain lift depth tolerance — set qty to 1 and price if pursued","url":"","qty":0,"unit":"project","unit_rate":0.00,"active":false,"notes":""},
-
 {"id":"C1","category":"C - Sonos Integration & Unified Control","description":"Integrate existing Sonos (Arc Ultra soundbar, Sub 4, Era 300 surround pair) into single control experience via single eARC HDMI run to the Arc Ultra — Sub 4 and Era 300s are wireless, no separate remotes, no wall speakers (client rejected)","url":"https://www.sonos.com/en-us/shop/arc-ultra","qty":1,"unit":"project","unit_rate":450.00,"active":true,"notes":"Client-furnished, not purchased by Adroit — link is for spec reference (eARC/HDMI requirements) only."},
 {"id":"C2","category":"C - Sonos Integration & Unified Control","description":"AV closet/cabinet build-out — HDMI switching, equipment housing (credenza siting per site visit)","url":"","qty":1,"unit":"project","unit_rate":600.00,"active":true,"notes":""},
 {"id":"C3","category":"C - Sonos Integration & Unified Control","description":"OPTIONAL — Apple TV 4K, recommended by Claudio's research even though the BenQ has built-in Android/Google TV: faster interface, better streaming-app support, more reliable long-term for a luxury install. Inactive by default — toggle on if pursued.","url":"https://www.apple.com/apple-tv-4k/","qty":1,"unit":"unit","unit_rate":149.00,"active":false,"notes":"Deliberately NOT pitched on the 7/17 call with Oliver — Tunde/Claudio's call: the BenQ is already smart, Oliver never asked for a channel rundown, and adding a third-party box unprompted risks 'confusing the sale.' Keep it in reserve, don't raise it unless Oliver asks for more than YouTube/Netflix/Prime/Hulu."},
@@ -729,7 +721,7 @@
 {"id":"D1","category":"D - Mobilization & Site Protection","description":"Full construction dust protection — doorways, windows, walls, furniture draping (explicit client requirement)","url":"","qty":1,"unit":"project","unit_rate":275.00,"active":true,"notes":""},
 {"id":"D2","category":"D - Mobilization & Site Protection","description":"Mobilization & site setup","url":"","qty":1,"unit":"project","unit_rate":200.00,"active":true,"notes":""},
 
-{"id":"E1","category":"E - Additional Scope (Confirmed 7/17 Call)","description":"Additional cable-pull labor, screen power + remote/IR-signal wiring, and behind-ceiling conduit installation labor (conduit material already on-site, no material cost) — flagged mid-call as under-scoped in the original line items by Claudio, reviewed live with Tunde on the 7/17 call before the proposal went out","url":"","qty":1,"unit":"project","unit_rate":2750.00,"active":true,"notes":"Claudio's number on the call: \"go up at least 2,500 to 3,000\" to cover what the original itemization missed. Used the $2,750 midpoint — adjust if either of you has a firmer number. Applies to both options (screen/cabling work, not lift-specific)."}
+{"id":"E1","category":"E - Additional Scope (Confirmed 7/17 Call)","description":"Additional cable-pull labor, screen power + remote/IR-signal wiring, and behind-ceiling conduit installation labor (conduit material already on-site, no material cost) — flagged mid-call as under-scoped in the original line items by Claudio, reviewed live with Tunde on the 7/17 call before the proposal went out","url":"","qty":1,"unit":"project","unit_rate":2750.00,"active":true,"notes":"Claudio's number on the call: \"go up at least 2,500 to 3,000\" to cover what the original itemization missed. Used the $2,750 midpoint — adjust if either of you has a firmer number. Screen/cabling work, not projector-specific."}
 ],
 "summary":{"margin_pct":5,"deposit_pct":30,"distribution":{"tunde_pct":35,"claudio_pct":35,"business_pct":30}}}
 </script>
@@ -739,7 +731,7 @@
   var STORAGE_KEY = "adroit-itemizer:ADR-2026-WRIGHT:v1";
   var SYNC_URL = "https://adroit-wright-sync.netlify.app/.netlify/functions/wright-state";
   var CAT_ORDER = ["A - Projection Screen (locked scope)","B - Projector — Option 1: Ceiling-Mount",
-                   "B - Projector — Option 2: Recessed Lift","C - Sonos Integration & Unified Control",
+                   "C - Sonos Integration & Unified Control",
                    "D - Mobilization & Site Protection","E - Additional Scope (Confirmed 7/17 Call)"];
   var BASELINE = JSON.parse(document.getElementById("baseline-data").textContent);
 
@@ -1142,7 +1134,6 @@
       head.appendChild(chevron);
       var gn = document.createElement("span"); gn.className = "gname"; gn.appendChild(document.createTextNode(cat));
       if(cat.indexOf("Option 1") !== -1){ var f1=document.createElement("span"); f1.className="option-flag opt1"; f1.textContent="Oliver's pref"; gn.appendChild(f1); }
-      if(cat.indexOf("Option 2") !== -1){ var f2=document.createElement("span"); f2.className="option-flag opt2"; f2.textContent="Original vision"; gn.appendChild(f2); }
       head.appendChild(gn);
       var gcount = document.createElement("span"); gcount.className = "gcount"; gcount.textContent = itemCount;
       head.appendChild(gcount);
@@ -1242,11 +1233,13 @@
   document.getElementById("btn-client-pdf").addEventListener("click", openClientPdf);
   document.getElementById("btn-research").addEventListener("click", function(){ window.location.href = "research.html"; });
 
-  // ── Client-facing PDF: side-by-side option comparison, computed live from current qty/rate ──
+  // ── Client-facing PDF: single confirmed scope, computed live from current qty/rate ──
+  // (Was a side-by-side two-option comparison before 2026-07-18 — the recessed-lift option
+  // was rejected by Tunde that day and is fully archived; see ../archive/. Only one scope exists now.)
   function computeOptionTotals(){
     var commonCats = ["A - Projection Screen (locked scope)","C - Sonos Integration & Unified Control","D - Mobilization & Site Protection","E - Additional Scope (Confirmed 7/17 Call)"];
     var common = 0;
-    var commonByCat = {}, opt1Items = 0, opt2Items = 0;
+    var commonByCat = {}, projectorItems = 0;
     state.items.forEach(function(it){
       var cat = it.category || "";
       var lt = lineTotal(it);
@@ -1257,25 +1250,22 @@
         common += lt; commonByCat[cat] = (commonByCat[cat]||0) + lt;
       }
       else if(cat.indexOf("Option 1") !== -1){
-        // Option 1/2 items are NOT gated by active here — the comparison must show both
-        // hypothetical scopes in full regardless of which one is toggled "live" for the
-        // single-total calculator above. (Bug found 2026-07-17: this used to skip whichever
-        // option was toggled off, silently zeroing that column's projector/lift cost.)
-        opt1Items += lt;
+        // Not gated by Active here — the client PDF always shows the full confirmed projector
+        // scope regardless of which rows a browser happens to have toggled.
+        projectorItems += lt;
       }
-      else if(cat.indexOf("Option 2") !== -1){ opt2Items += lt; }
     });
     var mgnPct = num(state.margin_pct);
-    var raw1 = common + opt1Items, raw2 = common + opt2Items;
-    var mgn1 = raw1 * mgnPct / 100, mgn2 = raw2 * mgnPct / 100;
+    var raw = common + projectorItems;
+    var mgn = raw * mgnPct / 100;
     return {
       screen: commonByCat["A - Projection Screen (locked scope)"] || 0,
       sonos: commonByCat["C - Sonos Integration & Unified Control"] || 0,
       mobilization: commonByCat["D - Mobilization & Site Protection"] || 0,
       additional: commonByCat["E - Additional Scope (Confirmed 7/17 Call)"] || 0,
-      opt1Projector: opt1Items, opt2Projector: opt2Items,
-      mgnPct: mgnPct, mgn1: mgn1, mgn2: mgn2,
-      total1: raw1 + mgn1, total2: raw2 + mgn2,
+      projector: projectorItems,
+      mgnPct: mgnPct, mgn: mgn,
+      total: raw + mgn,
       depositPct: num(state.deposit_pct)
     };
   }
@@ -1297,33 +1287,24 @@
     // Links + active/inactive state are still pulled live from the tool so they never go stale.
     var a1 = findItem("A1");
     var b1o1 = findItem("B1-OPT1"), b2o1 = findItem("B2-OPT1");
-    var b1o2 = findItem("B1-OPT2"), b2o2 = findItem("B2-OPT2");
     var appleTv = findItem("C3");
     var html = ''
       + '<div class="cpv-appendix">'
       + '  <div class="cpv-appendix-head">Appendix — Equipment Specification</div>'
-      + '  <div class="cpv-appendix-note">The specific hardware Adroit will supply and install under each option, plus '
+      + '  <div class="cpv-appendix-note">The specific hardware Adroit will supply and install, plus '
       + '    your existing equipment being integrated into the new system.</div>'
-      + '  <div class="cpv-eq-group"><div class="cpv-eq-group-name">Shared Equipment — Both Options</div>'
+      + '  <div class="cpv-eq-group"><div class="cpv-eq-group-name">Projection Screen</div>'
       +      clientEquipCard("Draper Access V-Class Ceiling-Recessed Motorized Screen",
              "110–120\" diagonal, matte white, engineered to perform beautifully in ambient daylight — no blackout curtains required.",
              a1 && a1.url)
       + '  </div>'
-      + '  <div class="cpv-eq-group"><div class="cpv-eq-group-name">Option 1 — Ceiling-Mounted Equipment</div>'
+      + '  <div class="cpv-eq-group"><div class="cpv-eq-group-name">Projector &amp; Ceiling Mount</div>'
       +      clientEquipCard("BenQ TK710STi 4K HDR Laser Projector (White)",
              "True 4K laser light source (20,000+ hour life), 3,200 ANSI lumens, built-in smart streaming platform, Bluetooth audio.",
              b1o1 && b1o1.url)
       +      clientEquipCard("Chief Ceiling Mount",
              "Paint-matched finish for a clean, low-profile ceiling installation.",
              b2o1 && b2o1.url)
-      + '  </div>'
-      + '  <div class="cpv-eq-group"><div class="cpv-eq-group-name">Option 2 — Recessed Lift Equipment</div>'
-      +      clientEquipCard("BenQ TK710STi 4K HDR Laser Projector (White)",
-             "Same projector as Option 1, housed in a motorized recessed lift.",
-             b1o2 && b1o2.url)
-      +      clientEquipCard("Draper AeroLift 35 Recessed Projector Lift",
-             "The lowest-profile motorized lift on the market — the projector disappears into the ceiling when not in use.",
-             b2o2 && b2o2.url)
       + '  </div>'
       + (appleTv && appleTv.active !== false
           ? ('  <div class="cpv-eq-group"><div class="cpv-eq-group-name">Optional Add-On</div>'
@@ -1341,7 +1322,7 @@
   }
   function renderClientPdf(){
     var t = computeOptionTotals();
-    var dep1 = t.total1 * t.depositPct/100, dep2 = t.total2 * t.depositPct/100;
+    var dep = t.total * t.depositPct/100;
     var stamp = versionStamp();
     var today = new Date().toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"});
     var html = ''
@@ -1383,36 +1364,25 @@
       + '      </ul>'
       + '    </div>'
       + '    <div class="cpv-pricing">'
-      + '      <h2>Investment — Two Design Paths</h2>'
-      + '      <div class="cpv-options">'
-      + '        <div class="cpv-opt"><div class="cpv-opt-head">Option 1 — Ceiling-Mounted Projector</div>'
+      + '      <h2>Investment</h2>'
+      + '      <div class="cpv-options single">'
+      + '        <div class="cpv-opt"><div class="cpv-opt-head">Ceiling-Mounted Projector System</div>'
       + '          <table>'
       + '            <tr><td>Projection Screen</td><td style="text-align:right;">' + money(t.screen) + '</td></tr>'
-      + '            <tr><td>Projector &amp; Mounting</td><td style="text-align:right;">' + money(t.opt1Projector) + '</td></tr>'
+      + '            <tr><td>Projector &amp; Mounting</td><td style="text-align:right;">' + money(t.projector) + '</td></tr>'
       + '            <tr><td>Sonos Integration &amp; AV Cabinet</td><td style="text-align:right;">' + money(t.sonos) + '</td></tr>'
       + '            <tr><td>Additional Cabling &amp; Integration Labor</td><td style="text-align:right;">' + money(t.additional) + '</td></tr>'
       + '            <tr><td>Mobilization &amp; Site Protection</td><td style="text-align:right;">' + money(t.mobilization) + '</td></tr>'
-      + '            <tr><td>System Assurance &amp; Warranty Package</td><td style="text-align:right;">' + money(t.mgn1) + '</td></tr>'
-      + '            <tr class="cpv-total"><td>Total</td><td style="text-align:right;">' + money(t.total1) + '</td></tr>'
-      + '          </table></div>'
-      + '        <div class="cpv-opt"><div class="cpv-opt-head">Option 2 — Fully Recessed Lift</div>'
-      + '          <table>'
-      + '            <tr><td>Projection Screen</td><td style="text-align:right;">' + money(t.screen) + '</td></tr>'
-      + '            <tr><td>Projector &amp; Mounting</td><td style="text-align:right;">' + money(t.opt2Projector) + '</td></tr>'
-      + '            <tr><td>Sonos Integration &amp; AV Cabinet</td><td style="text-align:right;">' + money(t.sonos) + '</td></tr>'
-      + '            <tr><td>Additional Cabling &amp; Integration Labor</td><td style="text-align:right;">' + money(t.additional) + '</td></tr>'
-      + '            <tr><td>Mobilization &amp; Site Protection</td><td style="text-align:right;">' + money(t.mobilization) + '</td></tr>'
-      + '            <tr><td>System Assurance &amp; Warranty Package</td><td style="text-align:right;">' + money(t.mgn2) + '</td></tr>'
-      + '            <tr class="cpv-total"><td>Total</td><td style="text-align:right;">' + money(t.total2) + '</td></tr>'
+      + '            <tr><td>System Assurance &amp; Warranty Package</td><td style="text-align:right;">' + money(t.mgn) + '</td></tr>'
+      + '            <tr class="cpv-total"><td>Total</td><td style="text-align:right;">' + money(t.total) + '</td></tr>'
       + '          </table></div>'
       + '      </div>'
       + '    </div>'
-      + '    <div class="cpv-terms"><b>Payment terms:</b> ' + t.depositPct + '% deposit to commence (' + money(dep1) + ' under Option 1, '
-      + money(dep2) + ' under Option 2), balance due on completion. Equipment costs reflect our current sourcing basis and are '
+      + '    <div class="cpv-terms"><b>Payment terms:</b> ' + t.depositPct + '% deposit to commence (' + money(dep) + '), '
+      + 'balance due on completion. Equipment costs reflect our current sourcing basis and are '
       + 'subject to confirmation prior to order.</div>'
       + '    <div class="cpv-sig">'
-      + '      Accepted by — Oliver Wright: <span class="sig-line"></span> Date: <span class="sig-line" style="width:140px;"></span><br><br>'
-      + '      Option selected: &nbsp;☐ Option 1 (Ceiling-Mount) &nbsp;&nbsp; ☐ Option 2 (Recessed Lift)'
+      + '      Accepted by — Oliver Wright: <span class="sig-line"></span> Date: <span class="sig-line" style="width:140px;"></span>'
       + '    </div>'
       + '  </div>'
       + renderEquipmentAppendixClient()
