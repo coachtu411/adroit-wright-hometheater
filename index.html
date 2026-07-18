@@ -142,10 +142,20 @@
   .note b{color:var(--navy);}
   #groups{padding:6px 0 0;}
   .group{margin:14px 0 4px;}
-  .group-head{display:flex;justify-content:space-between;align-items:baseline;
-    padding:6px 6px 6px 4px;border-bottom:2px solid var(--teal);margin-bottom:8px;}
-  .group-head .gname{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--teal-dark);}
-  .group-head .gsum{font-size:14px;font-weight:800;color:var(--navy);}
+  .group-head{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;
+    width:100%;gap:8px;min-height:44px;cursor:pointer;padding:6px 6px 6px 4px;border-bottom:2px solid var(--teal);
+    margin-bottom:8px;-webkit-tap-highlight-color:rgba(14,124,123,.15);}
+  .group-head:active{background:var(--teal-wash);}
+  .group-head .chevron{flex:0 0 auto;font-size:13px;color:var(--teal);transition:transform .2s ease;
+    display:inline-block;transform:rotate(90deg);}
+  .group-head[aria-expanded="false"] .chevron{transform:rotate(0deg);}
+  .group-head .gname{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--teal-dark);
+    flex:1 1 auto;text-align:left;display:flex;align-items:center;flex-wrap:wrap;gap:2px;}
+  .group-head .gcount{flex:0 0 auto;background:var(--navy-wash);color:var(--navy);font-size:10.5px;
+    font-weight:800;border-radius:20px;padding:2px 8px;}
+  .group-head .gsum{font-size:14px;font-weight:800;color:var(--navy);flex:0 0 auto;}
+  .group-body{overflow:hidden;}
+  .group-body.collapsed{display:none;}
   .item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;
     display:grid;gap:10px 12px;box-shadow:0 1px 2px rgba(31,45,77,.05);
     grid-template-columns:1fr 1fr 1fr;
@@ -323,6 +333,8 @@
     .timeline,.open-items,footer,.toolbar,.a-active,.note,.a-link,.a-linkbtn,.a-notes,.modal-overlay,
     .saved-indicator,.sync-indicator,.sec-toggle{display:none !important;}
     .sec-body.collapsed{display:block !important;} /* never let a collapsed section print blank */
+    .group-body.collapsed{display:block !important;} /* same — collapsed pricing groups must still print in full */
+    .group-head{border-bottom:2px solid #999;}
     .tool-banner{position:static;border-radius:0;}
     .item{break-inside:avoid;border:1px solid #bbb;box-shadow:none;
       grid-template-columns:150px 1fr 60px 80px 100px 100px;
@@ -1128,25 +1140,49 @@
     fillMeta();
     groupsEl.innerHTML = "";
     var cats = orderedCategories();
+    var groupCollapse = loadGroupCollapseState();
     cats.forEach(function(cat){
+      var itemCount = state.items.filter(function(it){ return (it.category || "Uncategorized") === cat; }).length;
+      var expanded = groupCollapse[cat] === true; // collapsed by default, site-wide convention
+
       var g = document.createElement("div"); g.className = "group";
-      var head = document.createElement("div"); head.className = "group-head";
-      var gn = document.createElement("span"); gn.className = "gname"; gn.textContent = cat;
+      var head = document.createElement("button");
+      head.type = "button"; head.className = "group-head";
+      head.setAttribute("aria-expanded", expanded ? "true" : "false");
+      var chevron = document.createElement("span"); chevron.className = "chevron"; chevron.textContent = "▸";
+      head.appendChild(chevron);
+      var gn = document.createElement("span"); gn.className = "gname"; gn.appendChild(document.createTextNode(cat));
       if(cat.indexOf("Option 1") !== -1){ var f1=document.createElement("span"); f1.className="option-flag opt1"; f1.textContent="Oliver's pref"; gn.appendChild(f1); }
       if(cat.indexOf("Option 2") !== -1){ var f2=document.createElement("span"); f2.className="option-flag opt2"; f2.textContent="Original vision"; gn.appendChild(f2); }
+      head.appendChild(gn);
+      var gcount = document.createElement("span"); gcount.className = "gcount"; gcount.textContent = itemCount;
+      head.appendChild(gcount);
       var gs = document.createElement("span"); gs.className = "gsum"; gs.setAttribute("data-groupsum", cat);
-      head.appendChild(gn); head.appendChild(gs); g.appendChild(head);
+      head.appendChild(gs);
+      g.appendChild(head);
+
+      var body = document.createElement("div"); body.className = "group-body" + (expanded ? "" : " collapsed");
       var addBtn = document.createElement("button");
       addBtn.type = "button"; addBtn.className = "btn-ghost"; addBtn.style.marginBottom = "8px";
       addBtn.textContent = "+ Add item to " + cat;
       addBtn.addEventListener("click", function(){
         state.items.push({ id:"NEW-"+(nextId++), category:cat, description:"", url:"", qty:1, unit:"", unit_rate:0, active:true, notes:"" });
+        expandGroup(cat);
         touch(); persist(); render();
       });
       state.items.forEach(function(it, i){
-        if((it.category || "Uncategorized") === cat) g.appendChild(makeRow(it, i));
+        if((it.category || "Uncategorized") === cat) body.appendChild(makeRow(it, i));
       });
-      g.appendChild(addBtn);
+      body.appendChild(addBtn);
+      g.appendChild(body);
+
+      head.addEventListener("click", function(){
+        var nowExpanded = body.classList.contains("collapsed");
+        body.classList.toggle("collapsed", !nowExpanded);
+        head.setAttribute("aria-expanded", nowExpanded ? "true" : "false");
+        var gc = loadGroupCollapseState(); gc[cat] = nowExpanded; saveGroupCollapseState(gc);
+      });
+
       groupsEl.appendChild(g);
     });
     document.getElementById("s-mgn-pct").value = state.margin_pct;
@@ -1222,6 +1258,7 @@
   });
   document.getElementById("btn-add").addEventListener("click", function(){
     state.items.push({ id:"NEW-"+(nextId++), category:"A - Projection Screen (locked scope)", description:"", url:"", qty:1, unit:"", unit_rate:0, active:true, notes:"" });
+    expandGroup("A - Projection Screen (locked scope)");
     touch(); persist(); render();
     window.scrollTo(0, document.body.scrollHeight);
   });
@@ -1502,6 +1539,23 @@
   }
   function saveCollapseState(s){
     try{ localStorage.setItem(COLLAPSE_KEY, JSON.stringify(s)); }catch(e){}
+  }
+
+  // ── Pricing-group collapsibility (each category under Current Estimate: A/B-Opt1/B-Opt2/C/D/E) —
+  // collapsed by default, same convention as the rest of the page. Keyed by category name; survives
+  // render() rebuilding #groups from scratch on every state change. ─────────────────────────────
+  var GROUP_COLLAPSE_KEY = "adroit-wright-hub:collapsed-groups:v1";
+  function loadGroupCollapseState(){
+    try{
+      var raw = localStorage.getItem(GROUP_COLLAPSE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    }catch(e){ return {}; }
+  }
+  function saveGroupCollapseState(s){
+    try{ localStorage.setItem(GROUP_COLLAPSE_KEY, JSON.stringify(s)); }catch(e){}
+  }
+  function expandGroup(cat){
+    var gc = loadGroupCollapseState(); gc[cat] = true; saveGroupCollapseState(gc);
   }
   function setToggleUI(btn, expanded){
     btn.setAttribute("aria-expanded", expanded ? "true" : "false");
