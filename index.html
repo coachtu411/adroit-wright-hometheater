@@ -556,24 +556,6 @@
       <div class="s-row auto"><span class="lbl">Balance <small>due on completion</small></span><span class="amt" id="s-bal-amt">—</span></div>
     </div>
 
-    <div class="summary">
-      <div class="s-title">Internal Distribution — 2026 split, automated from total</div>
-      <div class="s-row"><span class="lbl">Tunde <small>editable %</small></span>
-        <span style="display:flex;align-items:center;gap:14px;">
-          <input class="pct-input" id="s-tunde-pct" type="number" inputmode="decimal" step="any" min="0"> %
-          <span class="amt" id="s-tunde-amt">—</span></span></div>
-      <div class="s-row"><span class="lbl">Claudio <small>editable %</small></span>
-        <span style="display:flex;align-items:center;gap:14px;">
-          <input class="pct-input" id="s-claudio-pct" type="number" inputmode="decimal" step="any" min="0"> %
-          <span class="amt" id="s-claudio-amt">—</span></span></div>
-      <div class="s-row"><span class="lbl">Business <small>editable %</small></span>
-        <span style="display:flex;align-items:center;gap:14px;">
-          <input class="pct-input" id="s-business-pct" type="number" inputmode="decimal" step="any" min="0"> %
-          <span class="amt" id="s-business-amt">—</span></span></div>
-      <div class="s-row auto"><span class="lbl">Total distribution</span><span class="amt" id="s-dist-total">—</span></div>
-      <div class="warn-row" id="s-dist-warn" style="display:none;"></div>
-    </div>
-
     <div class="recon">Baseline reconciliation (Option 1 active, Option 2 inactive — as loaded): raw subtotal <b>$12,975.00</b> ·
       + 5% margin <b>$648.75</b> · total <b>$13,623.75</b>. Switching to Option 2 (toggle its rows on, Option 1's off) moves
       raw subtotal to <b>$16,700.00</b>, margin to <b>$835.00</b>, total to <b>$17,535.00</b>. Updated 2026-07-17 evening
@@ -633,9 +615,6 @@
 
         <dt>Deposit / Balance</dt>
         <dd>The upfront percentage of the total price collected to begin work (deposit), with the remainder (balance) due upon completion.</dd>
-
-        <dt>Internal Distribution</dt>
-        <dd>How the final project total is split internally between the people/entities involved in delivering and running the job (here: Tunde, Claudio, and the Business) — never shown to the client.</dd>
       </dl>
       </div>
     </div>
@@ -1187,9 +1166,6 @@
     });
     document.getElementById("s-mgn-pct").value = state.margin_pct;
     document.getElementById("s-dep-pct").value = state.deposit_pct;
-    document.getElementById("s-tunde-pct").value = state.tunde_pct;
-    document.getElementById("s-claudio-pct").value = state.claudio_pct;
-    document.getElementById("s-business-pct").value = state.business_pct;
     recompute();
     renderEquipmentAppendix();
   }
@@ -1222,23 +1198,6 @@
     var dep = total * depPct / 100;
     document.getElementById("s-dep-amt").textContent = money(dep);
     document.getElementById("s-bal-amt").textContent = money(total - dep);
-
-    var tPct = num(document.getElementById("s-tunde-pct").value);
-    var cPct = num(document.getElementById("s-claudio-pct").value);
-    var bPct = num(document.getElementById("s-business-pct").value);
-    var tAmt = total * tPct / 100, cAmt = total * cPct / 100, bAmt = total * bPct / 100;
-    document.getElementById("s-tunde-amt").textContent = money(tAmt);
-    document.getElementById("s-claudio-amt").textContent = money(cAmt);
-    document.getElementById("s-business-amt").textContent = money(bAmt);
-    document.getElementById("s-dist-total").textContent = money(tAmt+cAmt+bAmt);
-    var warn = document.getElementById("s-dist-warn");
-    var sumPct = tPct+cPct+bPct;
-    if(Math.abs(sumPct-100) > 0.01){
-      warn.style.display = "block";
-      warn.textContent = "⚠ Distribution percentages sum to " + sumPct.toFixed(2) + "%, not 100%.";
-    } else {
-      warn.style.display = "none";
-    }
   }
 
   document.getElementById("s-mgn-pct").addEventListener("input", function(){
@@ -1246,15 +1205,6 @@
   });
   document.getElementById("s-dep-pct").addEventListener("input", function(){
     state.deposit_pct = num(this.value); recompute(); touch(); persist();
-  });
-  document.getElementById("s-tunde-pct").addEventListener("input", function(){
-    state.tunde_pct = num(this.value); recompute(); touch(); persist();
-  });
-  document.getElementById("s-claudio-pct").addEventListener("input", function(){
-    state.claudio_pct = num(this.value); recompute(); touch(); persist();
-  });
-  document.getElementById("s-business-pct").addEventListener("input", function(){
-    state.business_pct = num(this.value); recompute(); touch(); persist();
   });
   document.getElementById("btn-add").addEventListener("click", function(){
     state.items.push({ id:"NEW-"+(nextId++), category:"A - Projection Screen (locked scope)", description:"", url:"", qty:1, unit:"", unit_rate:0, active:true, notes:"" });
