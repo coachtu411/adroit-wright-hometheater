@@ -216,7 +216,7 @@
     </button>
     <div class="sec-body" id="body-reco">
     <div class="rp-reco">
-      <div class="rp-reco-label">🎯 SME synthesis (Julian Pryce, AV/Home-Theater Sourcing SME), 2026-07-18 — merges both research passes against current locked criteria</div>
+      <div class="rp-reco-label">🎯 SME synthesis (Julian Pryce, AV/Home-Theater Sourcing SME), 2026-07-18 — merges both research passes against current locked criteria; updated same-day with the BenQ-vs-ZK430ST closeout below</div>
       <p><b>Projector:</b> BenQ TK710STi — regular short-throw (not UST), ceiling-mount, positioned
         ~4–5 ft from the screen wall to clear the existing ceiling light fixture. White body / gray face —
         already confirmed acceptable with Oliver on the 7/17 call. 3,200 ANSI lumens, laser light source
@@ -233,6 +233,23 @@
         a UST unit's physical body would sit close enough to the wall to collide with the existing ceiling
         light fixture. None of the deep research's brightness/lifespan findings for those candidates apply
         to a decision that no longer includes them.</p>
+      <p><b>Why this and not the one real non-UST challenger — Optoma ZK430ST</b> (closed out 2026-07-18;
+        pricing explicitly excluded from this decision per Tunde): unlike the models above, the ZK430ST is
+        <i>not</i> ruled out by the UST exclusion — it's a genuine regular short-throw unit (0.496:1 throw
+        ratio, confirmed via manufacturer spec) that also already has real ADI trade pricing on file
+        ($2,057.22, quote #16599923) and is independently-verified brighter than the BenQ (3,700 vs 3,200
+        ANSI lumens). On the criteria that ARE in scope, though, it loses on two fronts: (1) no confirmed
+        built-in smart-TV platform — Optoma's own spec sheet directs buyers to add an external Chromecast/
+        streaming dongle, consistent with a corporate/conference-room unit rather than a home-theater one,
+        against the BenQ's confirmed built-in Android/Google TV; (2) housing color is <b>not confirmed
+        white</b> — the manufacturer's own product page and an independent retailer both show only a dark
+        finish; a B2B distributor catalog field and two retailer listing titles say "white," but that
+        couldn't be verified past access blocks, and a WebSearch AI-summary claim of a "sleek white
+        chassis" was confirmed <b>fabricated</b> (the phrase appears on zero of the pages actually fetched —
+        full sourcing and the methodology note are in Decision History below). <b>Net:</b> the ZK430ST's
+        real advantages (brightness, real trade pricing) don't clear a hard-locked requirement (built-in
+        smart platform) the BenQ already satisfies with certainty — BenQ remains the pick, confirmed today
+        through a full criteria-fit review with pricing explicitly excluded as a selection factor.</p>
       <div class="rp-reco-caveat">
         <b>Not yet verified before this can ship to the client:</b> (1) real ADI/trade pricing for the BenQ
         and the TecVision ALR upgrade — everything above is retail/list; a 2026-07-18 O365 sweep of ADI
@@ -364,6 +381,26 @@
         preserved in <code>../archive/ARCHIVED_lift_option_2026-07-18.md</code> and in Decision History
         below.</p>
       <div class="rp-src">Source: O365 ADI correspondence, quote #16599923 (see Decision History)</div>
+    </div>
+
+    <div class="rp-finding confirmed">
+      <div class="rp-finding-head">
+        <span class="rp-finding-badge">Resolved 2026-07-18</span>
+        <span class="rp-finding-title">BenQ TK710STi vs. Optoma ZK430ST — the one real non-UST challenger, closed out in BenQ's favor</span>
+      </div>
+      <p>Distinct from the archived lift evaluation above (which paired the ZK430ST with a Draper AeroLift
+        35 lift as a concealment method) — this is a standalone, apples-to-apples projector-vs-projector
+        comparison. Pricing was explicitly excluded as a decision factor per Tunde. The ZK430ST wins on
+        brightness (3,700 vs 3,200 ANSI, independently verified) and already has real ADI trade pricing
+        ($2,057.22, quote #16599923). It loses on the two criteria that ARE in scope: no confirmed built-in
+        smart-TV platform (Optoma's own spec sheet points to an external Chromecast dongle) vs. BenQ's
+        confirmed built-in Android/Google TV; and unconfirmed/likely-dark housing color vs. BenQ's
+        Oliver-approved white body. BenQ remains the pick. See Decision History for full sourcing and a
+        WebSearch-fabrication methodology catch worth reusing elsewhere.</p>
+      <div class="rp-src">Sources: optomausa.com (manufacturer product page, direct fetch), officewonderland.com
+        (independent retailer, direct fetch), PEPPM/ChannelOnline B2B catalog (conflicting "white" field),
+        Connection.com &amp; NetworkHardwares.com listing titles (conflicting "White" in title string only),
+        quote #16599923 (ADI Global Distribution, real trade pricing)</div>
     </div>
     </div>
   </section>
@@ -535,6 +572,47 @@
         <code>index.html</code>'s Option 2 category (line items B1-OPT2 through B5-OPT2) and its
         client-facing PDF comparison; <code>Itemization_ADR-2026-WRIGHT_v1.0.0i.json</code>'s Option 2 line
         items; and the Option 2 column in <code>Estimate_ADR-2026-WRIGHT_v1.0.0d.md</code>.</p>
+    </div>
+    <div class="rp-finding confirmed">
+      <div class="rp-finding-head"><span class="rp-finding-badge">2026-07-18 — RESOLVED</span>
+        <span class="rp-finding-title">BenQ TK710STi vs. Optoma ZK430ST closed out — BenQ confirmed as the pick across the board, pricing excluded from the decision</span></div>
+      <p>Per Tunde's direct instruction, pricing was explicitly excluded as a selection factor for this
+        comparison. This is a <b>separate, standalone projector-vs-projector evaluation</b> — distinct from
+        the lift-paired ZK430ST entry above (Draper AeroLift 35 + ZK430ST), which was about the concealment
+        <i>method</i>, not this. Here the question was simply: does the ZK430ST beat the already-locked BenQ
+        TK710STi as the ceiling-mounted unit itself?</p>
+      <p><b>Where ZK430ST is genuinely better:</b> brighter (3,700 vs 3,200 ANSI lumens, independently
+        verified against manufacturer specs) and its throw-ratio math (0.496:1) also fits the confirmed
+        ~4–5 ft install window. It already has real ADI trade pricing on file from the archived-lift quote
+        (#16599923, $2,057.22) — pricing that was deliberately excluded from this decision per Tunde's
+        instruction, not because it was unfavorable to it.</p>
+      <p><b>Where it loses, on criteria that ARE in scope:</b> (1) <b>No confirmed built-in smart-TV
+        platform.</b> Optoma's own spec sheet directs buyers to add an external Chromecast/streaming dongle
+        — consistent with a corporate/conference-room unit, not a home-theater one — against the BenQ's
+        confirmed built-in Android/Google TV, which is a "Resolved" criterion on this project (see
+        Client-Locked Criteria above). (2) <b>Housing color is not confirmed white.</b> The manufacturer's
+        own product page (optomausa.com) and an independent retailer (officewonderland.com) were both
+        directly fetched and show the unit only in a dark/black-gray finish. Conflicting signals exist — a
+        B2B distributor catalog (PEPPM/ChannelOnline) carries an explicit "Enclosure Color: White" field,
+        and two retailer listing <i>titles</i> (Connection.com, NetworkHardwares.com) include "White" — but
+        neither could be verified against an actual product photo past access blocks, and white housing is
+        an Oliver-approved <b>hard requirement</b> on this project.</p>
+      <p><b>Methodology catch worth flagging:</b> an initial <code>WebSearch</code> pass for "Optoma ZK430ST
+        color" returned a synthesized answer twice asserting "the sleek white chassis" / "available in
+        white." A direct <code>WebFetch</code> of the actual manufacturer page it cited said the opposite in
+        plain language, and the exact phrase "sleek white chassis" does not appear on any page actually
+        fetched — it reads as fabricated/pattern-matched from the surrounding "White" title-string noise
+        (the retailer listing titles above), not read off real page content. Standing lesson: for any
+        decision-critical spec, verify with a direct fetch of the primary source, not the search tool's own
+        summary.</p>
+      <p><b>Net:</b> the ZK430ST's real advantages (brightness, real trade pricing) don't clear a
+        hard-locked requirement (confirmed built-in smart platform) that the BenQ already satisfies with
+        certainty. <b>BenQ TK710STi remains the pick, confirmed today through a full criteria-fit review.</b>
+        No line items changed as a result — the BenQ was already the sole live pricing line on
+        <code>index.html</code>; this entry documents why it survives the one real remaining challenger.</p>
+      <div class="rp-src">Sources: optomausa.com (manufacturer, direct fetch), officewonderland.com
+        (independent retailer, direct fetch), PEPPM/ChannelOnline B2B catalog, Connection.com &amp;
+        NetworkHardwares.com listing titles, quote #16599923 (ADI Global Distribution)</div>
     </div>
     </div>
   </section>
